@@ -1,0 +1,120 @@
+/* Main container to hold the banner and product info section */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Add space between the navbar and the product info section */
+  padding: 20px;
+}
+
+/* Styling for the vertical navigation menu */
+.vertical-nav {
+  width: 200px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.vertical-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.vertical-nav li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Submenu icon styling */
+.submenu-icon {
+  margin-left: 10px;
+}
+
+/* Submenu items hidden by default */
+.submenu {
+  display: none;
+  transform: translateY(0); /* Animate to its original position */
+}
+
+.submenu li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+/* Show submenu when open */
+.vertical-nav li.open > .submenu {
+  display: block;
+  opacity: 1; /* Make submenu visible */
+  transform: translateY(0); /* Animate to its original position */
+  margin-left: 200%;
+  width: 300px;
+}
+
+/* Product Info Section (Right of Navbar) */
+.product-info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px; /* Space between product count and sorting dropdown */
+}
+
+/* Sorting button styling */
+.sorting-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px; /* Add space between label and dropdown */
+}
+
+.sorting-options select,
+.sorting-options button {
+  padding: 20px 25px; /* Increase padding to make the button larger */
+  font-size: 16px; /* Increase font size for better readability */
+  border: 1px solid #ccc;
+  background-color: transparent !important; /* Ensure background is transparent */
+  cursor: pointer; /* Ensure button has pointer cursor */
+  outline: none; /* Remove outline for better look if needed */
+  height: 50px; /* Set height for a consistent size */
+  width: 180px;
+  position: relative;
+  top: 65px;
+}
+
+/* Additional styles for the button if needed */
+.sorting-options button {
+  padding: 25px 30px !important; /* Optional: add extra padding for larger button */
+  background-color: transparent !important;
+  border: 1px solid #ccc;
+  font-size: 16px; /* Increase font size for better visibility */
+  height: 50px; /* Ensure button height is consistent */
+}
+
+/* Pop-out effect for the banner */
+.banner-container {
+  animation: popOutAnimation 0.5s ease-in-out;
+}
+
+.pop-out {
+  animation: popOutAnimation 0.5s ease-in-out forwards;
+}
+
+.product-count {
+  position: relative;
+  right: 520px;
+  top: 65px;
+}
+
+/* Keyframe animation for the pop-out effect */
+@keyframes popOutAnimation {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

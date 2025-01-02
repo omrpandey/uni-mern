@@ -1,0 +1,734 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; /* Added for better sizing control */
+}
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,300;0,400;1,100;1,200;1,300&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap');
+
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.headerWrapper .header {
+  width: 100%;
+  height: auto;
+  padding: 25px;
+}
+
+.logoWrapper img {
+  width: 100%; /* Restrict image width */
+  max-width: 200px; /* Ensure logo scales on smaller screens */
+}
+
+.headerWrapper .headerSearch {
+  position: absolute;
+  left: 22%;
+  top: 5%;
+  width: 50%; /* Adjusted width for better responsiveness */
+  max-width: 600px; /* Restrict max width */
+}
+
+.headerWrapper .headerSearch input {
+  width: 130%; /* Make input width relative to container */
+  height: 30px;
+  border-radius: 6px;
+  outline: none;
+  margin: 0px;
+  font-size: 16px !important;
+  padding: 0 35px;
+  box-sizing: border-box; /* Prevent padding from affecting width */
+}
+
+.headerSearch button {
+  position: absolute;
+  top: -6px;
+  left: -30px;
+  z-index: 100;
+  min-width: 60px;
+  height: 40px;
+  width: 100px;
+  border-radius: 50%;
+  color: black;
+  font-size: 20px;
+}
+
+/* User Icons Container */
+.headerIcons {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+}
+
+.headerIcons svg {
+  cursor: pointer;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.circle:hover {
+  background-color: #ddd;
+}
+
+.m1-auto .shopBag {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #000000;
+}
+
+.shopBag .ciecle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px; /* Adjusted to ensure responsiveness */
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.shopBag button svg {
+  font-size: 30px;
+}
+
+.m1-auto {
+  position: absolute;
+  left: auto; /* Prevent overflow */
+  top: 5%;
+  margin-left: auto; /* Align to the right */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .headerWrapper .headerSearch {
+      left: 5%; /* Adjust search bar positioning */
+      top: 10%; /* Adjust top margin */
+      width: 90%; /* Reduce width on smaller screens */
+  }
+  .logoWrapper img {
+      width: 30%; /* Adjust logo size */
+      max-width: 100px;
+  }
+  .shopBag .ciecle {
+      min-width: 30px;
+      height: 30px;
+  }
+  .headerIcons {
+      gap: 10px; /* Reduce gap for icons */
+  }
+}
+
+@media (max-width: 480px) {
+  .headerWrapper .headerSearch {
+      left: 5%; /* Adjust further for mobile screens */
+      top: 15%;
+      width: 95%;
+  }
+  .logoWrapper img {
+      width: 40%; /* Further reduce logo size */
+      max-width: 80px;
+  }
+  .shopBag .ciecle {
+      min-width: 25px;
+      height: 25px;
+  }
+}
+
+/* NavBar Css*/
+
+.navbar {
+  padding: 0px 0px;
+  padding-left: 10px;
+}
+
+.navPart2 {
+  text-align: center; /* Center-align content */
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  display: flex; /* Ensures items are horizontal */
+  justify-content: center; /* Optional: centers items horizontally */
+  list-style: none; /* Removes bullets */
+}
+
+.list-inline-item {
+  margin: 0 5px; /* Adds spacing between items */
+}
+
+.list-inline-item a {
+  text-decoration: none;
+  color: rgb(0, 0, 0); 
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.list-inline-item a:hover {
+  color: #f18fe7; /* Highlight color */
+}
+
+.list-inline-item2 {
+  /* text-transform: capitalize !important; */
+  letter-spacing: 1.6px !important; /* Converted from 0.1em */
+  font-size: 18px !important;
+  padding: 16.8px 16.8px 0 !important; /* Converted from 1.05rem */
+  text-transform: uppercase;
+  letter-spacing: 3.2px; /* Converted from 0.2em */
+}
+
+.list-inline-item2 {
+  margin: 0 5px; /* Adds spacing between items */
+}
+
+.list-inline-item2 a {
+  text-decoration: none;
+  color: rgb(0, 0, 0); 
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.list-inline-item2 a:hover {
+  color: #f18fe7; /* Highlight color */
+}
+
+.list-inline-item {
+  /* text-transform: capitalize !important; */
+  letter-spacing: 1.6px !important; /* Converted from 0.1em */
+  font-size: 18px !important;
+  padding: 16.8px 16.8px 0 !important; /* Converted from 1.05rem */
+  text-transform: capitalize;
+  letter-spacing: 3.2px; /* Converted from 0.2em */
+}
+
+.new-text sup {
+  top: -1em;
+  font-weight: 700;
+  color: red;
+}
+.new-text sup {
+  top: -1em;
+  font-weight: 700;
+  color: rgb(255, 0, 0);
+}
+sup {
+  top: -.5em;
+}
+sub, sup {
+  font-size: 60%;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -.5em;
+}
+sup {
+  font-size: 60%;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.navbar .list-inline {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+}
+
+.sui-dang span {
+  margin: 0 -6px; /* Adds space between "Sui" and "Dang" */
+}
+
+
+.list-inline-item {
+  position: relative; /* Required for line animation */
+  display: inline-block; /* Ensures proper positioning */
+  text-decoration: none; /* Remove default underline */
+  color: black; /* Default color of the link */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.list-inline-item:hover .flashsales-link {
+  color: pink; /* Changes color of the link to pink on hover */
+}
+
+.list-inline-item::after {
+  content: ''; /* Creates an empty content element for the line */
+  position: absolute; /* Positions it below the link */
+  left: 0;
+  bottom: -2px; /* Places the line just below the text */
+  width: 100%;
+  height: 2px; /* Line thickness */
+  background-color: pink; /* Color of the line */
+  transform: scaleX(0); /* Initially the line is not visible */
+  transform-origin: bottom right; /* Animation origin */
+  transition: transform 0.3s ease-in-out; /* Smooth animation */
+}
+
+.list-inline-item:hover::after {
+  transform: scaleX(1); /* Expands the line to full width on hover */
+}
+
+.new-text {
+  font-weight: bold; /* Makes the "New" label bold */
+  color: black; /* Default color of the label */
+  margin-left: 5px; /* Adds a small gap between the link and the label */
+  display: inline-block; /* Keeps it on the same line as FlashSales */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.list-inline-item:hover .new-text {
+  color: pink; /* Changes color of "New" label on hover */
+}
+
+/* Submenu */
+
+.submenu {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  left: -600px;
+  width: 1400px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.submenu ul {
+  padding: 0; /* No padding */
+  margin: 0; /* No margin */
+  list-style: none; /* Remove default list styling */
+  display: flex; /* Use flex to line items horizontally */
+}
+
+.submenu-section {
+  margin: 0; /* Remove margin between list items */
+}
+
+/* Show submenu when hovering over parent li */
+.list-inline-item.has-submenu:hover .submenu {
+  display: block; /* Show submenu */
+}
+
+/* Flex layout for the submenu sections horizontally */
+.submenu-content {
+  display: flex;
+  justify-content: space-around; /* Distribute sections evenly */
+  padding: 0 20px;
+}
+
+.submenu-section {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.submenu-section a {
+  display: block;
+  padding: 0; /* Remove padding */
+  text-decoration: none;
+  color: black; /* Set text color to black */
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submenu-section a:hover {
+  background-color: #f0f0f0;
+  color: #ff4081; /* Pink color on hover */
+}
+
+/* Styling the section titles (e.g., Traditional, Contemporary, Mens) */
+.submenu-section h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: black; /* Set section title text color to black */
+}
+
+/* Ensure the sections have clear visual separation */
+.list-inline-item {
+  position: relative;
+}
+
+/* Banner */
+.banner-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding-top: 10px;
+}
+
+.banner-container.pop-out {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  margin-left: 10px;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f1f2f6;
+  color: #333;
+}
+
+.pop-out {
+  animation: popOut 0.5s ease-in-out;
+}
+
+@keyframes popOut {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+/* Vertical Navbar */
+.vertical-nav {
+  width: 30%;
+  background-color: #ffffff00;
+  color: white;
+  padding: 20px 0;
+  position: relative;
+  margin-top: 10px;
+  padding-top: 50px;
+  padding-left: 20px;
+}
+
+.vertical-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vertical-nav li {
+  padding: 16px 20px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+  margin-right: 30px;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.vertical-nav li:hover {
+  background-color: #ffffff;
+}
+
+
+/* Submenu styles */
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 20px;
+  display: none; /* Initially hidden */
+  flex-direction: column;
+  background-color: #f4f4f4; /* Light background for submenu */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Smooth fade-in transition */
+}
+
+/* Show submenu when it has the 'open' class */
+.submenu.open {
+  display: block;
+  opacity: 1; /* Make submenu visible */
+  width: 300px;
+  margin-left: 200%;
+}
+
+.submenu li {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: block;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.submenu li:hover {
+  background-color: #1abc9c;
+}
+
+/* Styles for main li */
+.vertical-nav li {
+  position: relative;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30px;
+  width: 300px;
+  transition: padding 0.3s ease; /* Smooth padding transition */
+}
+
+/* When submenu is open, add extra padding to main li to push it down */
+.vertical-nav li.open {
+  padding-bottom: 30px; /* Space to push down the main li */
+}
+
+.submenu li:hover {
+  background-color: #1abc9c; /* Green background on hover */
+  color: #fff; /* White text on hover */
+}
+
+/* Submenu toggle button (arrow) */
+.submenu-icon {
+  transition: transform 0.3s ease;
+  font-size: 24px; /* Larger font for the arrow */
+  cursor: pointer;
+}
+
+.submenu-icon.rotate {
+  transform: rotate(180deg); /* Rotate the icon when submenu is open */
+}
+
+/* Horizontal separator line for each navbar item */
+.vertical-nav li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 13px;
+  width: 270px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+}
+
+/* Product Info Box */
+.product-info-box {
+  flex-grow: 1;
+  margin-left: 31%; /* Allow space for the navbar */
+  padding: 20px;
+  background-color: #ecf0f1;
+  overflow-y: auto;
+}
+
+.sorting-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sorting-button:hover {
+  background-color: #2980b9;
+}
+
+.sorting-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#sort-option {
+  padding: 5px;
+  border: 1px solid #bdc3c7;
+  border-radius: 3px;
+  background-color: white;
+  font-size: 14px;
+}
+
+/* Hover effect and transition for submenu toggle */
+.submenu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: absolute;
+  right: 10px;
+  padding: 0;
+}
+
+.submenu-toggle:hover {
+  transform: rotate(180deg); /* Rotate on hover */
+}
+
+/* Animation class for banner */
+.pop-out {
+  animation: popOutAnimation 1s forwards;
+}
+
+@keyframes popOutAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Product*/
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.vertical-nav {
+  flex: 1; /* Take up the remaining space */
+  margin-right: 20px; /* Space between navbar and product info box */
+}
+
+.product-info-box {
+  background-color: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 250px; /* Adjust width of the info box */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px; /* Keep some margin from the navbar */
+}
+
+.sorting-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.sorting-button:hover {
+  background-color: #0056b3;
+}
+
+.sorting-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sorting-options label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.sorting-options select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.sorting-options select:focus {
+  border-color: #007bff;
+}
+
+.product-info-box {
+  background-color: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 250px; /* Adjust width of the info box */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px; /* Keep some margin from the navbar */
+}
+
+.sorting-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.sorting-button:hover {
+  background-color: #0056b3;
+}
+
+.sorting-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sorting-options label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.sorting-options select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.sorting-options select:focus {
+  border-color: #007bff;
+}
