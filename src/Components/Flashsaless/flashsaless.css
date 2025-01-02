@@ -54,20 +54,74 @@
 }
 
 /* Product Info Section (Right of Navbar) */
+/* Product Info Section */
 .product-info-section {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px; /* Space between product count and sorting dropdown */
+  flex-direction: column; /* Stack product grid below */
+  gap: 20px; /* Space between rows */
 }
 
-/* Sorting button styling */
-.sorting-options {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px; /* Add space between label and dropdown */
+/* Row for Product Count and Sorting Options */
+.product-info-header {
+  display: inline-flex; /* Use inline flex for horizontal layout */
+  justify-content: space-between; /* Space between product-count and sorting-options */
+  align-items: center; /* Align vertically in the center */
+  width: 100%; /* Full width of the container */
+  padding: 10px 20px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in width */
 }
+
+/* Styling for Product Count */
+.product-count {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 60px;
+  width: auto; /* Auto width for the container */
+}
+
+/* Styling for Sorting Options */
+.sorting-options {
+  /* display: flex; */
+  align-items: center; /* Vertically align dropdown */
+  width: auto; /* Auto width for the container */
+}
+
+
+
+/* Styling for Product Grid */
+.product-grid {
+  display: flex; /* Use grid layout for products */
+  flex-wrap: wrap; /* Wrap grid items to the next row */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid columns */
+  gap: 16px; /* Space between grid items */
+  margin-top: 50px; /* Space above the grid */
+  margin-left: 70px; /* Space to the left of the grid */
+  width: 100%; /* Ensure grid spans full width */
+  padding: 0; /* Remove any extra padding */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  justify-content: start; /* Align grid items to the start */
+  align-items: start; /* Align grid items to the start */
+  overflow-y: scroll; /* Add scroll for overflow */
+  height: 1000px; /* Set height for the grid */
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
+.product-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.product-grid {
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Ensure content is scrollable without visible scrollbar */
+.product-grid {
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+
+
 
 .sorting-options select,
 .sorting-options button {
@@ -79,7 +133,7 @@
   outline: none; /* Remove outline for better look if needed */
   height: 50px; /* Set height for a consistent size */
   width: 180px;
-  position: relative;
+  /* position: relative; */
   top: 65px;
 }
 
@@ -100,13 +154,6 @@
 .pop-out {
   animation: popOutAnimation 0.5s ease-in-out forwards;
 }
-
-.product-count {
-  position: relative;
-  right: 520px;
-  top: 65px;
-}
-
 /* Keyframe animation for the pop-out effect */
 @keyframes popOutAnimation {
   from {

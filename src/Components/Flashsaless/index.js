@@ -128,25 +128,39 @@ const Flashsaless = () => {
 
         {/* Product Info Section (Right of Navbar) */}
         <div className="product-info-section">
-          <span className="product-count">159 Products</span>
-          <div className="sorting-options">
-            <select
-              id="sort-option"
-              value={sortOption}
-              onChange={handleSortChange}
-            >
-              <option value="alphabetically">Alphabetically (A-Z)</option>
-              <option value="price-low-high">Price (Low to High)</option>
-              <option value="price-high-low">Price (High to Low)</option>
-              <option value="rating">Rating</option>
-            </select>
-          </div>
-          <Lotus/>
-          {/* Add the Lotus Component */}
-        </div>
-      </div>
+  <div className="product-info-header">
+    <span className="product-count">159 Products</span>
+    <div className="sorting-options">
+      <select
+        id="sort-option"
+        value={sortOption}
+        onChange={handleSortChange}
+      >
+        <option value="alphabetically">Alphabetically (A-Z)</option>
+        <option value="price-low-high">Price (Low to High)</option>
+        <option value="price-high-low">Price (High to Low)</option>
+        <option value="rating">Rating</option>
+      </select>
     </div>
-    
+  </div>
+  <div className="product-grid">
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    {/* Add more Lotus components as needed */}
+  </div>
+</div>
+</div>
+</div>
   );
 };
 
