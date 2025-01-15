@@ -52,7 +52,6 @@
   margin-left: 200%;
   width: 300px;
 }
-
 /* Product Info Section (Right of Navbar) */
 /* Product Info Section */
 .product-info-section {
@@ -69,6 +68,7 @@
   width: 100%; /* Full width of the container */
   padding: 10px 20px; /* Add padding for spacing */
   box-sizing: border-box; /* Include padding in width */
+  padding-top: 50px;
 }
 
 /* Styling for Product Count */
@@ -81,21 +81,15 @@
 
 /* Styling for Sorting Options */
 .sorting-options {
-  /* display: flex; */
   align-items: center; /* Vertically align dropdown */
   width: auto; /* Auto width for the container */
 }
 
-
-
 /* Styling for Product Grid */
 .product-grid {
-  display: flex; /* Use grid layout for products */
+  display: flex; /* Use flex layout for products */
   flex-wrap: wrap; /* Wrap grid items to the next row */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid columns */
   gap: 16px; /* Space between grid items */
-  margin-top: 50px; /* Space above the grid */
-  margin-left: 70px; /* Space to the left of the grid */
   width: 100%; /* Ensure grid spans full width */
   padding: 0; /* Remove any extra padding */
   box-sizing: border-box; /* Include padding and border in width/height */
@@ -118,6 +112,45 @@
 /* Ensure content is scrollable without visible scrollbar */
 .product-grid {
   -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+/* Responsive Adjustments */
+
+/* Mobile Devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .product-info-header {
+    flex-direction: column; /* Stack product count and sorting options */
+    padding-top: 20px; /* Adjust padding for mobile */
+  }
+
+  .product-count {
+    margin-left: 0; /* Remove margin for mobile */
+    font-size: 16px; /* Slightly smaller font for mobile */
+  }
+
+  .sorting-options select {
+    width: 100%; /* Make the dropdown take full width */
+    margin-top: 10px; /* Add space between product count and sorting dropdown */
+  }
+
+  .product-grid {
+    height: auto; /* Remove fixed height for mobile */
+    overflow-y: visible; /* Allow the grid to grow vertically */
+  }
+}
+
+/* Tablet Devices (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid layout */
+  }
+}
+
+/* Larger Screens */
+@media screen and (min-width: 1025px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger grid items for wide screens */
+  }
 }
 
 
