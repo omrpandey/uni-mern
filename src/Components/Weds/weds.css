@@ -1,3 +1,4 @@
+
 /* Main Container */
 .main-container {
   display: flex;
@@ -104,4 +105,172 @@
   height: 2px;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 0.5;
+}/* Circle Images Section */
+
+
+
+/* Circle Images Section */
+.circle-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the space between the circles */
+  margin: 20px 0;
+}
+
+.circle-op {
+  width: 100px; /* Size of the circle */
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the circle */
+}
+
+/* Styling for the name text under the circle */
+.circle-name {
+  position: absolute;
+  bottom: -20px; /* Position the name under the circle */
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  color: #000; /* Adjust the color as needed */
+}
+
+/* Product Info Section (Right of Navbar) */
+.product-info-section1 {
+  display: flex;
+  flex-direction: column; /* Stack product grid below */
+  gap: 20px; /* Space between rows */
+  margin-left: -60px; /* Adjust this based on the width of the sidebar */
+}
+
+/* Row for Product Count and Sorting Options */
+.product-info-header1 {
+  display: inline-flex; /* Use inline flex for horizontal layout */
+  justify-content: space-between; /* Space between product-count and sorting-options */
+  align-items: center; /* Align vertically in the center */
+  width: 100%; /* Full width of the container */
+  padding: 10px 20px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in width */
+  padding-top: 50px;
+}
+
+/* Styling for Product Count */
+.product-count1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 0px;
+  width: auto; /* Auto width for the container */
+}
+
+/* Styling for Sorting Options */
+.sorting-options1 {
+  align-items: center; /* Vertically align dropdown */
+  width: auto; /* Auto width for the container */
+}
+
+/* Styling for Product Grid */
+.product-grid1 {
+  display: grid; /* Use grid layout for products */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill columns with a minimum width */
+  grid-template-rows: repeat(3, 1fr); /* Ensure 3 rows */
+  gap: 16px; /* Space between grid items */
+  width: 100%; /* Ensure grid spans full width */
+  padding: 0; /* Remove any extra padding */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  overflow-y: scroll; /* Add scroll for overflow */
+  height: 1000px; /* Set height for the grid */
+  margin-left: 0; /* Shift the grid to the left */
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
+.product-grid1::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.product-grid1 {
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Ensure content is scrollable without visible scrollbar */
+.product-grid1 {
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+/* Responsive Adjustments */
+
+/* Mobile Devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .product-info-header1 {
+    flex-direction: column; /* Stack product count and sorting options */
+    padding-top: 20px; /* Adjust padding for mobile */
+  }
+
+  .product-count1 {
+    margin-left: 0; /* Remove margin for mobile */
+    font-size: 16px; /* Slightly smaller font for mobile */
+  }
+
+  .sorting-options1 select {
+    width: 100%; /* Make the dropdown take full width */
+    margin-top: 10px; /* Add space between product count and sorting dropdown */
+  }
+
+  .product-grid1 {
+    height: auto; /* Remove fixed height for mobile */
+    overflow-y: visible; /* Allow the grid to grow vertically */
+  }
+}
+
+/* Tablet Devices (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .product-grid1 {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid layout */
+  }
+}
+
+/* Larger Screens */
+@media screen and (min-width: 1025px) {
+  .product-grid1 {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
+  }
+}
+
+/* Sorting Options Styling */
+.sorting-options1 select,
+.sorting-options1 button {
+  padding: 20px 25px; /* Increase padding to make the button larger */
+  font-size: 16px; /* Increase font size for better readability */
+  border: 1px solid #ccc;
+  background-color: transparent !important; /* Ensure background is transparent */
+  cursor: pointer; /* Ensure button has pointer cursor */
+  outline: none; /* Remove outline for better look if needed */
+  height: 50px; /* Set height for a consistent size */
+  width: 180px;
+  top: 65px;
+}
+
+/* Additional styles for the button if needed */
+.sorting-options1 button {
+  padding: 25px 30px !important; /* Optional: add extra padding for larger button */
+  background-color: transparent !important;
+  border: 1px solid #ccc;
+  font-size: 16px; /* Increase font size for better visibility */
+  height: 50px; /* Ensure button height is consistent */
+}
+.div123{
+  display: flex;
 }

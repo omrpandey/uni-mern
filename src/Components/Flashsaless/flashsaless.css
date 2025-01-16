@@ -2,15 +2,21 @@
 .main-container {
   display: flex;
   flex-direction: row;
-  gap: 20px; /* Add space between the navbar and the product info section */
-  padding: 20px;
+  gap: 20px; /* Space between the navbar and the product info section */
+  padding: 0; /* Remove any padding from the main container */
 }
 
 /* Styling for the vertical navigation menu */
 .vertical-nav {
   width: 200px;
   padding-top: 10px;
-  padding-left: 10px;
+  padding-left: 0; /* No padding on the left side */
+  margin-left: 10; /* Ensure it sticks to the left */
+  position: fixed; /* Fix the navbar to the left */
+  top: 0; /* Align it to the top */
+  left: 0; /* Stick to the left edge */
+  height: 100%; /* Make it full height */
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
 }
 
 .vertical-nav ul {
@@ -52,12 +58,13 @@
   margin-left: 200%;
   width: 300px;
 }
+
 /* Product Info Section (Right of Navbar) */
-/* Product Info Section */
 .product-info-section {
   display: flex;
   flex-direction: column; /* Stack product grid below */
   gap: 20px; /* Space between rows */
+  margin-left: -60px; /* Adjust this based on the width of the sidebar */
 }
 
 /* Row for Product Count and Sorting Options */
@@ -87,16 +94,16 @@
 
 /* Styling for Product Grid */
 .product-grid {
-  display: flex; /* Use flex layout for products */
-  flex-wrap: wrap; /* Wrap grid items to the next row */
+  display: grid; /* Use grid layout for products */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill columns with a minimum width */
+  grid-template-rows: repeat(3, 1fr); /* Ensure 3 rows */
   gap: 16px; /* Space between grid items */
   width: 100%; /* Ensure grid spans full width */
   padding: 0; /* Remove any extra padding */
   box-sizing: border-box; /* Include padding and border in width/height */
-  justify-content: start; /* Align grid items to the start */
-  align-items: start; /* Align grid items to the start */
   overflow-y: scroll; /* Add scroll for overflow */
   height: 1000px; /* Set height for the grid */
+  margin-left: 0; /* Shift the grid to the left */
 }
 
 /* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
@@ -149,13 +156,12 @@
 /* Larger Screens */
 @media screen and (min-width: 1025px) {
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger grid items for wide screens */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
   }
 }
 
-
-
-
+/* Sorting Options Styling */
 .sorting-options select,
 .sorting-options button {
   padding: 20px 25px; /* Increase padding to make the button larger */
@@ -166,7 +172,6 @@
   outline: none; /* Remove outline for better look if needed */
   height: 50px; /* Set height for a consistent size */
   width: 180px;
-  /* position: relative; */
   top: 65px;
 }
 
@@ -187,6 +192,7 @@
 .pop-out {
   animation: popOutAnimation 0.5s ease-in-out forwards;
 }
+
 /* Keyframe animation for the pop-out effect */
 @keyframes popOutAnimation {
   from {

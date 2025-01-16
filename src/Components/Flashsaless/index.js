@@ -156,6 +156,18 @@ const Flashsaless = () => {
     <Lotus />
     <Lotus />
     <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
+    <Lotus />
     {/* Add more Lotus components as needed */}
   </div>
 </div>

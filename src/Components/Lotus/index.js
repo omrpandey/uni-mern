@@ -2,35 +2,44 @@ import React, { useState } from 'react';
 import kundan1 from '../../assets/images/kundan1.jpg'; // Default initial image
 import kundan2 from '../../assets/images/kundan2.jpg'; // Default hover image
 import silverkundan from '../../assets/images/silverkundan.jpg'; // Silver image
-
 import './index.css';
 
-const Lotus = () => {
+const Lotus = ({ addToCart }) => {
   const [currentImages, setCurrentImages] = useState({
     initial: kundan1,
     hover: kundan2,
   });
 
+  // Handle mouse enter for color selection
   const handleMouseEnter = (color) => {
     if (color === 'silver') {
       setCurrentImages({
-        initial: silverkundan,
-        hover: silverkundan, // Use the same image for hover
+        initial: silverkundan, // Silver image on initial
+        hover: silverkundan, // Same image for hover
       });
     } else if (color === 'yellow') {
       setCurrentImages({
-        initial: kundan1,
-        hover: kundan2,
+        initial: kundan1, // Yellow initial image
+        hover: kundan2, // Yellow hover image
       });
     }
   };
 
+  // Revert to default images on mouse leave
   const handleMouseLeave = () => {
-    // Revert to default images when no color is hovered
     setCurrentImages({
-      initial: kundan1,
-      hover: kundan2,
+      initial: kundan1, // Default initial image
+      hover: kundan2, // Default hover image
     });
+  };
+
+  // Product details to be added to the cart
+  const item = {
+    name: 'Silver Kundan Lotus Anklet',
+    style: 'ANKLETS',
+    price: 3425,
+    count: 1,
+    img: currentImages.initial, // Current image being displayed
   };
 
   return (
@@ -75,7 +84,12 @@ const Lotus = () => {
             ></span>
           </div>
         </div>
-        <button className="add-to-cart">Add to Cart</button>
+        <button
+          className="add-to-cart"
+          onClick={() => addToCart(item)} // Add item to cart
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
