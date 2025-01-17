@@ -1,0 +1,39 @@
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const mongoose = require('mongoose'); // Include Mongoose for MongoDB connection
+
+// Load environment variables
+dotenv.config()
+
+// Connect to MongoDB
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb+srv://jaayaahuja:Z4T8fPwNEHGhSHfD@cluster0.t6hgn.mongodb.net/", {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (err) {
+        console.error(`Error: ${err.message}`);
+        process.exit(1); // Exit the process with failure
+    }
+};
+connectDB();
+
+// Initialize app
+const app = express();
+
+// Middleware
+app.use(express.json()); // Parse JSON bodies
+app.use(cors());
+
+
+// Root route
+app.get('/', (req, res) => {
+    res.send('MERN Backend is Running!');
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
