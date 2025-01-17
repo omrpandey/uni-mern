@@ -1,106 +1,108 @@
 .footer {
-    background-color: #ffffff;  /* White background */
-    color: #000000;  /* Black text color */
-    padding: 40px 20px 0 20px;  /* Remove padding from bottom (0) */
-    font-size: 14px;
-  }
-  
+  background-color: #ffffff;  /* White background */
+  color: #000000;  /* Black text color */
+  padding: 40px 0 0 0;  /* Only padding on top */
+  font-size: 14px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;  /* Decreased gap between the sections */
+}
+
+.footer-logo {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin: 12px 0;  /* Increased padding between list items */
+  padding-bottom: 5px; /* Extra spacing between items */
+}
+
+.footer ul li a {
+  color: #000000;  /* Black links */
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.signup-save input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+  border: none;
+}
+
+.signup-save button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-save button:hover {
+  background-color: #0056b3;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  text-decoration: underline;
+}
+
+.connect-with-us p {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
+}
+
+/* Removed bottom and left padding for lotus box */
+.company-info1 img {
+  max-width: 350px;  /* Adjust the width as needed */
+  height: auto;  /* Maintain aspect ratio */
+  padding: 20px 0 0 0;  /* Only padding on top */
+  object-fit: contain;  /* Ensure the image fits well without stretching */
+  padding-left: 20px;
+}
+
+/* Flexbox for horizontal layout */
+.company-info, .signup-save, .connect-with-us {
+  flex: 1;
+  min-width: 100px;  /* Ensures each section has a minimum width */
+  margin-bottom: 10px;  /* Adjusted margin to reduce gap */
+}
+
+@media (max-width: 768px) {
   .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;  /* Decreased gap between the sections */
-  }
-  
-  .footer-logo {
-    max-width: 100px;
-    margin-bottom: 20px;
-  }
-  
-  .footer h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .footer ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer ul li {
-    margin: 8px 0;
-  }
-  
-  .footer ul li a {
-    color: #000000;  /* Black links */
-    text-decoration: none;
-  }
-  
-  .footer ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  .signup-save input {
-    padding: 10px;
-    width: 200px;
-    margin-right: 10px;
-    border: none;
-  }
-  
-  .signup-save button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .signup-save button:hover {
-    background-color: #0056b3;
-  }
-  
-  .social-icons a {
-    margin-right: 10px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .social-icons a:hover {
-    text-decoration: underline;
-  }
-  
-  .connect-with-us p {
-    margin: 5px 0;
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    border-top: 1px solid #fff;
-    padding-top: 10px;
-  }
-  
-  .company-info1 img {
-    max-width: 200px;  /* Adjust the width as needed */
-    height: auto;  /* Maintain aspect ratio */
-    margin-bottom: 20px;
-    object-fit: contain;  /* Ensure the image fits well without stretching */
-  }
-  
-  /* Flexbox for horizontal layout */
-  .company-info, .signup-save, .connect-with-us {
-    flex: 1;
-    min-width: 150px;  /* Ensures each section has a minimum width */
-    margin-bottom: 10px;  /* Adjusted margin to reduce gap */
-  }
-  
-  @media (max-width: 768px) {
-    .footer-content {
       flex-direction: column; /* Stack sections vertically on small screens */
-    }
-    .company-info, .signup-save, .connect-with-us {
+  }
+  .company-info, .signup-save, .connect-with-us {
       flex: none;
       width: 100%;
-    }
   }
-  
+}

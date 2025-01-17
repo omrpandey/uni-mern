@@ -1,0 +1,119 @@
+.product-detail-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .product-image-container {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-info-container {
+    flex: 1.5;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .price-info {
+    margin-bottom: 15px;
+  }
+  
+  .regular-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .regular-price .label {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 5px;
+  }
+  
+  .mrp-price {
+    display: block;
+    font-size: 16px;
+    color: #888;
+    text-decoration: line-through;
+    margin-top: 5px;
+  }
+  
+  .sale-price {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+  }
+  
+  .best-price {
+    margin: 15px 0;
+  }
+  
+  .best-price strong {
+    color: #ff4500;
+  }
+  
+  .product-options {
+    margin-bottom: 20px;
+  }
+  
+  .option {
+    margin-bottom: 15px;
+  }
+  
+  .option label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .color-options,
+  .style-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .color,
+  .style {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .color:hover,
+  .style:hover {
+    background-color: #ddd;
+  }
+  
+  .additional-info p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .quantity label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .quantity input {
+    padding: 8px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  

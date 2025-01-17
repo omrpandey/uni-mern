@@ -44,7 +44,7 @@ const Footer = () => {
         <div className="connect-with-us">
           <h3>CONNECT WITH US</h3>
           <p>Email: care@unniyarcha.com</p>
-          <p>Customer Support</p>
+          <p><b>Customer Support</b></p>
           <p>Whatsapp: +91 8527218333</p>
           <p>Calling: +91 8071188884</p>
           <p>Working Hours: Monday to Saturday (9:30 am - 5:30 pm)</p>
