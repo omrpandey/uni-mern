@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for page navigation
 import kundan1 from '../../assets/images/kundan1.jpg'; // Default initial image
 import kundan2 from '../../assets/images/kundan2.jpg'; // Default hover image
 import silverkundan from '../../assets/images/silverkundan.jpg'; // Silver image
@@ -7,6 +8,8 @@ import man2 from '../../assets/images/man2.jpg'; // New hover image for second p
 import './index.css';
 
 const Lotus = ({ addToCart }) => {
+  const navigate = useNavigate(); // Initialize navigate for routing
+  
   const [currentImages, setCurrentImages] = useState({
     initial: kundan1,
     hover: kundan2,
@@ -80,10 +83,16 @@ const Lotus = ({ addToCart }) => {
     img: currentImages2.initial,
   };
 
+  // Navigate to a new page when a product is clicked
+  const handleProductClick = (productId) => {
+    // Replace 'product-details' with the actual route you want to navigate to
+    navigate(`/ProductDetail/${productId}`);
+  };
+
   return (
     <div className="product-box-container">
       {/* First product box */}
-      <div className="product-box">
+      <div className="product-box" onClick={() => handleProductClick('1')}>
         <div className="product-img-container">
           <img
             src={currentImages.initial}
@@ -134,7 +143,7 @@ const Lotus = ({ addToCart }) => {
       </div>
 
       {/* Second product box */}
-      <div className="product-box">
+      <div className="product-box" onClick={() => handleProductClick('2')}>
         <div className="product-img-container">
           <img
             src={currentImages2.initial}

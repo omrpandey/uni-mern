@@ -9,7 +9,8 @@ import Weds from './Components/Weds';
 import Lotus from './Components/Lotus';
 import Profile from './Components/Profile';
 import CreateAccount from './Components/CreateAccount';
-import Footer from './Components/Fotter'; // Correct the spelling of Footer if needed
+import Footer from './Components/Fotter'; 
+import ProductDetail from './Components/ProductDetail'; 
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/Lotus" element={<Lotus />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/ProductDetail" element={<ProductDetail />} /> {/* Product details page */}
           </Routes>
         </div>
         <Footer /> {/* Directly include Footer here */}

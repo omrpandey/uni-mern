@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import './index.css';
-import Footer from '../Fotter';
+
 
 const Profile = () => {
     const [email, setEmail] = useState('');
