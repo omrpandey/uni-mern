@@ -14,4 +14,4 @@ const ordersSchema = new Schema({
     },
 }, { timestamps: true })
 
-module.exports = mongoose.model('', ordersSchema)
+module.exports = mongoose.model('orders', ordersSchema)

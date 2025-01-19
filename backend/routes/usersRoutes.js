@@ -8,9 +8,11 @@ router.get('/', (req, res) => {
 })
 
 // GET single product by id (should be '/:id' for dynamic routing)
-router.get('/:id', async (req, res) => {
+router.get('/:userId', async (req, res) => {
+    const { userId } = req.params;
+
     try {
-        const users = await users.findById(req.params.id)
+        const users = await Users.findOne({userId});
         if (!users) {
             return res.status(404).json({ error: 'user not found' })
         }
@@ -24,7 +26,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const { userName , email , password , userId } = req.body
     try {
-        const user = await Users.create({ userName , email , password , userId })
+        const user = new Users({ userName , email , password , userId });
+        await user.save();
         res.status(200).json(user)
     } catch (error) {
         res.status(400).json({ error: error.message })

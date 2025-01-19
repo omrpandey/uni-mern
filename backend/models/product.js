@@ -1,16 +1,16 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
 
-const productSchema = new Schema({
+const productSchema = new mongoose.Schema({
     productId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
         required: true
     },
-    discount: { // fixed typo here
+    discount: {
         type: Number,
         required: true
     },
@@ -22,7 +22,7 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    category: { // fixed capitalization
+    category: {
         type: String,
         required: true
     },
@@ -31,17 +31,17 @@ const productSchema = new Schema({
         required: true
     },
     size: {
-        type: Number,
+        type: String,
         required: true
     },
-    quantity: { // fixed typo here as well (quantityf -> quantity)
+    quantity: {
         type: Number,
         required: true
     },
     discription: {
         type: String,
         required: true
-    },
-}, { timestamps: true })
+    }
+});
 
-module.exports = mongoose.model('product', productSchema)
+module.exports = mongoose.model('Product', productSchema);
