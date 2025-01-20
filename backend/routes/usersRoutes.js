@@ -1,37 +1,41 @@
-const express = require('express')
-const Users = require('../models/users')
-const router = express.Router()
+const express = require('express');
+const Users = require('../models/users');
+const router = express.Router();
 
-// GET all products (this seems like a placeholder, add a real database call)
-router.get('/', (req, res) => {
-    res.json({ mssg: 'Users' })
-})
+// GET all users (to be used for fetching users data for Flashsaless)
+router.get('/', async (req, res) => {
+    try {
+        const users = await Users.find(); // Find all users
+        res.json(users);  // Return all users as response
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
 
-// GET single product by id (should be '/:id' for dynamic routing)
+// GET single user by ID (if needed in the future)
 router.get('/:userId', async (req, res) => {
     const { userId } = req.params;
-
     try {
-        const users = await Users.findOne({userId});
-        if (!users) {
-            return res.status(404).json({ error: 'user not found' })
+        const user = await Users.findOne({ userId });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
         }
-        res.json(users)
+        res.json(user);
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: error.message });
     }
-})
+});
 
-// POST a new product
+// POST a new user (this is for adding new users in the database)
 router.post('/', async (req, res) => {
-    const { userName , email , password , userId } = req.body
+    const { userName, email, password, userId } = req.body;
     try {
-        const user = new Users({ userName , email , password , userId });
+        const user = new Users({ userName, email, password, userId });
         await user.save();
-        res.status(200).json(user)
+        res.status(200).json(user);
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: error.message });
     }
-})
+});
 
-module.exports = router
+module.exports = router;

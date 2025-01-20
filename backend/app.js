@@ -3,10 +3,10 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose'); // Include Mongoose for MongoDB connection
 const productRoutes = require('./routes/productRoutes');
-//const addressRoutes = require('./routes/addressRoutes');
-//const orderRoutes = require('./routes/orderRoutes');
+const addressRoutes = require('./routes/addressRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
-//const usersRoutes = require('./routes/usersRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 
 // Load environment variables
 dotenv.config()
@@ -41,10 +41,10 @@ app.get('/', (req, res) => {
 
 //calling the route
 app.use('/api/product',productRoutes)
-// app.use('/api/address',addressRoutes)
-//app.use('/api/orders',orderRoutes)
+app.use('/api/address',addressRoutes)
+app.use('/api/orders',orderRoutes)
 app.use('/api/reviews',reviewRoutes)
-// app.use('/api/users',usersRoutes)
+app.use('/api/users',usersRoutes)
 
 // Start the server
 const PORT = process.env.PORT || 5000;
