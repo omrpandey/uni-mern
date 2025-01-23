@@ -65,7 +65,7 @@ const Navbar = () => {
             <Link to="/contact">Collections <IoIosArrowDown /></Link>
           </li>
           <li className="list-inline-item">
-            <Link to="/contact" className="sui-dang">
+            <Link to="/SuiDang" className="sui-dang">
               Sui <span>&nbsp;</span> Dang
             </Link>
             <span className="new-text">

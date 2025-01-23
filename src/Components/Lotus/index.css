@@ -73,7 +73,7 @@
 }
 
 .regular-price {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
   color: #aaa;
   margin-left: 10px;
 }

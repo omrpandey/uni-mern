@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import wsbanner from '../../assets/images/wsbanner.jpg'; // Replace with your image path
-import logoweds from '../../assets/images/logoweds.jpg'; // Replace with your image path
-import logowedss from '../../assets/images/logowedss.jpg'; // Replace with your image path
-import logowedsss from '../../assets/images/logowedsss.jpg'; // Replace with your image path
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import Lotus from '../Lotus'; // Import Lotus component
-import './weds.css';
+import Lotus from '../Lotus'; // Correct import for default export
+import './index.css';
 
-const Weds = () => {
+const SuiDang = () => {
   const [animate, setAnimate] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [sortOption, setSortOption] = useState('alphabetically'); // Initialize sortOption state
@@ -27,26 +23,6 @@ const Weds = () => {
 
   return (
     <div>
-      <div className={`banner-container ${animate ? 'pop-out' : ''}`}>
-        <img src={wsbanner} alt="Wedding Banner" className="ws-banner-img" />
-      </div>
-
-      {/* Circle Images Section with Names */}
-      <div className="circle-images">
-        <div className="circle-op">
-          <img src={logoweds} alt="Gifting" className="circle-img" />
-          <p className="circle-name">Haldi</p>
-        </div>
-        <div className="circle-op">
-          <img src={logowedss} alt="Haldi" className="circle-img" />
-          <p className="circle-name">Haldi</p>
-        </div>
-        <div className="circle-op">
-          <img src={logowedsss} alt="Mendhi" className="circle-img" />
-          <p className="circle-name">Mendhi</p>
-        </div>
-      </div>
-
       {/* Vertical Navbar */}
       <div className="div123">
         <nav className="vertical-nav">
@@ -108,4 +84,4 @@ const Weds = () => {
   );
 };
 
-export default Weds;
+export default SuiDang;

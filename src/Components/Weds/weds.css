@@ -38,57 +38,65 @@
 }
 
 .vertical-nav li:hover {
-  background-color: #ffffff;
+  background-color: transparent;
 }
-
-/* Submenu styles */
+/* Submenu container styles */
 .submenu {
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 10px 0 0 20px;
   display: none; /* Initially hidden */
   flex-direction: column;
-  background-color: #f4f4f4; /* Light background for submenu */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade-in and slide down */
-  transform: translateY(-20px); /* Start off slightly above */
+  background-color: transparent; /* Transparent background */
+  width: auto; /* Auto width for the list */
 }
 
-/* Show submenu when it has the 'open' class */
+/* Submenu visible when 'open' */
 .submenu.open {
-  display: block;
-  opacity: 1; /* Make submenu visible */
-  transform: translateY(0); /* Animate to its original position */
-  margin-left: 200%;
-  width: 300px;
+  display: flex; /* Display as flex when visible */
 }
 
+/* Submenu items (no padding, no hover effect) */
 .submenu li {
-  padding: 10px;
-  background-color: #f9f9f9;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  display: block;
-  color: #333;
-  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer; /* Pointer cursor for better UX */
+  border-bottom: 1px solid #ddd; /* Divider between items */
+  padding: 5px 0; /* No extra padding between label and checkbox */
 }
 
-.submenu li:hover {
-  background-color: #1abc9c; /* Green background on hover */
+/* Checkbox styling */
+.submenu li input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+  transform: scale(1.1); /* Slightly larger checkbox */
+  cursor: pointer; /* Pointer cursor for better UX */
+  flex-shrink: 0; /* Prevent the checkbox from shrinking */
 }
 
-/* Submenu toggle button (arrow) */
+/* Label styling */
+.submenu li label {
+  display: inline;
+  cursor: pointer; /* Make label clickable */
+  text-decoration: none; /* Remove underline by default */
+}
+
+/* Underline the label when clicked */
+.submenu li input[type="checkbox"]:checked + label {
+  text-decoration: underline; /* Underline when checkbox is checked */
+}
+
+/* Submenu toggle icon styles */
 .submenu-icon {
-  transition: transform 0.3s ease;
-  font-size: 24px; /* Larger font for the arrow */
+  transition: transform 0.3s ease; /* Smooth arrow rotation */
+  font-size: 20px;
   cursor: pointer;
 }
 
 .submenu-icon.rotate {
-  transform: rotate(180deg); /* Rotate the icon when submenu is open */
+  transform: rotate(180deg); /* Rotate when submenu is open */
 }
+
 
 /* When submenu is open, add extra padding to main li to push it down */
 .vertical-nav li.open {

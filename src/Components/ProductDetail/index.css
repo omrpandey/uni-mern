@@ -70,7 +70,7 @@
 
 /* Right Side - Product Info */
 .product-info-container {
-  width: 50%;
+  /* width: 50%; */
   padding-left: 20px;
 }
 
@@ -118,6 +118,62 @@
 .best-price strong {
   color: #ff4500;
 }
+.product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.price-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.mrp-price {
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  color: #888;
+}
+
+.regular-price {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.best-price {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.price-red {
+  color: red;
+}
+
+.product-description {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.review-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.stars span {
+  font-size: 1.2rem;
+  color: gold;
+}
+
+.reviews-text {
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
 
 .product-options {
   margin-bottom: 20px;
@@ -458,3 +514,66 @@
   color: #555;
 }
 
+/* For the dropdown container */
+.dropdown-sections {
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual dropdown box */
+.dropdown {
+  margin-bottom: 10px; /* Space between boxes */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+  border: 1px solid #ccc;
+}
+
+/* Dropdown header */
+.dropdown-header {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly less transparent */
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for the header */
+.dropdown-header:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Arrow for dropdown header */
+.dropdown-header::after {
+  content: ">";
+  font-size: 14px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+/* When active, rotate the arrow */
+.dropdown-header.active::after {
+  transform: rotate(90deg);
+}
+
+/* Dropdown content (initially hidden) */
+.dropdown-content {
+  display: none;
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent for readability */
+}
+
+/* When active, show the dropdown content */
+.dropdown-content.active {
+  display: block;
+}

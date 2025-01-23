@@ -11,6 +11,7 @@ import Profile from './Components/Profile';
 import CreateAccount from './Components/CreateAccount';
 import Footer from './Components/Fotter'; 
 import ProductDetail from './Components/ProductDetail'; 
+import SuiDang from './Components/SuiDang';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/Flashsaless" element={<Flashsaless />} />
             <Route path="/Weds" element={<Weds />} />
             <Route path="/Lotus" element={<Lotus />} />
+            <Route path="/SuiDang" element={<SuiDang />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/ProductDetail" element={<ProductDetail />} /> {/* Product details page */}
