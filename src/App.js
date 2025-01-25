@@ -12,6 +12,8 @@ import CreateAccount from './Components/CreateAccount';
 import Footer from './Components/Fotter'; 
 import ProductDetail from './Components/ProductDetail'; 
 import SuiDang from './Components/SuiDang';
+import ReShop from './Components/ReShop';
+
 
 function App() {
   return (
@@ -28,10 +30,11 @@ function App() {
             <Route path="/SuiDang" element={<SuiDang />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/ProductDetail" element={<ProductDetail />} /> {/* Product details page */}
+            <Route path="/ProductDetail" element={<ProductDetail />} />
+            <Route path="/ReShop" element={<ReShop />} /> 
           </Routes>
         </div>
-        <Footer /> {/* Directly include Footer here */}
+        <Footer /> 
       </BrowserRouter>
     </>
   );

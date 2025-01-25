@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import Lotus from '../Lotus'; // Correct import for default export
-import './index.css';
+import './SuiDang.css';
 
 const SuiDang = () => {
   const [animate, setAnimate] = useState(false);

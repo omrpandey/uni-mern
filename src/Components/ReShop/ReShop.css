@@ -1,6 +1,5 @@
-
 /* Main Container */
-.main-container {
+.main-container5 {
     display: flex;
     flex-direction: row;
     margin-left: 80px;
@@ -8,7 +7,7 @@
   }
   
   /* Vertical Navbar */
-  .vertical-nav {
+  .vertical-nav5 {
     width: 30%;
     background-color: #ffffff00;
     color: rgb(0, 0, 0);
@@ -16,16 +15,15 @@
     position: relative;
     margin-top: 10px;
     padding-top: 50px;
-    padding-left: 20px;
   }
   
-  .vertical-nav ul {
+  .vertical-nav5 ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
   
-  .vertical-nav li {
+  .vertical-nav5 li {
     padding: 16px 20px;
     cursor: pointer;
     position: relative;
@@ -37,74 +35,17 @@
     justify-content: space-between;
   }
   
-  .vertical-nav li:hover {
+  .vertical-nav5 li:hover {
     background-color: transparent;
   }
-  /* Submenu container styles */
-  .submenu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: none; /* Initially hidden */
-    flex-direction: column;
-    background-color: transparent; /* Transparent background */
-    width: auto; /* Auto width for the list */
-  }
-  
-  /* Submenu visible when 'open' */
-  .submenu.open {
-    display: flex; /* Display as flex when visible */
-  }
-  
-  /* Submenu items (no padding, no hover effect) */
-  .submenu li {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer; /* Pointer cursor for better UX */
-    border-bottom: 1px solid #ddd; /* Divider between items */
-    padding: 5px 0; /* No extra padding between label and checkbox */
-  }
-  
-  /* Checkbox styling */
-  .submenu li input[type="checkbox"] {
-    margin-right: 10px; /* Space between checkbox and label */
-    transform: scale(1.1); /* Slightly larger checkbox */
-    cursor: pointer; /* Pointer cursor for better UX */
-    flex-shrink: 0; /* Prevent the checkbox from shrinking */
-  }
-  
-  /* Label styling */
-  .submenu li label {
-    display: inline;
-    cursor: pointer; /* Make label clickable */
-    text-decoration: none; /* Remove underline by default */
-  }
-  
-  /* Underline the label when clicked */
-  .submenu li input[type="checkbox"]:checked + label {
-    text-decoration: underline; /* Underline when checkbox is checked */
-  }
-  
-  /* Submenu toggle icon styles */
-  .submenu-icon {
-    transition: transform 0.3s ease; /* Smooth arrow rotation */
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .submenu-icon.rotate {
-    transform: rotate(180deg); /* Rotate when submenu is open */
-  }
-  
   
   /* When submenu is open, add extra padding to main li to push it down */
-  .vertical-nav li.open {
+  .vertical-nav5 li.open5 {
     padding-bottom: 110px; /* Space to push down the main li */
   }
   
   /* Horizontal separator line for each navbar item */
-  .vertical-nav li:not(:last-child)::after {
+  .vertical-nav5 li:not(:last-child)::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -113,50 +54,11 @@
     height: 2px;
     background-color: rgba(0, 0, 0, 0.2);
     opacity: 0.5;
-  }/* Circle Images Section */
-  
-  
-  
-  /* Circle Images Section */
-  .circle-images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Adjust the space between the circles */
-    margin: 20px 0;
   }
-  
-  .circle-op {
-    width: 100px; /* Size of the circle */
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the circle */
-  }
-  
-  /* Styling for the name text under the circle */
-  .circle-name {
-    position: absolute;
-    bottom: -20px; /* Position the name under the circle */
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    color: #000; /* Adjust the color as needed */
-  }
+
   
   /* Product Info Section (Right of Navbar) */
-  .product-info-section1 {
+  .product-info-section15 {
     display: flex;
     flex-direction: column; /* Stack product grid below */
     gap: 20px; /* Space between rows */
@@ -164,7 +66,7 @@
   }
   
   /* Row for Product Count and Sorting Options */
-  .product-info-header1 {
+  .product-info-header15 {
     display: inline-flex; /* Use inline flex for horizontal layout */
     justify-content: space-between; /* Space between product-count and sorting-options */
     align-items: center; /* Align vertically in the center */
@@ -175,7 +77,7 @@
   }
   
   /* Styling for Product Count */
-  .product-count1 {
+  .product-count15 {
     font-size: 18px;
     font-weight: bold;
     margin-left: 0px;
@@ -183,16 +85,16 @@
   }
   
   /* Styling for Sorting Options */
-  .sorting-options1 {
+  .sorting-options15 {
     align-items: center; /* Vertically align dropdown */
     width: auto; /* Auto width for the container */
   }
   
   /* Styling for Product Grid */
-  .product-grid1 {
-    display: grid; /* Use grid layout for products */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill columns with a minimum width */
-    grid-template-rows: repeat(3, 1fr); /* Ensure 3 rows */
+  .product-grid15 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    grid-template-rows: repeat(3, 1fr); /* Limit to 3 rows */
     gap: 16px; /* Space between grid items */
     width: 100%; /* Ensure grid spans full width */
     padding: 0; /* Remove any extra padding */
@@ -202,18 +104,19 @@
     margin-left: 0; /* Shift the grid to the left */
   }
   
+  
   /* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
-  .product-grid1::-webkit-scrollbar {
+  .product-grid15::-webkit-scrollbar {
     display: none;
   }
   
   /* Hide scrollbar for Firefox */
-  .product-grid1 {
+  .product-grid15 {
     scrollbar-width: none; /* Hide scrollbar in Firefox */
   }
   
   /* Ensure content is scrollable without visible scrollbar */
-  .product-grid1 {
+  .product-grid15 {
     -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
   }
   
@@ -221,22 +124,22 @@
   
   /* Mobile Devices (max-width: 768px) */
   @media screen and (max-width: 768px) {
-    .product-info-header1 {
+    .product-info-header15 {
       flex-direction: column; /* Stack product count and sorting options */
       padding-top: 20px; /* Adjust padding for mobile */
     }
   
-    .product-count1 {
+    .product-count15 {
       margin-left: 0; /* Remove margin for mobile */
       font-size: 16px; /* Slightly smaller font for mobile */
     }
   
-    .sorting-options1 select {
+    .sorting-options15 select {
       width: 100%; /* Make the dropdown take full width */
       margin-top: 10px; /* Add space between product count and sorting dropdown */
     }
   
-    .product-grid1 {
+    .product-grid15 {
       height: auto; /* Remove fixed height for mobile */
       overflow-y: visible; /* Allow the grid to grow vertically */
     }
@@ -244,22 +147,22 @@
   
   /* Tablet Devices (max-width: 1024px) */
   @media screen and (max-width: 1024px) {
-    .product-grid1 {
+    .product-grid15 {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid layout */
     }
   }
   
   /* Larger Screens */
   @media screen and (min-width: 1025px) {
-    .product-grid1 {
+    .product-grid15 {
       grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
       grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
     }
   }
   
   /* Sorting Options Styling */
-  .sorting-options1 select,
-  .sorting-options1 button {
+  .sorting-options15 select,
+  .sorting-options15 button {
     padding: 20px 25px; /* Increase padding to make the button larger */
     font-size: 16px; /* Increase font size for better readability */
     border: 1px solid #ccc;
@@ -272,13 +175,137 @@
   }
   
   /* Additional styles for the button if needed */
-  .sorting-options1 button {
+  .sorting-options15 button {
     padding: 25px 30px !important; /* Optional: add extra padding for larger button */
     background-color: transparent !important;
     border: 1px solid #ccc;
     font-size: 16px; /* Increase font size for better visibility */
     height: 50px; /* Ensure button height is consistent */
   }
-  .div123{
+  .div1235 {
     display: flex;
   }
+  
+  /* General Reset */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .checkbox-label5 {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333; /* Customize text color */
+    gap: 5px; /* Small space between checkbox and text */
+  }
+  
+  .checkbox-label5 input[type="checkbox"] {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding */
+    accent-color: #000; /* Customize checkbox color */
+  }
+  
+  /* Vertical Navbar */
+  .vertical-nav5 ul li {
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  
+  .vertical-nav5 ul li .submenu-icon5 {
+    margin-left: 5px;
+  }
+  
+  /* Banner Image */
+  .banner-container5 {
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .ws-banner-img5 {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Circle Images */
+  .circle-images5 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .circle-op5 {
+    text-align: center;
+  }
+  
+  .circle-img5 {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .circle-name5 {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+  }
+  
+  /* Product Info Section */
+  .product-info-section15 {
+    margin-left: -15px;
+  }
+  
+  .product-info-header15 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .product-grid15 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  
+  /* General Reset for Submenu Styling */
+  ul {
+    list-style: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .submenu5 {
+    display: flex; /* Align items in a single line */
+    flex-direction: column; /* Display each item as a new line */
+    gap: 4px; /* Minimal gap between items */
+  }
+  
+  .submenu5 li {
+    display: flex;
+    align-items: center; /* Align checkbox and label on the same line */
+  }
+  
+  .submenu5 input[type="checkbox"] {
+    margin-right: 8px; /* Space between checkbox and text */
+  }
+  
+  .submenu5 label {
+    cursor: pointer;
+    line-height: 1; /* Consistent spacing for labels */
+  }
+  
+  .no-bullet5 {
+    list-style: none;
+  }
+  

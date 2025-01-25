@@ -1,66 +1,63 @@
-/* Main container to hold the banner and product info section */
-.main-container {
+/* Main Container */
+.main-container7 {
   display: flex;
   flex-direction: row;
-  gap: 20px; /* Space between the navbar and the product info section */
-  padding: 0; /* Remove any padding from the main container */
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
-/* Styling for the vertical navigation menu */
-.vertical-nav {
-  width: 200px;
-  padding-top: 10px;
-  padding-left: 0; /* No padding on the left side */
-  margin-left: 10; /* Ensure it sticks to the left */
-  position: fixed; /* Fix the navbar to the left */
-  top: 0; /* Align it to the top */
-  left: 0; /* Stick to the left edge */
-  height: 100%; /* Make it full height */
-  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+/* Vertical Navbar */
+.vertical-nav7 {
+  width: 30%;
+  background-color: #ffffff00;
+  color: rgb(0, 0, 0);
+  padding: 20px 0;
+  position: relative;
+  margin-top: 10px;
+  padding-top: 50px;
 }
 
-.vertical-nav ul {
-  list-style-type: none;
+.vertical-nav7 ul {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
-.vertical-nav li {
-  margin-bottom: 10px;
-  font-size: 16px;
+.vertical-nav7 li {
+  padding: 16px 20px;
+  cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
-
-/* Submenu icon styling */
-.submenu-icon {
-  margin-left: 10px;
-}
-
-/* Submenu items hidden by default */
-.submenu {
-  display: none;
-  transform: translateY(0); /* Animate to its original position */
-}
-
-.submenu li {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: black;
-}
-
-/* Show submenu when open */
-.vertical-nav li.open > .submenu {
-  display: block;
-  opacity: 1; /* Make submenu visible */
-  transform: translateY(0); /* Animate to its original position */
-  margin-left: 200%;
+  transition: background-color 0.3s;
+  margin-right: 30px;
   width: 300px;
+  justify-content: space-between;
+}
+
+.vertical-nav7 li:hover {
+  background-color: transparent;
+}
+
+/* When submenu is open, add extra padding to main li to push it down */
+.vertical-nav7 li.open7 {
+  padding-bottom: 110px; /* Space to push down the main li */
+}
+
+/* Horizontal separator line for each navbar item */
+.vertical-nav7 li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 13px;
+  width: 270px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
 }
 
 /* Product Info Section (Right of Navbar) */
-.product-info-section {
+.product-info-section7 {
   display: flex;
   flex-direction: column; /* Stack product grid below */
   gap: 20px; /* Space between rows */
@@ -68,7 +65,7 @@
 }
 
 /* Row for Product Count and Sorting Options */
-.product-info-header {
+.product-info-header7 {
   display: inline-flex; /* Use inline flex for horizontal layout */
   justify-content: space-between; /* Space between product-count and sorting-options */
   align-items: center; /* Align vertically in the center */
@@ -79,24 +76,24 @@
 }
 
 /* Styling for Product Count */
-.product-count {
+.product-count7 {
   font-size: 18px;
   font-weight: bold;
-  margin-left: 60px;
+  margin-left: 0px;
   width: auto; /* Auto width for the container */
 }
 
 /* Styling for Sorting Options */
-.sorting-options {
+.sorting-options7 {
   align-items: center; /* Vertically align dropdown */
   width: auto; /* Auto width for the container */
 }
 
 /* Styling for Product Grid */
-.product-grid {
-  display: grid; /* Use grid layout for products */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill columns with a minimum width */
-  grid-template-rows: repeat(3, 1fr); /* Ensure 3 rows */
+.product-grid7 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(3, 1fr); /* Limit to 3 rows */
   gap: 16px; /* Space between grid items */
   width: 100%; /* Ensure grid spans full width */
   padding: 0; /* Remove any extra padding */
@@ -107,17 +104,17 @@
 }
 
 /* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
-.product-grid::-webkit-scrollbar {
+.product-grid7::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for Firefox */
-.product-grid {
+.product-grid7 {
   scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
 
 /* Ensure content is scrollable without visible scrollbar */
-.product-grid {
+.product-grid7 {
   -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
 }
 
@@ -125,45 +122,45 @@
 
 /* Mobile Devices (max-width: 768px) */
 @media screen and (max-width: 768px) {
-  .product-info-header {
-    flex-direction: column; /* Stack product count and sorting options */
-    padding-top: 20px; /* Adjust padding for mobile */
+  .product-info-header7 {
+      flex-direction: column; /* Stack product count and sorting options */
+      padding-top: 20px; /* Adjust padding for mobile */
   }
 
-  .product-count {
-    margin-left: 0; /* Remove margin for mobile */
-    font-size: 16px; /* Slightly smaller font for mobile */
+  .product-count7 {
+      margin-left: 0; /* Remove margin for mobile */
+      font-size: 16px; /* Slightly smaller font for mobile */
   }
 
-  .sorting-options select {
-    width: 100%; /* Make the dropdown take full width */
-    margin-top: 10px; /* Add space between product count and sorting dropdown */
+  .sorting-options7 select {
+      width: 100%; /* Make the dropdown take full width */
+      margin-top: 10px; /* Add space between product count and sorting dropdown */
   }
 
-  .product-grid {
-    height: auto; /* Remove fixed height for mobile */
-    overflow-y: visible; /* Allow the grid to grow vertically */
+  .product-grid7 {
+      height: auto; /* Remove fixed height for mobile */
+      overflow-y: visible; /* Allow the grid to grow vertically */
   }
 }
 
 /* Tablet Devices (max-width: 1024px) */
 @media screen and (max-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid layout */
+  .product-grid7 {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid layout */
   }
 }
 
 /* Larger Screens */
 @media screen and (min-width: 1025px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
-    grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
+  .product-grid7 {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+      grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
   }
 }
 
 /* Sorting Options Styling */
-.sorting-options select,
-.sorting-options button {
+.sorting-options7 select,
+.sorting-options7 button {
   padding: 20px 25px; /* Increase padding to make the button larger */
   font-size: 16px; /* Increase font size for better readability */
   border: 1px solid #ccc;
@@ -176,7 +173,7 @@
 }
 
 /* Additional styles for the button if needed */
-.sorting-options button {
+.sorting-options7 button {
   padding: 25px 30px !important; /* Optional: add extra padding for larger button */
   background-color: transparent !important;
   border: 1px solid #ccc;
@@ -184,23 +181,129 @@
   height: 50px; /* Ensure button height is consistent */
 }
 
-/* Pop-out effect for the banner */
-.banner-container {
-  animation: popOutAnimation 0.5s ease-in-out;
+.div1237 {
+  display: flex;
 }
 
-.pop-out {
-  animation: popOutAnimation 0.5s ease-in-out forwards;
+/* General Reset */
+ul7 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Keyframe animation for the pop-out effect */
-@keyframes popOutAnimation {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+li7 {
+  margin: 0;
+  padding: 0;
+}
+
+.checkbox-label7 {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333; /* Customize text color */
+  gap: 5px; /* Small space between checkbox and text */
+}
+
+.checkbox-label7 input[type="checkbox"] {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove padding */
+  accent-color: #000; /* Customize checkbox color */
+}
+
+/* Vertical Navbar */
+.vertical-nav7 ul li7 {
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.vertical-nav7 ul li7 .submenu-icon7 {
+  margin-left: 5px;
+}
+
+/* Banner Image */
+.banner-container7 {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.ws-banner-img7 {
+  width: 100%;
+  height: auto;
+}
+
+/* Circle Images */
+.circle-images7 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.circle-op7 {
+  text-align: center;
+}
+
+.circle-img7 {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.circle-name7 {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #555;
+}
+
+/* Product Info Section */
+.product-info-section7 {
+  margin-left: -15px;
+}
+
+.product-info-header7 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 20px; */
+}
+
+.product-grid7 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* General Reset for Submenu Styling */
+ul7 {
+  list-style: none; /* Remove default bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+.submenu7 {
+  display: flex; /* Align items in a single line */
+  flex-direction: column; /* Display each item as a new line */
+  gap: 4px; /* Minimal gap between items */
+}
+
+.submenu7 li7 {
+  display: flex;
+  align-items: center; /* Align checkbox and label on the same line */
+}
+
+.submenu7 input[type="checkbox"] {
+  margin-right: 8px; /* Space between checkbox and text */
+}
+
+.submenu7 label7 {
+  cursor: pointer;
+  line-height: 1; /* Consistent spacing for labels */
+}
+
+.no-bullet7 {
+  list-style: none;
 }

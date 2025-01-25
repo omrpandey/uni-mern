@@ -73,7 +73,7 @@ const Navbar = () => {
             </span>
           </li>
           <li className="list-inline-item">
-            <Link to="/contact" className="sui-dang">Religious Designs</Link>
+            <Link to="/ReShop" className="sui-dang">Religious Designs</Link>
             <span className="new-text">
               <sup>New</sup>
             </span>

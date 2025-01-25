@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import wsbanner from '../../assets/images/wsbanner.jpg'; // Replace with your image path
-import logoweds from '../../assets/images/logoweds.jpg'; // Replace with your image path
-import logowedss from '../../assets/images/logowedss.jpg'; // Replace with your image path
-import logowedsss from '../../assets/images/logowedsss.jpg'; // Replace with your image path
+import republic from '../../assets/images/republic.jpg'; 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import Lotus from '../Lotus'; // Import Lotus component
-import './weds.css';
+import Lotus from '../Lotus'; 
+import './ReShop.css';
 
-const Weds = () => {
+const ReShop = () => {
   const [animate, setAnimate] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [sortOption, setSortOption] = useState('alphabetically'); // Initialize sortOption state
+  const [sortOption, setSortOption] = useState('alphabetically'); 
 
   useEffect(() => {
     setAnimate(true); // Trigger animation when the component mounts
@@ -26,40 +23,24 @@ const Weds = () => {
 
   return (
     <div>
-      <div className={`banner-container ${animate ? 'pop-out' : ''}`}>
-        <img src={wsbanner} alt="Wedding Banner" className="ws-banner-img" />
-      </div>
-
-      {/* Circle Images Section */}
-      <div className="circle-images">
-        <div className="circle-op">
-          <img src={logoweds} alt="Gifting" className="circle-img" />
-          <p className="circle-name">Haldi</p>
-        </div>
-        <div className="circle-op">
-          <img src={logowedss} alt="Haldi" className="circle-img" />
-          <p className="circle-name">Haldi</p>
-        </div>
-        <div className="circle-op">
-          <img src={logowedsss} alt="Mendhi" className="circle-img" />
-          <p className="circle-name">Mendhi</p>
-        </div>
+      <div className={`banner-container5 ${animate ? 'pop-out5' : ''}`}>
+        <img src={republic} alt="Wedding Banner" className="ws-banner-img5" />
       </div>
 
       {/* Vertical Navbar */}
-      <div className="div123">
-        <nav className="vertical-nav">
+      <div className="div1235">
+        <nav className="vertical-nav5">
           <ul>
             {['PRODUCT', 'COLOR', 'FINISH', 'PRICE', 'STYLE', 'METAL', 'SUBCATEGORY'].map((item, index) => (
               <li
                 key={index}
-                className={openSubmenu === index ? 'open' : ''}
+                className={openSubmenu === index ? 'open5' : ''}
                 onClick={() => handleSubmenuToggle(index)}
               >
                 {item}
-                <MdOutlineKeyboardArrowDown className="submenu-icon" />
+                <MdOutlineKeyboardArrowDown className="submenu-icon5" />
                 {openSubmenu === index && (
-                  <ul className={`submenu no-bg`}>
+                  <ul className={`submenu no-bg5`}>
                     <li>
                       <input type="checkbox" id={`submenu-${index}-1`} />
                       <label htmlFor={`submenu-${index}-1`}>Submenu Item 1</label>
@@ -80,10 +61,10 @@ const Weds = () => {
         </nav>
 
         {/* Product Info Section */}
-        <div className="product-info-section1">
-          <div className="product-info-header1">
-            <span className="product-count1">159 Products</span>
-            <div className="sorting-options1">
+        <div className="product-info-section15">
+          <div className="product-info-header15">
+            <span className="product-count15">159 Products</span>
+            <div className="sorting-options15">
               <select
                 id="sort-option"
                 value={sortOption}
@@ -96,7 +77,7 @@ const Weds = () => {
               </select>
             </div>
           </div>
-          <div className="product-grid1">
+          <div className="product-grid15">
             <Lotus />
             <Lotus />
             <Lotus />
@@ -150,16 +131,6 @@ const Weds = () => {
             <Lotus />
             <Lotus />
             <Lotus />
-            <Lotus />
-            <Lotus />
-            <Lotus />
-            <Lotus />
-            
-            
-
-            
-
-            {/* Add more Lotus components as needed */}
           </div>
         </div>
       </div>
@@ -167,4 +138,4 @@ const Weds = () => {
   );
 };
 
-export default Weds;
+export default ReShop;
