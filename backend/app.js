@@ -6,6 +6,7 @@ const productRoutes = require('./routes/productRoutes');
 const addressRoutes = require('./routes/addressRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
+const cartRoutes = require('./routes/cart'); 
 const usersRoutes = require('./routes/usersRoutes');
 
 // Load environment variables
@@ -45,6 +46,7 @@ app.use('/api/address',addressRoutes)
 app.use('/api/orders',orderRoutes)
 app.use('/api/reviews',reviewRoutes)
 app.use('/api/users',usersRoutes)
+app.use('/api/cart',cartRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
