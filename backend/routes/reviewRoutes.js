@@ -14,14 +14,13 @@ router.post('/', async (req, res) => {
         }
 
         // Find the product by productId
-        const product = await Product.findOne({ productId });
-
+        const product = await Product.findById(productId);
         if (!product) {
             return res.status(404).json({ error: 'Product not found' });
         }
 
         // Check if a review already exists for this product and user
-        let existingReview = await Reviews.findOne({ product: product._id, id });
+        let existingReview = await Reviews.findOne({ productId: product._id, id });
 
         if (existingReview) {
             existingReview.review = review; // Update the review content
@@ -31,7 +30,7 @@ router.post('/', async (req, res) => {
             // Create a new review
             const newReview = new Reviews({
                 id,
-                product: product._id, // Store the product's ObjectId
+                productId: product._id, // Store the product's ObjectId
                 review
             });
 
@@ -39,7 +38,8 @@ router.post('/', async (req, res) => {
             res.status(200).json({ message: 'Review added successfully', review: newReview });
         }
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong!' });
+        console.error('Error:', error); // Log the error for debugging
+        res.status(500).json({ error: 'Something went wrong!', details: error.message });
     }
 });
 
