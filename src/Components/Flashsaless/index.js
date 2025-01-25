@@ -287,8 +287,8 @@ const Flashsaless = () => {
             </div>
             <div className="product-grid1">
               {/* <div className="product-box-container"> */}
-                {/* First product box */}
-                {/* <div className="product-box" onClick={() => handleProductClick('1')}>
+              {/* First product box */}
+              {/* <div className="product-box" onClick={() => handleProductClick('1')}>
                   <div className="product-img-container">
                     <img
                       src={currentImages.initial}
@@ -338,68 +338,68 @@ const Flashsaless = () => {
                   </div>
                 </div> */}
 
-                {/* Second product box */}
-                {/* <div className="product-container"> */}
-                {Array.isArray(products) && products.length > 0 ? (
-  products.map((product) => (
-    <div
-      key={product.productId}
-      className="product-box"
-      onClick={() => handleProductClick(product.productId)} // Correct property name
-    >
-      <div className="product-img-container">
-        <img
-          src={product.Image || "default_initial_image.jpg"} // Fetch image from API
-          alt={product.Name}
-          className="product-img"
-        />
-        <div className="product-header">
-          {product.discount > 0 && <button className="best-seller">Best Seller</button>}
+              {/* Second product box */}
+              {/* <div className="product-container"> */}
+              {Array.isArray(products) && products.length > 0 ? (
+                products.map((product) => (
+                  <div
+                    key={product.productId}
+                    className="product-box"
+                    onClick={() => handleProductClick(product.productId)} // Correct property name
+                  >
+                    <div className="product-img-container">
+                      <img
+                        src={product.Image || "default_initial_image.jpg"} // Fetch image from API
+                        alt={product.Name}
+                        className="product-img"
+                      />
+                      <div className="product-header">
+                        {product.discount > 0 && <button className="best-seller">Best Seller</button>}
+                      </div>
+                    </div>
+                    <div className="product-details">
+                      <p className="product-description">
+                        <span className="current-price">{`Rs. ${product.price}`}</span>
+                        {product.priceWithCoupon && (
+                          <>
+                            <span className="regular-price">{`Rs. ${product.priceWithCoupon}`}</span>
+                            <span className="discount">{`Save ${product.discount}%`}</span>
+                          </>
+                        )}
+                      </p>
+                      <p className="product-category">Category: {product.category}</p>
+                      <p className="product-description">{product.discription}</p>
+                      <h3 className="product-name">{product.Name}</h3>
+                      <div className="color-selection">
+                        <div className="color-circle">
+                          {/* Example: Displaying a color based on the category */}
+                          <span
+                            className={`circle ${product.category}`}
+                            onMouseEnter={() => handleMouseEnter2(product.category)}
+                            onMouseLeave={handleMouseLeave2}
+                          ></span>
+                        </div>
+                      </div>
+                      <button
+                        className="add-to-cart"
+                        onClick={() => handleAddToCart(product.productId)}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div>No products available</div>
+              )}
+
+            </div>
+
+          </div>    {/* Add more Lotus components as needed */}
         </div>
-      </div>
-      <div className="product-details">
-        <p className="product-description">
-          <span className="current-price">{`Rs. ${product.price}`}</span>
-          {product.priceWithCoupon && (
-            <>
-              <span className="regular-price">{`Rs. ${product.priceWithCoupon}`}</span>
-              <span className="discount">{`Save ${product.discount}%`}</span>
-            </>
-          )}
-        </p>
-        <p className="product-category">Category: {product.category}</p>
-        <p className="product-description">{product.discription}</p>
-        <h3 className="product-name">{product.Name}</h3>
-        <div className="color-selection">
-          <div className="color-circle">
-            {/* Example: Displaying a color based on the category */}
-            <span
-              className={`circle ${product.category}`}
-              onMouseEnter={() => handleMouseEnter2(product.category)}
-              onMouseLeave={handleMouseLeave2}
-            ></span>
-          </div>
-        </div>
-        <button
-          className="add-to-cart"
-          onClick={() => handleAddToCart(product.productId)}
-        >
-          Add to Cart
-        </button>
       </div>
     </div>
-  ))
-) : (
-  <div>No products available</div>
-)}
-
-                </div>
-
-              </div>    {/* Add more Lotus components as needed */}
-            </div>
-          </div>
-        </div>
-      // </div>
+    // </div>
     // </div>
   );
 };
