@@ -6,10 +6,45 @@ const CreateAccount = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
-    const handleCreateAccount = () => {
-        alert(`First Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPassword: ${password}`);
+    const handleCreateAccount = async () => {
+        // Clear any previous messages
+        setErrorMessage('');
+        setSuccessMessage('');
+    
+        const userName = `${firstName} ${lastName}`;
+        const userId = Math.floor(Math.random() * 1000000000); // Numeric userId
+    
+        try {
+            const response = await fetch('http://localhost:5000/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userName, email, password, userId }),
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                setSuccessMessage('Account created successfully!');
+                console.log('User created:', data);
+                // Clear input fields
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+            } else {
+                const errorData = await response.json();
+                setErrorMessage(errorData.error || 'Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            setErrorMessage('Unable to connect to the server. Please try again later.');
+            console.error('Error:', error);
+        }
     };
+    
 
     return (
         <div className="profile-container">

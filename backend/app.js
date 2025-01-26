@@ -47,7 +47,7 @@ app.use('/api/product',productRoutes)
 app.use('/api/address',addressRoutes)
 app.use('/api/orders',orderRoutes)
 app.use('/api/reviews',reviewRoutes)
-app.use('/api/users',usersRoutes)
+app.use('/api/users', usersRoutes)
 app.use('/api/cart',cartRoutes);
 
 // Start the server

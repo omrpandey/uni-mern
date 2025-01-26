@@ -2,32 +2,35 @@ import React, { useState, useEffect } from 'react'; // Added useEffect
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import './index.css';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 
 const Profile = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userId, setUserId] = useState(2); // Assuming userId is set to 1 for example (replace this with the real userId from session or login)
+    const [userId, setUserId] = useState(1); // Assuming userId is set to 1 for example (replace this with the real userId from session or login)
     const [user, setUser] = useState(null); // Use a single state to store the user object
     
-
-    useEffect(() => {
-        if (userId) {
-            axios
-                .get(`http://localhost:5000/api/users/${userId}`)
-                .then((response) => {
-                    // Assuming the response is an object, not an array
-                    setUser(response.data);
-                  
-                })
-                .catch((error) => {
-                    console.error('Error fetching User:', error);
-                });
-        }
-    }, [userId]);
-
+    const navigate = useNavigate(); // Initialize the navigate hook
+    
     const handleLogin = () => {
-        alert(`Email: ${email}\nPassword: ${password}`);
+        axios
+    .post("http://localhost:5000/api/users/login", { email, password })
+    .then((response) => {
+        setUser(response.data); // Handle the successful login response
+        alert("Login successful!");
+        navigate("/"); // Navigate to the home page
+    })
+    .catch((error) => {
+        console.error("Error logging in:", error.response?.data?.message || error.message);
+        alert("Login failed. Please check your email and password.");
+    });
+
     };
+
+    // const handleLogin = () => {
+    //     alert(`Email: ${email}\nPassword: ${password}`);
+    // };
 
     return (
         <div className="profile-container">

@@ -41,5 +41,25 @@ router.post('/', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+// Login Route
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await Users.findOne({ email, password });
+
+        if (user) {
+            res.status(200).json({
+                id: user.id,
+                userName: user.userName,
+                email: user.email
+            });
+        } else {
+            res.status(401).json({ message: "Invalid email or password" });
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
 
 module.exports = router;
