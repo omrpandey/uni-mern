@@ -136,7 +136,6 @@ const Flashsaless = () => {
             className={openSubmenu === 1 ? 'open7' : ''}
             onClick={() => handleSubmenuToggle(1)}
           >
-            Product
             <MdOutlineKeyboardArrowDown className="submenu-icon7" />
             {openSubmenu === 1 && (
               <ul className="submenu7">
@@ -148,7 +147,7 @@ const Flashsaless = () => {
                       value="Anklets"
                       onChange={handleFilterChange}
                     />
-                    Anklets (17)
+                   PRODUCT TYPE
                   </label>
                 </li>
                 <li>
@@ -159,7 +158,7 @@ const Flashsaless = () => {
                       value="Bangles-Bracelets"
                       onChange={handleFilterChange}
                     />
-                    Bangles-Bracelets (12)
+                    COLOR
                   </label>
                 </li>
                 <li>
@@ -170,7 +169,7 @@ const Flashsaless = () => {
                       value="Chains"
                       onChange={handleFilterChange}
                     />
-                    Chains (1)
+                    FINISH
                   </label>
                 </li>
                 <li>
@@ -181,7 +180,7 @@ const Flashsaless = () => {
                       value="Earcuff"
                       onChange={handleFilterChange}
                     />
-                    Earcuff (2)
+                   PRICE
                   </label>
                 </li>
                 <li>
@@ -192,7 +191,7 @@ const Flashsaless = () => {
                       value="Earrings"
                       onChange={handleFilterChange}
                     />
-                    Earrings (44)
+                   STYLE
                   </label>
                 </li>
                 <li>
@@ -203,7 +202,7 @@ const Flashsaless = () => {
                       value="Necklaces"
                       onChange={handleFilterChange}
                     />
-                    Necklaces (24)
+                   METAL
                   </label>
                 </li>
                 <li>
@@ -214,7 +213,7 @@ const Flashsaless = () => {
                       value="Rings"
                       onChange={handleFilterChange}
                     />
-                    Rings (2)
+                   SUBCATEGORY
                   </label>
                 </li>
                 <li>
