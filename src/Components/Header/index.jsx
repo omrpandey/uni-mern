@@ -34,11 +34,17 @@ const Header = () => {
                         type="text"
                         placeholder="Search our store"
                         aria-label="Search our store"
+                        style={{
+                            border: '2px solid #000', // Thicker stroke
+                            fontSize: '16px', 
+                            borderRadius: '4px', // Optional rounded corners
+                          }}
                     />
                     <Button aria-label="Search">
                         <IoSearchOutline />
                     </Button>
                 </div>
+
 
                 {/* User Icons Section */}
                 <div className="headerIcons">
@@ -82,3 +88,4 @@ const Header = () => {
 };
 
 export default Header;
+
