@@ -1,18 +1,18 @@
 const express = require('express');
-const Users = require('../models/users');
+const Users = require('../models/users'); // Import User model
 const router = express.Router();
 
-// GET all users (to be used for fetching users data for Flashsaless)
+// GET all users
 router.get('/', async (req, res) => {
     try {
-        const users = await Users.find(); // Find all users
-        res.json(users);  // Return all users as response
+        const users = await Users.find();
+        res.json(users);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 });
 
-// GET single user by ID (if needed in the future)
+// GET single user by ID
 router.get('/:userId', async (req, res) => {
     const { userId } = req.params;
     try {
@@ -26,10 +26,14 @@ router.get('/:userId', async (req, res) => {
     }
 });
 
-// POST a new user (this is for adding new users in the database)
+// POST a new user
 router.post('/', async (req, res) => {
     const { userName, email, password, userId } = req.body;
     try {
+        const existingUser = await Users.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User already exists' });
+        }
         const user = new Users({ userName, email, password, userId });
         await user.save();
         res.status(200).json(user);

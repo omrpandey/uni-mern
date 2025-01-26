@@ -9,8 +9,10 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const cartRoutes = require('./routes/cart'); 
 const usersRoutes = require('./routes/usersRoutes');
 
+
+
 // Load environment variables
-dotenv.config()
+dotenv.config();
 
 // Connect to MongoDB
 const connectDB = async () => {
@@ -32,7 +34,7 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000'}));
 
 
 // Root route
