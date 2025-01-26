@@ -85,8 +85,9 @@ body {
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
     text-align: center;
-    margin: 40px;
+    margin: 30px;
     height: 100px; /* Adjust height as needed */
+
 }
 
 .section-header__title {
@@ -117,9 +118,10 @@ body {
   text-align: center; /* Center the text inside each box */
   padding: 20px; /* Add padding for spacing around the container */
 }
-.gifts .box {
+ .box1 .box2 {
   max-width: 400px; /* Optional: Limit the width of each box */
   text-align: center; /* Center content inside each box */
+  gap: 20px
 }
 
 
@@ -128,7 +130,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 300px;
-  background-color: #aa3131;
+  background-color: #ffdde4;
   border: 1px solid #2b2a2a;
 }
 
@@ -145,4 +147,14 @@ body {
   width: 40px;
   background-color: #800a0a;
   border: 1px solid #0c0707;
+}
+
+.testimonials-slide{
+  background: #ffdde4;
+  padding-bottom: 10%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 40px;
+  width: 40px;
 }

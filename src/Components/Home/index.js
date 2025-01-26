@@ -28,216 +28,175 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
+    style:{ marginBottom: '80px' }
   };
 
-  const slides = [
+  const testimonials = [
     {
-      content: `
-        <blockquote class="testimonials-slider__text">
-          <span class="testimonial-stars">★★★★★</span>
-          <div class="rte-setting text-spacing">
-            <p><strong>Wow</strong></p>
-            <p>It was so elegant and so super comfy to carry. I loved it and got very good compliments as well.</p>
-          </div>
-          <div class="testimonial-image testimonial-image--round">
-            <div class="image-wrap text-spacing loaded">
-              <img 
-                src="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720" 
-                alt="" 
-                srcset="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=180 180w, 
-                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=360 360w, 
-                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=540 540w, 
-                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720 720w" 
-                loading="eager" 
-                class="image-element" 
-                sizes="(min-width: 769px) 65px, 65px">
-            </div>
-          </div>
-          <cite>Bindu Madhavi Komandury</cite>
-        </blockquote>
-      `,
-      image: "//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558"
+      stars: '★★★★★',
+      strong: 'Wow',
+      text: 'It was so elegant and so super comfy to carry. I loved it and got very good compliments as well.',
+      image: 'https://unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&width=720',
+      cite: 'Bindu Madhavi Komandury',
     },
     {
-      content: "Discover our new features.",
-      image: null // Optional, no image for this slide
+      stars: '★★★★★',
+      strong: 'Beautiful',
+      text: 'Design and quality is good.',
+      image: 'https://unniyarcha.com/cdn/shop/files/2C8A1794.jpg?v=1725544324&width=720',
+      cite: 'Sarita Jena',
     },
     {
-      content: "Join our community today.",
-      image: null // Optional, no image for this slide
-    }
+      stars: '★★★★★',
+      strong: 'Excellent',
+      text: 'Its a beautiful pendant. Spectacular craftsmanship 👍',
+      image: 'https://unniyarcha.com/cdn/shop/files/2C8A3994_05a65c95-485c-436b-9e74-9b98cabb12c7.jpg?v=1712728834&width=720',
+      cite: 'Vanita Arora',
+    },
+    {
+      stars: '★★★★★',
+      strong: 'Beauty on your wrist',
+      text: 'Simple but attractive lotus with pink & green bangle suitable for any occasion loved it 😻',
+      image: 'https://unniyarcha.com/cdn/shop/files/B.jpg?v=1712729356&width=720',
+      cite: 'Christina Vincent',
+    },
+    {
+      stars: '★★★★★',
+      strong: 'GORGEOUS😍',
+      text: 'Such a unique pair🥰🥰 absolutely stunning',
+      image: 'https://unniyarcha.com/cdn/shop/files/C.jpg?v=1712729495&width=720',
+      cite: 'Zeenath Ambareen',
+    },
   ];
-  
 
   return (
     <main>
+      {/* Valentine's Day Section */}
+      <div className={`dvalentine-container ${animate ? 'pop-out' : ''}`}>
+        <img
+          src={dvalentine}
+          alt="Valentine's Day decoration"
+          className="dvalentine-img"
+          style={{ width: '100%', height: '581px' }}
+        />
+      </div>
+
+      {/* About Section */}
+      <div
+        className={`aboutimg-container ${animate ? 'pop-out' : ''}`}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '1400px',
+          height: '311px',
+          marginBottom: '20px'
+        }}
+      >
+        <img
+          src={aboutimg}
+          alt="About image"
+          className="aboutimg-img"
+          style={{ width: '825px', height: '151px' }}
+        />
+      </div>
+
+      {/* Wedding Collection */}
       <div>
-        <div className={`dvalentine-container ${animate ? 'pop-out' : ''}`}>
-          <img
-            src={dvalentine}
-            alt="Valentine's Day decoration"
-            className="dvalentine-img"
-            style={{ width: '100%', height: '581px' }}
-          />
+        <div className="section-header">
+          <h1 className="section-header__title">Wedding Ready with Unniyarcha</h1>
         </div>
-
-        <div
-          className={`aboutimg-container ${animate ? 'pop-out' : ''}`}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '1400px',
-            height: '311px',
-          }}
-        >
-          <img
-            src={aboutimg}
-            alt="About image"
-            className="aboutimg-img"
-            style={{ width: '825px', height: '151px' }}
-          />
-        </div>
-
-        <div>
-          <div className="section-header">
-            <h1 className="section-header__title">Wedding Ready with Unniyarcha</h1>
-          </div>
-
-          <section id="shopify-section-template" className="shopify-section">
-            <Box
-              display="grid"
-              gridTemplateColumns="repeat(3, 1fr)"
-              gap={4}
-              justifyContent="center"
-            >
-              {/* First Row */}
-              <Box textAlign="center">
-                <a href="/Weds" className="ear">
+        <section className="shopify-section">
+          <Box
+            display="grid"
+            gridTemplateColumns="repeat(3, 1fr)"
+            gap={4}
+            justifyContent="center"
+          >
+            {[earringlink, necklaceslink, Ankletslink, divinelink, Bangleslink, mensjewelrylink].map((image, index) => (
+              <Box key={index} textAlign="center">
+                <a href="/Weds">
                   <img
-                    src={earringlink}
-                    alt="Earrings"
-                    className="valentine-img"
+                    src={image}
+                    alt={`Category ${index + 1}`}
+                    className="category-img"
                     style={{ width: '405px', height: '405px' }}
                   />
                 </a>
-                <p className="ear-title">EARRINGS</p>
+                <p className="category-title">{["EARRINGS", "NECKLACES", "ANKLETS", "DIVINE", "BANGLES", "MEN'S JEWELLERY"][index]}</p>
               </Box>
-
-              <Box textAlign="center">
-                <a href="/Weds" className="neck">
-                  <img
-                    src={necklaceslink}
-                    alt="Necklaces"
-                    className="neck"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="neck-title">NECKLACES</p>
-              </Box>
-
-              <Box textAlign="center">
-                <a href="/Weds" className="anklets">
-                  <img
-                    src={Ankletslink}
-                    alt="Anklets"
-                    className="anklets"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="anklets-title">ANKLETS</p>
-              </Box>
-
-              {/* Second Row */}
-              <Box textAlign="center">
-                <a href="/Weds" className="divine">
-                  <img
-                    src={divinelink}
-                    alt="Divine"
-                    className="divine"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="divine-title">DIVINE</p>
-              </Box>
-
-              <Box textAlign="center">
-                <a href="/Weds" className="Bangles">
-                  <img
-                    src={Bangleslink}
-                    alt="Bangles"
-                    className="Bangles"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="Bangles-title">BANGLES</p>
-              </Box>
-
-              <Box textAlign="center">
-                <a href="/Weds" className="mensjewelry">
-                  <img
-                    src={mensjewelrylink}
-                    alt="Men's Jewelry"
-                    className="mensjewelry"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="mensjewelry-title">MENS JEWELLERY</p>
-              </Box>
-            </Box>
-          </section>
-        </div>
-     
-        <div className="gifts">
-          <div className="box">
-            <a href="/Weds" className="her">
-              <img
-                src={Giftsforher}
-                alt="forher"
-                className="her"
-                style={{ width: '300px', height: 'auto', borderRadius: '8px', alignItems: "left" }}
-              />
-            </a>
-          </div>
-          
-          <div className="box">
-            <a href="/Weds" className="him">
-              <img
-                src={Giftsforhim}
-                alt="forhim"
-                className="him"
-                style={{ width: '300px', height: 'auto', borderRadius: '8px', alignItems: "right" }}
-              />
-            </a>
-          </div>
-        </div>
-
-
-        <div className="showcase-slider" style={{ marginBottom: '80px' }}>
-          <h2 alignItems="center">1 Lakh+ Happy Custumer</h2>
-          <Slider {...sliderSettings}>
-            {slides.map(slide => (
-              <div  className="slide">
-                <p >{slide.blockquote}</p>
-                <p >{slide.text}</p>
-              </div>
             ))}
-          </Slider>
-        </div>
+          </Box>
+        </section>
+      </div>
+         
+     
+<div className="gifts">
+<div style={{ display: 'flex', justifyContent: 'space-between',  }} >
+<div className="box1" style={{ display: 'flex', justifyContent: 'space-between', marginRight: "51px" }} >
+  <a href="/Weds" className="her-link">
+    <img
+      src={Giftsforher}
+      alt="Gifts for her"
+      className="her-image"
+      style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
+    />
+  </a>
+</div>
 
-        <div>
-          <a href="/Weds" className="manufact">
-            <img
-              src={inhousemanufacturing}
-              alt="manufact"
-              className="manufact"
-              style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-            />
-          </a>
-        </div>
+<div className="box2">
+  <a href="/Weds" className="him-link">
+    <img
+      src={Giftsforhim}
+      alt="Gifts for him"
+      className="him-image"
+      style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
+    />
+  </a>
+</div>
+</div>
+</div>
+
+
+
+
+<div className="section-header"><div className="section-header__title">Festive Silver Earrings</div></div>
+<div className="section-header"><div className="section-header__title">The perfect gift - Pure 92.5 Silver Anklets</div></div>
+<div className="section-header"><div className="section-header__title">Bestsellers</div></div>
+
+
+
+      {/* Testimonials Slider */}
+      <div className="showcase-slider" >
+        <h2 align="center" className="section-header">1 Lakh+ Happy Customers</h2>
+        <Slider {...sliderSettings}>
+          {testimonials.map((testimonial, index) => (
+            <div key={index}   className="testimonials-slide">
+              <blockquote className="testimonials-slider__text">
+                <span className="testimonial-stars">{testimonial.stars}</span>
+                <p><strong>{testimonial.strong}</strong></p>
+                <p>{testimonial.text}</p>
+                <cite><strong>{testimonial.cite}</strong></cite>
+              </blockquote>
+            </div>
+          ))}
+        </Slider>
+         {/* In-house Manufacturing Section */}
+      <div >
+        <a href="/Weds">
+          <img
+            src={inhousemanufacturing}
+            alt="In-house Manufacturing"
+            className="manufact-img"
+            style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+          />
+        </a>
+      </div>
       </div>
     </main>
   );
 };
 
 export default Home;
+
+
