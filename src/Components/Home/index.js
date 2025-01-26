@@ -77,7 +77,7 @@ const Home = () => {
             src={dvalentine}
             alt="Valentine's Day decoration"
             className="dvalentine-img"
-            style={{ width: '1331px', height: '581px' }}
+            style={{ width: '100%', height: '581px' }}
           />
         </div>
 
@@ -195,7 +195,7 @@ const Home = () => {
                 src={Giftsforher}
                 alt="forher"
                 className="her"
-                style={{ width: '45%', height: 'auto', borderRadius: '8px', alignItems: "left" }}
+                style={{ width: '300px', height: 'auto', borderRadius: '8px', alignItems: "left" }}
               />
             </a>
           </div>
@@ -206,7 +206,7 @@ const Home = () => {
                 src={Giftsforhim}
                 alt="forhim"
                 className="him"
-                style={{ width: '45%', height: 'auto', borderRadius: '8px', alignItems: "right" }}
+                style={{ width: '300px', height: 'auto', borderRadius: '8px', alignItems: "right" }}
               />
             </a>
           </div>

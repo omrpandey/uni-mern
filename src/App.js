@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header'; 
-import Home from './Pag/Home';
+import Home from './Components/Home';
 import Navigation from './Components/Navigation';
 import Flashsaless from './Components/Flashsaless';
 import Weds from './Components/Weds';
