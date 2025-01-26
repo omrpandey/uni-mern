@@ -252,7 +252,7 @@
   /* Larger Screens */
   @media screen and (min-width: 1025px) {
     .product-grid1 {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+     
       grid-template-rows: repeat(3, 1fr); /* 3 rows for larger screens */
     }
   }

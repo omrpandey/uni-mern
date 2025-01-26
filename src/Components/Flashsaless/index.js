@@ -25,7 +25,7 @@ const Flashsaless = () => {
   const [openSubmenu, setOpenSubmenu] = useState(1);
   const handleSubmenuToggle = (submenuId) => {
     // Prevent submenu from closing if it's a filter interaction
-    setOpenSubmenu((prev) => (prev === submenuId ? prev : submenuId)); 
+    setOpenSubmenu((prev) => (prev === submenuId ? prev : submenuId));
   };
 
 
@@ -38,23 +38,23 @@ const Flashsaless = () => {
       checked ? [...prevFilters, value] : prevFilters.filter((item) => item !== value)
     );
   };
- // Fetch filtered or all products based on selected filters
- useEffect(() => {
-  const fetchFilteredProducts = async () => {
-    try {
-      setLoading(true); // Set loading state to true while fetching
-      const filterQuery = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
-      const response = await axios.get(`http://localhost:5000/api/product${filterQuery}`);
-      setProducts(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setLoading(false);
-    }
-  };
+  // Fetch filtered or all products based on selected filters
+  useEffect(() => {
+    const fetchFilteredProducts = async () => {
+      try {
+        setLoading(true); // Set loading state to true while fetching
+        const filterQuery = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
+        const response = await axios.get(`http://localhost:5000/api/product${filterQuery}`);
+        setProducts(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      }
+    };
 
-  fetchFilteredProducts();
-}, [selectedFilters]); // Re-run when selectedFilters changes
+    fetchFilteredProducts();
+  }, [selectedFilters]); // Re-run when selectedFilters changes
 
   // Navigate to a new page when a product is clicked
   const handleProductClick = (productId) => {
@@ -115,7 +115,36 @@ const Flashsaless = () => {
       });
     }
   };
+  const [hoverSubmenu, setHoverSubmenu] = useState(null);
 
+  // Mock data for categories
+  const menuItems = [
+    {
+      title: 'PRODUCT TYPE',
+      options: ['Anklets',  'Chains', 'Earcuff', 'Earrings', 'Necklaces', 'Rings', 'Toe Rings'],
+    },
+    {
+      title: 'COLOR',
+      options: ['Black','Blue','Gold','Green','Oxidised','Pink','Red','Silver'],
+    },
+    {
+      title: 'FINISH',
+      options: ['Gold(58)','Oxidised(1)','Silver(79)'],
+    },
+    {
+      title: 'STYLE',
+      options: ['Contempory(59)','Traditinal(93)'],
+    },
+    {
+      title: 'METAL',
+      options: ['GoldPlatedAnklets(1)','KundanAnklets(1)'],
+    },
+    {
+      title: 'SUBCATEGORY',
+      options: ['Bali(2)','Bangle/Braclet(1)','BeadedAnklets(1)'],
+    },
+    // Add more categories as needed
+  ];
   if (loading) return <div>Loading...</div>;
   return (
     <div>
@@ -128,110 +157,43 @@ const Flashsaless = () => {
         </div>
 
         {/* Main Container (Navbar + Product Info Section) */}
-        <div className="main-container7">
+        <div className="main-container71">
           {/* Vertical Navbar */}
-          <nav className="vertical-nav7">
-        <ul>
-          <li
-            className={openSubmenu === 1 ? 'open7' : ''}
-            onClick={() => handleSubmenuToggle(1)}
-          >
-            <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-            {openSubmenu === 1 && (
-              <ul className="submenu7">
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Anklets"
-                      onChange={handleFilterChange}
-                    />
-                   PRODUCT TYPE
-                  </label>
+          <nav className="vertical-nav71">
+            <ul>
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={hoverSubmenu === index ? 'open7' : ''}
+                  onMouseEnter={() => setHoverSubmenu(index)}
+                  onMouseLeave={() => setHoverSubmenu(null)}
+                >
+                  <span className="menu-title71">
+                    {item.title}
+                    <MdOutlineKeyboardArrowDown className="submenu-icon7" />
+                  </span>
+                  {hoverSubmenu === index && (
+                    <ul className="submenu71">
+                      {item.options.map((option, i) => (
+                        <li key={i}>
+                          <label>
+                            <input
+                              type="checkbox"
+                              name={`filter.${item.title.toLowerCase().replace(' ', '_')}`}
+                              value={option}
+                              onChange={(e) => console.log(e.target.value)} // Handle the filter logic
+                            />
+                            {option}
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Bangles-Bracelets"
-                      onChange={handleFilterChange}
-                    />
-                    COLOR
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Chains"
-                      onChange={handleFilterChange}
-                    />
-                    FINISH
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Earcuff"
-                      onChange={handleFilterChange}
-                    />
-                   PRICE
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Earrings"
-                      onChange={handleFilterChange}
-                    />
-                   STYLE
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Necklaces"
-                      onChange={handleFilterChange}
-                    />
-                   METAL
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Rings"
-                      onChange={handleFilterChange}
-                    />
-                   SUBCATEGORY
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="filter.p.product_type"
-                      value="Toe Rings"
-                      onChange={handleFilterChange}
-                    />
-                    Toe Rings (29)
-                  </label>
-                </li>
-              </ul>
-            )}
-          </li>
-        </ul>
-      </nav>
+              ))}
+            </ul>
+          </nav>
+
           {/* Product Info Section (Right of Navbar) */}
           <div className="product-info-section7">
             <div className="product-info-header7">
@@ -728,7 +690,7 @@ const Flashsaless = () => {
                 <div>No products available</div>
               )}
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

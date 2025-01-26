@@ -1,5 +1,5 @@
 /* Main Container */
-.main-container7 {
+.main-container71 {
   display: flex;
   height: auto;
   width: auto;
@@ -7,20 +7,20 @@
 }
 
 /* Vertical Navbar */
-.vertical-nav7 {
-  
+.vertical-nav71 {
+  padding-top: 50px;
   background-color: #00000000;
   color: rgb(0, 0, 0);
   position: relative;
 }
 
-.vertical-nav7 ul {
+.vertical-nav71 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.vertical-nav7 li {
+.vertical-nav71 li {
   padding: 16px 20px;
   cursor: pointer;
   position: relative;
@@ -32,17 +32,17 @@
   justify-content: space-between;
 }
 
-.vertical-nav7 li:hover {
+.vertical-nav71 li:hover {
   background-color: transparent;
 }
 
 /* When submenu is open, add extra padding to main li to push it down */
-.vertical-nav7 li.open7 {
+.vertical-nav71 li.open71 {
   padding-bottom: 110px; /* Space to push down the main li */
 }
 
 /* Horizontal separator line for each navbar item */
-.vertical-nav7 li:not(:last-child)::after {
+.vertical-nav71 li:not(:last-child)::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -96,9 +96,6 @@
   margin-left: 0; /* Shift the grid to the left */
 }
 
-/* Hide scrollbar for WebKit-based browsers (Chrome, Edge, Safari) */
-.product-grid7::-webkit-scrollbar {
-}
 
 /* Hide scrollbar for Firefox */
 .product-grid7 {
@@ -110,13 +107,6 @@
   -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
 }
 
-/* Responsive Adjustments */
-
-/* Mobile Devices (max-width: 768px) */
-@media screen and (max-width: 768px) {
-  .product-info-header7 {
-      
-  }
 
   .product-count7 {
       margin-left: 0; /* Remove margin for mobile */
@@ -130,7 +120,7 @@
   .product-grid7 {
       height: auto; /* Remove fixed height for mobile */
   }
-}
+
 
 
 /* Sorting Options Styling */
@@ -252,34 +242,6 @@ li7 {
   gap: 15px;
 }
 
-/* General Reset for Submenu Styling */
-ul7 {
-  list-style: none; /* Remove default bullet points */
-  margin: 0;
-  padding: 0;
-}
-
-.submenu7 {
-  display: flex; /* Align items in a single line */
-  flex-direction: column; /* Display each item as a new line */
-  gap: 4px; /* Minimal gap between items */
-}
-
-.submenu7 li7 {
-  display: flex;
-}
-.submenu7 input[type="checkbox"] {
-  margin-right: 8px; /* Space between checkbox and text */
-}
-
-.submenu7 label7 {
-  cursor: pointer;
-  line-height: 1; /* Consistent spacing for labels */
-}
-
-.no-bullet7 {
-  list-style: none;
-}
 
 .product-box {
   display: flex;
@@ -436,3 +398,64 @@ ul7 {
   color: #d56f99; /* Dark text */
 }
 
+/* Main container styling */
+
+
+.submenu-icon71 {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Submenu styling */
+.submenu71 {
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submenu71 li {
+  margin-bottom: 5px;
+}
+
+/* Label and checkbox alignment */
+.submenu71 label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  /* line-height: 1.5; */
+  margin: 0; /* Remove any default margin */
+}
+
+.submenu71 input {
+  margin-right: 10px; /* Add spacing between the checkbox and label */
+  margin-left: 0; /* Ensure the checkbox starts at the leftmost edge */
+}
+
+/* Align all submenu items to the left */
+.submenu71 {
+  text-align: left;
+  padding-left: 0; /* Remove additional padding */
+}
+
+.submenu71 li {
+  padding-left: 0; /* Ensure the list items also align properly */
+}
+
+/* Hover effect for submenu */
+.vertical-nav71 li:hover .submenu71 {
+  display: block;
+}
+
+/* Add hover effect for better UX */
+.vertical-nav71 li:hover .menu-title71 {
+  color: #007bff;
+}
