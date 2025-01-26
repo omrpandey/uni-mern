@@ -1,42 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
-import man1 from '../../assets/images/man1.jpg';
-import man2 from '../../assets/images/man2.jpg';
-import kundan1 from '../../assets/images/kundan1.jpg';
-import kundan2 from '../../assets/images/kundan2.jpg';
-import man5 from '../../assets/images/man5.jpg';
-import man6 from '../../assets/images/man6.jpg';
-import man7 from '../../assets/images/man7.jpg';
 import easyReturnLogo from '../../assets/images/easyReturnLogo.jpg'; // Import logo
 import lifetimePlatingLogo from '../../assets/images/lifetimePlatingLogo.jpg'; // Import logo
 import pureSilverLogo from '../../assets/images/pureSilverLogo.jpg'; // Import logo
 import codLogo from '../../assets/images/codLogo.jpg'; // Import logo
+import axios from 'axios';
+
+import { useParams } from 'react-router-dom';
 
 const ProductDetail = () => {
-  const [currentImage, setCurrentImage] = useState(man1);
-  const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null); // State to store product details
+  const [currentImage, setCurrentImage] = useState(''); // State for selected image
   const [activeDropdown, setActiveDropdown] = useState(null); // State for dropdown toggle
-
-  const images = [man1, man2, kundan1, kundan2, man5, man6, man7];
+  const [images, setImages] = useState([]);
 
   const handleImageClick = (image) => {
     setCurrentImage(image);
   };
+
+  const [quantity, setQuantity] = useState(1); // State for quantity selection
+
+  const { productId } = useParams(); // This should extract productId from URL
+
+  console.log('Product ID:', productId); // Check if the productId is being extracted correctly
+
+  // Fetch product using the productId
+  useEffect(() => {
+    if (productId) {
+      axios
+        .get(`http://localhost:5000/api/product/${productId}`)
+        .then((response) => {
+          setProduct(response.data);
+          const ProductId = response.data;
+          setProduct(ProductId); // Set product data
+          setCurrentImage(ProductId.Image); // Assuming the image URL is under `image`
+        })
+        .catch((error) => {
+          console.error('Error fetching product:', error);
+        });
+    }
+  }, [productId]);
 
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
   };
 
   const goToPrevious = () => {
-    const currentIndex = images.indexOf(currentImage);
-    const previousIndex = (currentIndex - 1 + images.length) % images.length;
-    setCurrentImage(images[previousIndex]);
+    const currentIndex = Image.indexOf(currentImage);
+    const previousIndex = (currentIndex - 1 + Image.length) % Image.length;
+    setCurrentImage(Image[previousIndex]);
   };
 
   const goToNext = () => {
-    const currentIndex = images.indexOf(currentImage);
-    const nextIndex = (currentIndex + 1) % images.length;
-    setCurrentImage(images[nextIndex]);
+    const currentIndex = Image.indexOf(currentImage);
+    const nextIndex = (currentIndex + 1) % Image.length;
+    setCurrentImage(Image[nextIndex]);
   };
 
   const incrementQuantity = () => {
@@ -50,7 +68,7 @@ const ProductDetail = () => {
   };
 
   const addToCart = () => {
-    alert(`Added ${quantity} item(s) to the cart`);
+    alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
   };
 
   const handleOfferClick = (offer) => {
@@ -62,44 +80,36 @@ const ProductDetail = () => {
   const [isActiveReturn, setIsActiveReturn] = useState(false);
   const [isActiveManufacturer, setIsActiveManufacturer] = useState(false);
 
+  if (!productId) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="product-detail-container">
       {/* Left side - Product image */}
       <div className="product-image-container">
-        <img src={currentImage} alt="Product" className="banner-img" />
-        <div className="image-slider">
-          <div className="arrow arrow-left" onClick={goToPrevious}>
-            &lt;
-          </div>
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Product ${index + 1}`}
-              className={`slider-image ${currentImage === image ? 'active' : ''}`}
-              onClick={() => handleImageClick(image)}
-            />
-          ))}
+        <img src={currentImage} alt={productId.Name} className="banner-img" />
+      </div>
+
           <div className="arrow arrow-right" onClick={goToNext}>
             &gt;
           </div>
-        </div>
-      </div>
+
 
       {/* Right side - Product details */}
       <div className="product-info-container">
         <h2 className="product-title">Rs. 3,990.00</h2>
 
         <div className="price-info">
-          <span className="mrp-price">MRP Rs. 5,720.00</span> {/* MRP with line-through */}
-          <span className="regular-price">Rs. 3,990.00 Regular Price (Incl. of all taxes)</span> {/* Regular price in one line */}
+          <span className="mrp-price">MRP {product?.price} </span> {/* MRP with line-through */}
+          <span className="regular-price">Rs. {product?.priceWithCoupon} Regular Price (Incl. of all taxes)</span> {/* Regular price in one line */}
           <span className="best-price">
-            Best Price <span className="price-red">Rs. 3,392</span> with coupon
+            Best Price <span className="price-red">Rs.{product?.priceWithCoupon}</span> with coupon
           </span>
         </div>
 
         <p className="product-description">
-          925 Sterling Silver Lotus Sui Dhaga Earring
+        {productId.Name}
         </p>
 
         <div className="review-section">
@@ -217,8 +227,7 @@ const ProductDetail = () => {
               className={`dropdown-content ${isActiveDescription ? 'active' : ''}`}
             >
               <p>
-                This product is made with 92.5 pure silver and features a timeless
-                heart design. Perfect for gifting and personal use.
+              {product?.discription}
               </p>
             </div>
           </div>

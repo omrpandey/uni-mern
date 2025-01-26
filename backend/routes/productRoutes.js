@@ -12,19 +12,21 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET single product by id
+// GET single product by productId
 router.get('/:productId', async (req, res) => {
-    const { productId } = req.params;
+    const { productId } = req.params; // Extract productId from route
     try {
-        const product = await Product.findOne({ productId });
-        if (!product) {
-            return res.status(404).json({ error: 'Product not found' });
-        }
-        res.json(product);
+      const product = await Product.findOne({ productId }); // Assuming productId is unique
+      if (!product) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+      res.json(product);
     } catch (err) {
-        res.status(500).json({ error: 'Server error' });
+      console.error(err);
+      res.status(500).json({ error: 'Server error' });
     }
-});
+  });
+  
 
 // POST a new product
 router.post('/', async (req, res) => {
@@ -48,5 +50,6 @@ router.post('/', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
 
 module.exports = router;

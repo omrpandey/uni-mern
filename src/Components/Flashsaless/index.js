@@ -12,8 +12,8 @@ import axios from 'axios';
 
 
 const Flashsaless = () => {
+  const [selectedFilters, setSelectedFilters] = useState([]); // Initialize selectedFilters state
   const [animate, setAnimate] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(null);
   const [sortOption, setSortOption] = useState('alphabetically');
   const navigate = useNavigate(); // Initialize navigate for routing
   const [products, setProducts] = useState([]);
@@ -22,36 +22,39 @@ const Flashsaless = () => {
     initial: "",
     hover: "",
   });
+  const [openSubmenu, setOpenSubmenu] = useState(1);
+  const handleSubmenuToggle = (submenuId) => {
+    // Prevent submenu from closing if it's a filter interaction
+    setOpenSubmenu((prev) => (prev === submenuId ? prev : submenuId)); 
+  };
+
 
   useEffect(() => {
     setAnimate(true); // Trigger animation when the component mounts
   }, []);
-
-  const handleSubmenuToggle = (index) => {
-    setOpenSubmenu(openSubmenu === index ? null : index); // Toggle submenu visibility
+  const handleFilterChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedFilters((prevFilters) =>
+      checked ? [...prevFilters, value] : prevFilters.filter((item) => item !== value)
+    );
+  };
+ // Fetch filtered or all products based on selected filters
+ useEffect(() => {
+  const fetchFilteredProducts = async () => {
+    try {
+      setLoading(true); // Set loading state to true while fetching
+      const filterQuery = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
+      const response = await axios.get(`http://localhost:5000/api/product${filterQuery}`);
+      setProducts(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
   };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/product/"); // Include http://
-        setProducts(response.data);
-        if (response.data.length > 0) {
-          setCurrentImages2({
-            initial: response.data[0].Image, // Adjust the key name based on your backend response
-            hover: response.data[0].hoverImagePath, // Adjust the key name
-          });
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
+  fetchFilteredProducts();
+}, [selectedFilters]); // Re-run when selectedFilters changes
 
   // Navigate to a new page when a product is clicked
   const handleProductClick = (productId) => {
@@ -60,37 +63,9 @@ const Flashsaless = () => {
   };
 
 
-
-  // const [currentImages, setCurrentImages] = useState({
-  //   initial: kundan1,
-  //   hover: kundan2,
-  // });
-
-
   const handleSortChange = (event) => {
     setSortOption(event.target.value);
   };
-  // const handleMouseEnter = (color) => {
-  //   if (color === 'silver') {
-  //     setCurrentImages({
-  //       initial: silverkundan,
-  //       hover: silverkundan,
-  //     });
-  //   } else if (color === 'yellow') {
-  //     setCurrentImages({
-  //       initial: kundan1,
-  //       hover: kundan2,
-  //     });
-  //   }
-  // };
-
-  // Revert to default images on mouse leave
-  // const handleMouseLeave = () => {
-  //   setCurrentImages({
-  //     initial: kundan1,
-  //     hover: kundan2,
-  //   });
-  // };
 
   const handleMouseEnter2 = (color) => {
     if (color === 'silver') {
@@ -113,24 +88,6 @@ const Flashsaless = () => {
       hover: man2,
     });
   };
-  // Product details to be added to the cart for the first product
-  // const item = {
-  //   name: 'Silver Kundan Lotus Anklet',
-  //   style: 'ANKLETS',
-  //   price: 3425,
-  //   count: 1,
-  //   img: currentImages.initial,
-  // };
-
-  // // Product details to be added to the cart for the second product
-  // const item2 = {
-  //   name: 'Gold Kundan Lotus Necklace',
-  //   style: 'NECKLACE',
-  //   price: 3999,
-  //   count: 1,
-  //   img: currentImages2.initial,
-  // };
-
   const handleAddToCart = async (productId) => {
     try {
       const response = await fetch("http://localhost:2000/api/cart/add", {
@@ -174,101 +131,108 @@ const Flashsaless = () => {
         <div className="main-container7">
           {/* Vertical Navbar */}
           <nav className="vertical-nav7">
-            <ul>
-              <li
-                className={openSubmenu === 1 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(1)}
-              >
-                Product
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 1 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 2 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(2)}
-              >
-                COLOR
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 2 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 3 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(3)}
-              >
-                FINISH
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 3 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 4 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(4)}
-              >
-                PRICE
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 4 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 5 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(5)}
-              >
-                STYLE
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 5 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 6 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(6)}
-              >
-                METAL
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 6 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-              <li
-                className={openSubmenu === 7 ? 'open7' : ''}
-                onClick={() => handleSubmenuToggle(7)}
-              >
-                Subcategory
-                <MdOutlineKeyboardArrowDown className="submenu-icon7" />
-                {openSubmenu === 7 && (
-                  <ul className="submenu7">
-                    <li>Submenu Item 1</li>
-                    <li>Submenu Item 2</li>
-                  </ul>
-                )}
-              </li>
-            </ul>
-          </nav>
-
+        <ul>
+          <li
+            className={openSubmenu === 1 ? 'open7' : ''}
+            onClick={() => handleSubmenuToggle(1)}
+          >
+            Product
+            <MdOutlineKeyboardArrowDown className="submenu-icon7" />
+            {openSubmenu === 1 && (
+              <ul className="submenu7">
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Anklets"
+                      onChange={handleFilterChange}
+                    />
+                    Anklets (17)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Bangles-Bracelets"
+                      onChange={handleFilterChange}
+                    />
+                    Bangles-Bracelets (12)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Chains"
+                      onChange={handleFilterChange}
+                    />
+                    Chains (1)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Earcuff"
+                      onChange={handleFilterChange}
+                    />
+                    Earcuff (2)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Earrings"
+                      onChange={handleFilterChange}
+                    />
+                    Earrings (44)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Necklaces"
+                      onChange={handleFilterChange}
+                    />
+                    Necklaces (24)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Rings"
+                      onChange={handleFilterChange}
+                    />
+                    Rings (2)
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="filter.p.product_type"
+                      value="Toe Rings"
+                      onChange={handleFilterChange}
+                    />
+                    Toe Rings (29)
+                  </label>
+                </li>
+              </ul>
+            )}
+          </li>
+        </ul>
+      </nav>
           {/* Product Info Section (Right of Navbar) */}
           <div className="product-info-section7">
             <div className="product-info-header7">
@@ -287,60 +251,6 @@ const Flashsaless = () => {
               </div>
             </div>
             <div className="product-grid1">
-              {/* <div className="product-box-container"> */}
-              {/* First product box */}
-              {/* <div className="product-box" onClick={() => handleProductClick('1')}>
-                  <div className="product-img-container">
-                    <img
-                      src={currentImages.initial}
-                      alt="Product Initial"
-                      className="product-img"
-                    />
-                    <img
-                      src={currentImages.hover}
-                      alt="Product Hover"
-                      className="product-img hover-img"
-                    />
-                    <div className="product-header">
-                      <button className="best-seller">Best Seller</button>
-                    </div>
-                  </div>
-                  <div className="product-details">
-                    <p className="product-description">
-                      <span className="current-price">Rs. 3,425.00</span>
-                      <span className="regular-price">Rs. 4,950.00</span>
-                      <span className="discount">Save 31%</span>
-                    </p>
-                    <p className="best-price">
-                      Best Price: <span>Rs. 2,740.00</span>
-                      <small className="coupon-text"> with coupon</small>
-                    </p>
-                    <h3 className="product-name">Silver Kundan Lotus Anklet</h3>
-                    <div className="color-selection">
-                      <div className="color-circle">
-                        <span
-                          className="circle yellow"
-                          onMouseEnter={() => handleMouseEnter('yellow')}
-                          onMouseLeave={handleMouseLeave}
-                        ></span>
-                        <span
-                          className="circle grey"
-                          onMouseEnter={() => handleMouseEnter('silver')}
-                          onMouseLeave={handleMouseLeave}
-                        ></span>
-                      </div>
-                    </div>
-                    <button
-                      className="add-to-cart"
-                      onClick={() => handleAddToCart(product._id)} // Add item to cart
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div> */}
-
-              {/* Second product box */}
-              {/* <div className="product-container"> */}
               {Array.isArray(products) && products.length > 0 ? (
                 products.map((product) => (
                   <div
@@ -396,12 +306,10 @@ const Flashsaless = () => {
 
             </div>
 
-          </div>    {/* Add more Lotus components as needed */}
+          </div> 
         </div>
       </div>
     </div>
-    // </div>
-    // </div>
   );
 };
 
