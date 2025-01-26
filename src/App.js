@@ -30,7 +30,7 @@ function App() {
             <Route path="/SuiDang" element={<SuiDang />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/ProductDetail" element={<ProductDetail />} />
+            <Route path="/ProductDetail/:productId" element={<ProductDetail />} />
             <Route path="/ReShop" element={<ReShop />} /> 
           </Routes>
         </div>
