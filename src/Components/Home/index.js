@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
+import './index.css'; // Import custom styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box } from '@mui/material';
@@ -30,16 +31,43 @@ const Home = () => {
   };
 
   const slides = [
-    { <blockquote class="testimonials-slider__text"><span class="testimonial-stars">★★★★★</span><div class="rte-setting text-spacing"><p><strong>Wow</strong></p><p>It was so elegant and so super comfy to carry. I loved it and got very good compliments as well.</p></div><div class="testimonial-image testimonial-image--round">
-                 <div class="image-wrap text-spacing loaded">
-                 <image-element data-aos="image-fade-in" data-aos-offset="150" class="aos-init aos-animate">
-                 <img src="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720" alt="" srcset="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=180 180w, //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=360 360w, //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=540 540w, //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720 720w" loading="eager" class=" image-element" sizes="(min-width: 769px) 65px, 65px">
-                 </image-element>
-                 </div>
-                </div><cite>Bindu Madhavi Komandury</cite></blockquote> },
-    {  text: "Discover our new features." },
-    {  text: "Join our community today." },
+    {
+      content: `
+        <blockquote class="testimonials-slider__text">
+          <span class="testimonial-stars">★★★★★</span>
+          <div class="rte-setting text-spacing">
+            <p><strong>Wow</strong></p>
+            <p>It was so elegant and so super comfy to carry. I loved it and got very good compliments as well.</p>
+          </div>
+          <div class="testimonial-image testimonial-image--round">
+            <div class="image-wrap text-spacing loaded">
+              <img 
+                src="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720" 
+                alt="" 
+                srcset="//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=180 180w, 
+                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=360 360w, 
+                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=540 540w, 
+                        //unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558&amp;width=720 720w" 
+                loading="eager" 
+                class="image-element" 
+                sizes="(min-width: 769px) 65px, 65px">
+            </div>
+          </div>
+          <cite>Bindu Madhavi Komandury</cite>
+        </blockquote>
+      `,
+      image: "//unniyarcha.com/cdn/shop/files/A_95c606b5-e6f9-4ef9-9f9f-98aad4846cb0.jpg?v=1712729558"
+    },
+    {
+      content: "Discover our new features.",
+      image: null // Optional, no image for this slide
+    },
+    {
+      content: "Join our community today.",
+      image: null // Optional, no image for this slide
+    }
   ];
+  
 
   return (
     <main>
