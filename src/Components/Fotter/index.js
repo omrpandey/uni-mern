@@ -44,7 +44,17 @@ const Footer = () => {
         <div className="company-info">
           <h3>Company Information</h3>
           <ul>
-            {/* Add company information links */}
+            <li><a href="/about-us">ABOUT US</a></li>
+            <li><a href="/return-exchange-policy">RETURN & EXCHANGE POLICY</a></li>
+            <li><a href="/buyback-policy">BUYBACK POLICY</a></li>
+            <li><a href="/franchise-enquiry">FRANCHISE ENQUIRY</a></li>
+            <li><a href="/corporate-gifting">CORPORATE GIFTING</a></li>
+            <li><a href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a href="/contact-us">CONTACT US</a></li>
+            <li><a href="/blogs">BLOGS</a></li>
+            <li><a href="/sitemap">SITEMAP</a></li>
           </ul>
         </div>
 

@@ -88,7 +88,7 @@
   height: auto;  /* Maintain aspect ratio */
   padding: 20px 0 0 0;  /* Only padding on top */
   object-fit: contain;  /* Ensure the image fits well without stretching */
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
 /* Flexbox for horizontal layout */
@@ -106,4 +106,9 @@
       flex: none;
       width: 100%;
   }
+}
+.company-info{
+  padding-left: 40px;
+  margin-right: -100px;
+  margin-left: 20px;
 }
