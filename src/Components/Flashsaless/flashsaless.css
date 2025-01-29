@@ -227,6 +227,8 @@ li7 {
 /* Product Info Section */
 .product-info-section7 {
   margin-left: -15px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .product-info-header7 {
