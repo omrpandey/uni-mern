@@ -65,7 +65,7 @@ const Navbar = () => {
               <sup>New</sup>
             </span>
           </li>
-          <li className="list-inline-item has-submenu-1">
+          <li className="list-inline-item has-submenu-2">
             <div className="submenu-trigger-1">
               <Link to="#" className="sui-dang-1">
                 Collection <IoIosArrowDown />
