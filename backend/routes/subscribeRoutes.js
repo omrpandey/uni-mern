@@ -4,29 +4,36 @@ const Subscriber = require('../models/Subscriber'); // Import Subscriber model
 const nodemailer = require('nodemailer'); // Import Nodemailer
 
 const router = express.Router();
+require('dotenv').config(); // Load environment variables
 
-// Send thank-you email after subscription
+const app = express();
+app.use(express.json()); // Middleware to parse JSON requests
+
+// Create transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER, // Load from .env
+    pass: process.env.EMAIL_PASS, // Load from .env
+  },
+});
+
+// Function to send an email
 const sendSubscriptionEmail = async (email) => {
   try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',  // Use Gmail or other SMTP providers
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Unniyarcha Team" <${process.env.EMAIL_USER}>`, 
       to: email,
       subject: 'Thank You for Subscribing to Unniyarcha',
       text: `Hello,\n\nThank you for subscribing to Unniyarcha. We are excited to have you on board!\n\nBest regards,\nUnniyarcha Team\nwww.unniyarcha.com`,
     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('Subscription email sent to', email);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info.response);
+    return info.response;
   } catch (error) {
     console.error('Error sending email:', error);
+    throw error;
   }
 };
 
