@@ -4,6 +4,8 @@ import easyReturnLogo from '../../assets/images/easyReturnLogo.jpg'; // Import l
 import lifetimePlatingLogo from '../../assets/images/lifetimePlatingLogo.jpg'; // Import logo
 import pureSilverLogo from '../../assets/images/pureSilverLogo.jpg'; // Import logo
 import codLogo from '../../assets/images/codLogo.jpg'; // Import logo
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
@@ -67,10 +69,36 @@ const ProductDetail = () => {
     }
   };
 
-  const addToCart = () => {
-    alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
-  };
+ // const addToCart = () => {
+   // alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
+  //};
+  const addToCart = async (productId) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+      });
 
+      if (!response.ok) {
+        throw new Error("Failed to add product to cart");
+      }
+
+      const data = await response.json();
+      toast.success(data.message || "Product added to cart!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error.message);
+      toast.error("Error adding product to cart. Please try again.", {
+        position: "top",
+        autoClose: 3000,
+      });
+    }
+  };
   const handleOfferClick = (offer) => {
     navigator.clipboard.writeText(offer).then(() => {
       alert(`Offer "${offer}" has been copied to the clipboard!`);
@@ -183,7 +211,7 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <button className="add-to-cart-btn" onClick={addToCart}>
+        <button className="add-to-cart-btn" onClick={addToCart(product?.productId)}>
           Add to Cart
         </button>
 

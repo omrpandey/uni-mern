@@ -4,7 +4,7 @@ const Cart = require('../models/cart'); // Import Cart schema
 const Product = require('../models/product'); // Import Product schema
 
 // Route to add a product to the cart (no userId)
-router.post('/cart/add', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         const { productId } = req.body; 
         console.log('Request Body:', req.body); // Debug log
