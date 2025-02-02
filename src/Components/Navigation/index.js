@@ -23,7 +23,7 @@ const Navbar = () => {
           </li>
           <li className="list-inline-item has-submenu-1">
             <div className="submenu-trigger-1">
-              <Link to="#" className="sui-dang-1">
+              <Link to="/shopss" className="sui-dang-1">
                 Shop by category <IoIosArrowDown />
               </Link>
             </div>
@@ -31,8 +31,8 @@ const Navbar = () => {
               <div className="submenu-content-1">
                 <div className="submenu-section-1">
                   <h4>Traditional</h4>
-                  <Link to="/earrings"><Button>Earrings</Button></Link>
-                  <Link to="/anklets"><Button>Anklets</Button></Link>
+                  <Link to="/Lotus"><Button>Earrings</Button></Link>
+                  <Link to="/Flashsaless"><Button>Anklets</Button></Link>
                   <Link to="/toe-rings"><Button>Toe Rings</Button></Link>
                   <Link to="/necklace"><Button>Necklace</Button></Link>
                   <Link to="/bangles"><Button>Bangles</Button></Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
             </span>
           </li>
           <li className="list-inline-item has-submenu-3">
-            <Link to="/contact">Gifting <IoIosArrowDown /></Link>
+            <Link to="/Gifting">Gifting <IoIosArrowDown /></Link>
             
             <div className="submenu-3">
               <div className="submenu-content-3">

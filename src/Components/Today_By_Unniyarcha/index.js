@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Lotus from '../Lotus'; 
 import './tbu.css';
-import lovestories from "../../assets/images/lovestories.jpg"; // Correct image path
+import todaybyunni from "../../assets/images/todaybyunni.jpg"; // Correct image path
 
 const Today_by_unniyarcha = () => {
   const [animate, setAnimate] = useState(false); // Added state for animate
@@ -10,7 +10,7 @@ const Today_by_unniyarcha = () => {
     <div>
       <div className={`banner-container7 ${animate ? "pop-out7" : ""}`}>
         <img
-          src={lovestories}
+          src={todaybyunni}
           alt="Wedding Banner"
           className="ws-banner-img7"
         />
