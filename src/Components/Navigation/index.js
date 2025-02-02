@@ -71,22 +71,25 @@ const Navbar = () => {
                 Collection <IoIosArrowDown />
               </Link>
             </div>
-            <div className="submenu-2">
+          
+              <div className="submenu-content-2">
+              <div className="submenu-2">
               <div className="submenu-content-2">
                 <div className="submenu-section-2">
-                  <Link to="/earrings"><Button>Earrings</Button></Link>
-                  <Link to="/anklets"><Button>Anklets</Button></Link>
-                  <Link to="/toe-rings"><Button>Toe Rings</Button></Link>
-                  <Link to="/necklace"><Button>Necklace</Button></Link>
-                  <Link to="/bangles"><Button>Bangles</Button></Link>
-                  <Link to="/rings"><Button>Rings</Button></Link>
-                  <Link to="/head-jewelry"><Button>Head Jewelry</Button></Link>
-                  <Link to="/silver-articles"><Button>Silver Articles</Button></Link>
-                  <Link to="/nose-pins"><Button>Nose Pins</Button></Link>
+                  <Link to="/earrings"><Button>999 Silver coin collection</Button></Link>
+                  <Link to="/anklets"><Button>Mangalsutra</Button></Link>
+                  <Link to="/toe-rings"><Button>Swan Collection</Button></Link>
+                  <Link to="/necklace"><Button>Earcuff</Button></Link>
+                  <Link to="/bangles"><Button>Bridgerton Special</Button></Link>
+                  <Link to="/rings"><Button>Celebrations ( Green )</Button></Link>
+                  <Link to="/head-jewelry"><Button>Aam Ras( Aambi )</Button></Link>
+                  <Link to="/silver-articles"><Button>Evil Eye Collection</Button></Link>
+                  <Link to="/nose-pins"><Button>Minimal</Button></Link>
+                 <Link to="/nose-pins"><Button>Pearl collectionl</Button></Link>
                 </div>
                 </div>
               </div>
-      
+      </div>
           </li>
          
           <li className="list-inline-item">
@@ -111,19 +114,16 @@ const Navbar = () => {
           </li>
           <li className="list-inline-item has-submenu-3">
             <Link to="/contact">Gifting <IoIosArrowDown /></Link>
+            
             <div className="submenu-3">
               <div className="submenu-content-3">
                 <div className="submenu-section-3">
-                  <Link to="/earrings"><Button>Earrings</Button></Link>
-                  <Link to="/anklets"><Button>Anklets</Button></Link>
-                  <Link to="/toe-rings"><Button>Toe Rings</Button></Link>
-                  <Link to="/necklace"><Button>Necklace</Button></Link>
-                  <Link to="/bangles"><Button>Bangles</Button></Link>
-                  <Link to="/rings"><Button>Rings</Button></Link>
-                  <Link to="/head-jewelry"><Button>Head Jewelry</Button></Link>
-                  <Link to="/silver-articles"><Button>Silver Articles</Button></Link>
-                  <Link to="/nose-pins"><Button>Nose Pins</Button></Link>
-                </div>
+                  <Link to="/earrings"><Button>Gift for Her</Button></Link>
+                  <Link to="/anklets"><Button>Gift under 1499</Button></Link>
+                  <Link to="/toe-rings"><Button>Gift for Him</Button></Link>
+                  <Link to="/necklace"><Button>Gift under 2999</Button></Link>
+                  <Link to="/bangles"><Button>Gift under 2999l</Button></Link>
+                                 </div>
                 </div>
               </div>
           </li>
