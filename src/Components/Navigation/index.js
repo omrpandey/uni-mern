@@ -109,8 +109,23 @@ const Navbar = () => {
               <sup>New</sup>
             </span>
           </li>
-          <li className="list-inline-item">
+          <li className="list-inline-item has-submenu-3">
             <Link to="/contact">Gifting <IoIosArrowDown /></Link>
+            <div className="submenu-3">
+              <div className="submenu-content-3">
+                <div className="submenu-section-3">
+                  <Link to="/earrings"><Button>Earrings</Button></Link>
+                  <Link to="/anklets"><Button>Anklets</Button></Link>
+                  <Link to="/toe-rings"><Button>Toe Rings</Button></Link>
+                  <Link to="/necklace"><Button>Necklace</Button></Link>
+                  <Link to="/bangles"><Button>Bangles</Button></Link>
+                  <Link to="/rings"><Button>Rings</Button></Link>
+                  <Link to="/head-jewelry"><Button>Head Jewelry</Button></Link>
+                  <Link to="/silver-articles"><Button>Silver Articles</Button></Link>
+                  <Link to="/nose-pins"><Button>Nose Pins</Button></Link>
+                </div>
+                </div>
+              </div>
           </li>
           <li className="list-inline-item">
             <Link to="/Reviews">Reviews</Link>
