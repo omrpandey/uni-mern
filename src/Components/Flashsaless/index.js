@@ -17,7 +17,9 @@ const Flashsaless = () => {
   const [sortOption, setSortOption] = useState('alphabetically');
   const navigate = useNavigate(); // Initialize navigate for routing
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({});
   const [currentImages2, setCurrentImages2] = useState({
     initial: "",
     hover: "",
@@ -27,34 +29,102 @@ const Flashsaless = () => {
     // Prevent submenu from closing if it's a filter interaction
     setOpenSubmenu((prev) => (prev === submenuId ? prev : submenuId));
   };
-
-
-  useEffect(() => {
-    setAnimate(true); // Trigger animation when the component mounts
-  }, []);
+  // Function to handle filter change
   const handleFilterChange = (event) => {
-    const { value, checked } = event.target;
-    setSelectedFilters((prevFilters) =>
-      checked ? [...prevFilters, value] : prevFilters.filter((item) => item !== value)
-    );
-  };
-  // Fetch filtered or all products based on selected filters
-  useEffect(() => {
-    const fetchFilteredProducts = async () => {
-      try {
-        setLoading(true); // Set loading state to true while fetching
-        const filterQuery = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
-        const response = await axios.get(`http://localhost:5000/api/product${filterQuery}`);
-        setProducts(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        setLoading(false);
-      }
-    };
+    const value = event.target.value;
 
-    fetchFilteredProducts();
-  }, [selectedFilters]); // Re-run when selectedFilters changes
+    setSelectedFilters((prevFilters) => {
+      if (prevFilters.includes(value)) {
+        // Remove filter if it's already selected
+        return prevFilters.filter((filter) => filter !== value);
+      } else {
+        // Add filter if it's not selected
+        return [...prevFilters, value];
+      }
+    });
+  };
+
+
+  // Handle sorting change
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+  const fetchFilteredAndSortedProducts = async () => {
+    try {
+      setLoading(true); // Show loading state
+  
+      // Construct the filter query string based on selected filters
+      const filterQuery = selectedFilters.length > 0 ? `filters=${selectedFilters.join(',')}` : '';
+      const sortQuery = sortOption ? `sort=${sortOption}` : '';
+  
+      // Construct the API URL with filters and sort queries
+      let apiUrl = `http://localhost:5000/api/product/flashsaless?`;
+  
+      if (filterQuery) {
+        apiUrl += filterQuery;
+      }
+  
+      if (sortQuery) {
+        if (filterQuery) {
+          apiUrl += `&${sortQuery}`;
+        } else {
+          apiUrl += sortQuery;
+        }
+      }
+  
+      console.log("Fetching Data From:", apiUrl); // Debugging
+  
+      // Fetch products from the API
+      const response = await axios.get(apiUrl);
+      console.log("Response Data:", response.data); // Debugging
+  
+      // If no products are found, show a message or show all products
+      if (Array.isArray(response.data) && response.data.length === 0) {
+        setProducts([]); // Show no products message
+      } else {
+        setProducts(response.data); // Show filtered products
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+  
+      // Handle error responses
+      if (error.response && error.response.status === 404) {
+        setProducts([]); // Handle 404 error case
+      } else {
+        alert("An error occurred while fetching products."); // Generic error message
+      }
+    } finally {
+      setLoading(false); // Ensure loading stops in all cases
+    }
+  };
+  
+  
+// Call the function in useEffect
+useEffect(() => {
+  fetchFilteredAndSortedProducts();
+}, [selectedFilters, sortOption]);
+
+  
+
+  // Apply sorting and filtering logic
+  useEffect(() => {
+    let filtered = [...products]; // Start with all products
+
+    // Apply sorting
+    if (sortOption === 'alphabetically') {
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === 'price-low-high') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'price-high-low') {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sortOption === 'rating') {
+      filtered.sort((a, b) => b.rating - a.rating);
+    }
+
+    setFilteredProducts(filtered); // Set sorted and filtered products
+  }, [sortOption, products]);
+
+
 
   // Navigate to a new page when a product is clicked
   const handleProductClick = (productId) => {
@@ -62,10 +132,6 @@ const Flashsaless = () => {
     navigate(`/ProductDetail/${productId}`);
   };
 
-
-  const handleSortChange = (event) => {
-    setSortOption(event.target.value);
-  };
 
   const handleMouseEnter2 = (color) => {
     if (color === 'silver') {
@@ -121,27 +187,27 @@ const Flashsaless = () => {
   const menuItems = [
     {
       title: 'PRODUCT TYPE',
-      options: ['Anklets',  'Chains', 'Earcuff', 'Earrings', 'Necklaces', 'Rings', 'Toe Rings'],
+      options: ['Anklets', 'Chains', 'Earcuff', 'Earrings', 'Necklaces', 'Rings', 'Toe Rings'],
     },
     {
       title: 'COLOR',
-      options: ['Black','Blue','Gold','Green','Oxidised','Pink','Red','Silver'],
+      options: ['Black', 'Blue', 'Gold', 'Green', 'Oxidised', 'Pink', 'Red', 'Silver'],
     },
     {
       title: 'FINISH',
-      options: ['Gold(58)','Oxidised(1)','Silver(79)'],
+      options: ['Gold(58)', 'Oxidised(1)', 'Silver(79)'],
     },
     {
       title: 'STYLE',
-      options: ['Contempory(59)','Traditinal(93)'],
+      options: ['Contempory(59)', 'Traditinal(93)'],
     },
     {
       title: 'METAL',
-      options: ['GoldPlatedAnklets(1)','KundanAnklets(1)'],
+      options: ['GoldPlatedAnklets(1)', 'KundanAnklets(1)'],
     },
     {
       title: 'SUBCATEGORY',
-      options: ['Bali(2)','Bangle/Braclet(1)','BeadedAnklets(1)'],
+      options: ['Bali(2)', 'Bangle/Braclet(1)', 'BeadedAnklets(1)'],
     },
     // Add more categories as needed
   ];
@@ -179,10 +245,12 @@ const Flashsaless = () => {
                           <label>
                             <input
                               type="checkbox"
+                              checked={selectedFilters.includes(option)}
                               name={`filter.${item.title.toLowerCase().replace(' ', '_')}`}
                               value={option}
-                              onChange={(e) => console.log(e.target.value)} // Handle the filter logic
+                              onChange={handleFilterChange}
                             />
+
                             {option}
                           </label>
                         </li>
@@ -221,14 +289,21 @@ const Flashsaless = () => {
                   >
                     <div className="product-img-container">
                       <img
-                        src={product.Image || "default_initial_image.jpg"} // Fetch image from API
-                        alt={product.Name}
-                        className="product-img"
+                        src={product.images && product.images.length > 0 ? product.images[0] : "default_initial_image.jpg"} // Fetch first image from API
+                        alt={product.name || 'Product Image'} // Ensure the correct property is used
+                        className="product-img default-img"
                       />
+                      <img
+                        src={product.images && product.images.length > 1 ? product.images[1] : "default_hover_image.jpg"} // Fetch second image for hover effect
+                        alt={product.name || 'Product Image'}
+                        className="product-img hover-img"
+                      />
+
                       <div className="product-header">
                         {product.discount > 0 && <button className="best-seller">Best Seller</button>}
                       </div>
                     </div>
+
                     <div className="product-details">
                       <p className="product-description">
                         <span className="current-price">{`Rs. ${product.price}`}</span>
@@ -240,11 +315,10 @@ const Flashsaless = () => {
                         )}
                       </p>
                       <p className="product-category">Category: {product.category}</p>
-                      <p className="product-description">{product.discription}</p>
-                      <h3 className="product-name">{product.Name}</h3>
+                      <p className="product-description">{product.description}</p> {/* Correct field name */}
+                      <h3 className="product-name">{product.name}</h3> {/* Correct field name */}
                       <div className="color-selection">
                         <div className="color-circle">
-                          {/* Example: Displaying a color based on the category */}
                           <span
                             className={`circle ${product.category}`}
                             onMouseEnter={() => handleMouseEnter2(product.category)}
@@ -265,7 +339,8 @@ const Flashsaless = () => {
                 <div>No products available</div>
               )}
             </div>
-            
+
+
           </div>
         </div>
       </div>

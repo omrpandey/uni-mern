@@ -30,12 +30,14 @@ const ProductDetail = () => {
   useEffect(() => {
     if (productId) {
       axios
-        .get(`http://localhost:5000/api/product/${productId}`)
+        .get(`http://localhost:5000/api/product/detail/${productId}`)
         .then((response) => {
           setProduct(response.data);
           const ProductId = response.data;
           setProduct(ProductId); // Set product data
-          setCurrentImage(ProductId.Image); // Assuming the image URL is under `image`
+          // Assuming the images array is stored in ProductId.images
+setCurrentImage(ProductId.images[0]); // Set the first image initially
+
         })
         .catch((error) => {
           console.error('Error fetching product:', error);
@@ -46,17 +48,18 @@ const ProductDetail = () => {
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
   };
-
   const goToPrevious = () => {
-    const currentIndex = Image.indexOf(currentImage);
-    const previousIndex = (currentIndex - 1 + Image.length) % Image.length;
-    setCurrentImage(Image[previousIndex]);
+    // Ensure 'images' is an array before calling indexOf
+    const currentIndex = images.indexOf(currentImage);
+    const previousIndex = (currentIndex - 1 + images.length) % images.length;
+    setCurrentImage(images[previousIndex]);
   };
 
   const goToNext = () => {
-    const currentIndex = Image.indexOf(currentImage);
-    const nextIndex = (currentIndex + 1) % Image.length;
-    setCurrentImage(Image[nextIndex]);
+    // Ensure 'images' is an array before calling indexOf
+    const currentIndex = images.indexOf(currentImage);
+    const nextIndex = (currentIndex + 1) % images.length;
+    setCurrentImage(images[nextIndex]);
   };
 
   const incrementQuantity = () => {
@@ -69,8 +72,8 @@ const ProductDetail = () => {
     }
   };
 
- // const addToCart = () => {
-   // alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
+  // const addToCart = () => {
+  // alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
   //};
   const addToCart = async (productId) => {
     try {
@@ -119,9 +122,14 @@ const ProductDetail = () => {
         <img src={currentImage} alt={productId.Name} className="banner-img" />
       </div>
 
-          <div className="arrow arrow-right" onClick={goToNext}>
-            &gt;
-          </div>
+      <div className="arrow arrow-left" onClick={goToPrevious}>
+        &lt;
+      </div>
+
+
+      <div className="arrow arrow-right" onClick={goToNext}>
+        &gt;
+      </div>
 
 
       {/* Right side - Product details */}
@@ -137,7 +145,7 @@ const ProductDetail = () => {
         </div>
 
         <p className="product-description">
-        {productId.Name}
+          {productId.Name}
         </p>
 
         <div className="review-section">
@@ -211,9 +219,10 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <button className="add-to-cart-btn" onClick={addToCart(product?.productId)}>
+        <button className="add-to-cart-btn" onClick={() => addToCart(product?.productId)}>
           Add to Cart
         </button>
+
 
         <div className="special-offers">
           <h3>Special Offers</h3>
@@ -255,7 +264,7 @@ const ProductDetail = () => {
               className={`dropdown-content ${isActiveDescription ? 'active' : ''}`}
             >
               <p>
-              {product?.discription}
+                {product?.description}
               </p>
             </div>
           </div>

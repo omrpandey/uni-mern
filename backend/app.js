@@ -38,7 +38,28 @@ connectDB();
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
-app.use(cors({ origin: 'http://localhost:3000'}));
+
+// Enable CORS for all routes
+app.use(cors());
+
+// OR, if you want to allow only specific origins:
+app.use(cors({
+  origin: 'http://localhost:3000', // Change this to your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}));
+
+
+// Enable CORS for all routes
+app.use(cors());
+
+// OR, if you want to allow only specific origins:
+app.use(cors({
+  origin: 'http://localhost:3000', // Change this to your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}));
+
 
 
 // Root route
