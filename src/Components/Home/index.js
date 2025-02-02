@@ -167,27 +167,28 @@ const Home = () => {
 
 
 
-<div className="section-header"><div className="section-header__title">Festive Silver Earrings</div></div>
-<div className="section-header"><div className="section-header__title">The perfect gift - Pure 92.5 Silver Anklets</div></div>
-<div className="section-header"><div className="section-header__title">Bestsellers</div></div>
-
-
-
       {/* Testimonials Slider */}
       <div className="showcase-slider" >
         <h2 align="center" className="section-header">1 Lakh+ Happy Customers</h2>
         <Slider {...sliderSettings}>
-          {testimonials.map((testimonial, index) => (
-            <div key={index}   className="testimonials-slide">
-              <blockquote className="testimonials-slider__text">
-                <span className="testimonial-stars"><strong>{testimonial.stars}</strong></span>
-                <p><strong>{testimonial.strong}</strong></p>
-                <p>{testimonial.text}</p>
-                <cite><strong>{testimonial.cite}</strong></cite>
-              </blockquote>
-            </div>
-          ))}
-        </Slider>
+  {testimonials.map((testimonial, index) => (
+    <div key={index} className="testimonials-slide">
+      <blockquote className="testimonials-slider__text">
+        {/* Display Stars, Text, and Cite */}
+        <span className="testimonial-stars">{testimonial.stars}</span>
+        <p><strong>{testimonial.strong}</strong></p>
+        <p>{testimonial.text}</p>
+        <img 
+          src={testimonial.image} 
+          alt="Testimonial"
+          className="testimonial-image"
+        />
+        <cite><strong>{testimonial.cite}</strong></cite>
+      </blockquote>
+    </div>
+  ))}
+</Slider>
+
          {/* In-house Manufacturing Section */}
       <div >
         <a href="/Weds">

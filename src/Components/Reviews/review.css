@@ -1,111 +1,264 @@
-.review-page {
-  width: 80%;
-  margin: 0 auto;
+/* Container for the whole review page */
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
-h1 {
-  text-align: center;
+/* Review Heading */
+.review-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
 
-.review-summary {
+/* Full-screen Review Box */
+.review-box {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100vw;  /* Full screen width */
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: auto; /* Allow scrolling */
+}
+
+/* Review content: Left and Right side */
+.review-content {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 }
 
-.left-side {
-  width: 60%;
+/* Left side - Star and text */
+.review-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.right-side {
-  width: 35%;
+.stars {
+  color: #ffd700;
+  font-size: 22px;
 }
 
-.star-icons {
-  font-size: 30px;
+.review-text {
+  color: #666;
+  margin-top: 8px;
+  font-size: 14px;
 }
 
-.rating-summary {
-  margin-top: 10px;
+/* Right side - Progress and Button */
+.review-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
 }
 
-.rating-line {
+.progress-text-container p {
   display: flex;
   align-items: center;
+  font-size: 14px;
   margin: 5px 0;
+  white-space: nowrap;
+  padding-left: 30px;
 }
 
-.percentage-bar {
-  flex: 1;
+.progress-inline {
+  display: inline-block;
+  width: 100px;
   height: 10px;
   background-color: #e0e0e0;
-  margin: 0 10px;
+  border-radius: 5px;
+  margin: 0 8px;
+  position: relative;
+  overflow: hidden;
 }
 
-.progress-bar {
+.progress-fill {
   height: 100%;
-  background-color: #4CAF50;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.write-review-button {
-  margin-bottom: 20px;
-}
-
-.review-form {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-input[type="text"], input[type="email"], select, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  font-size: 14px;
-  border: 1px solid #ccc;
+  background-color: #ff9800;
+  position: absolute;
+  left: 0;
+  top: 0;
   border-radius: 5px;
 }
 
-textarea {
-  resize: vertical;
+.review-btn {
+  background-color: transparent;
+  color: #2196F3;
+  padding: 8px 16px; /* Smaller size */
+  border: 2px solid #2196F3;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+  position: absolute; /* Make it position absolute within the parent container */
+  right: 20px; /* Align to the right side */
+  top: 290px; /* Add a bit of top margin to keep space from the top */
 }
 
-.submit-button {
-  background-color: #4CAF50;
+
+.review-btn:hover {
+  background-color: #2196F3;
   color: white;
-  padding: 10px 20px;
+}
+
+/* Dropdown Form Styles */
+.review-form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.review-form h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-field label {
+  font-size: 14px;
+  color: #333;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-field textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-btn {
+  background-color: #2196F3;
+  color: white;
+  padding: 12px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.submit-button:hover {
-  background-color: #45a049;
+.submit-btn:hover {
+  background-color: #1976d2;
 }
 
-.jdgm-histogram__bar {
-  width: 100%; /* Container takes full width */
-  height: 16px; /* Height of the progress bar */
-  background-color: #f0f0f0; /* Light background for the container */
-  border-radius: 8px; /* Rounded corners for the bar */
-  overflow: hidden; /* Ensure content doesn't overflow */
-  margin-bottom: 10px; /* Spacing between bars */
+.sort-dropdown-container {
+  display: flex;
+  flex-direction: column; /* Stack the elements */
+  align-items: flex-start; /* Align the dropdown to the left */
+  width: auto; /* Auto width for the container */
+  margin: 20px 0; /* Add spacing around */
+  padding-left: 0; /* Ensure no padding on the left */
 }
 
+/* Style for the dropdown select */
+.sort-dropdown-container select {
+  width: 150px; /* Set a fixed width for a smaller dropdown */
+  padding: 10px 15px; /* Smaller padding to reduce the size */
+  font-size: 14px; /* Smaller font size */
+  border: 1px solid #000000;
+  background-color: transparent !important; /* Transparent background */
+  cursor: pointer; /* Pointer cursor for better UX */
+  outline: none; /* Remove outline for clean look */
+  height: 40px; /* Set a smaller height */
+  margin-bottom: 10px; /* Space below dropdown */
+  margin-left: 0; /* Ensure it is directly aligned to the left */
+}
 
+/* Style for the button (if you need a button alongside the dropdown) */
+.sort-dropdown-container button {
+  padding: 25px 30px; /* Add extra padding for larger button */
+  background-color: transparent !important;
+  border: 1px solid #ccc;
+  font-size: 16px; /* Increase font size for better visibility */
+  height: 50px; /* Ensure button height is consistent */
+  cursor: pointer; /* Pointer cursor for button */
+  outline: none; /* Remove outline */
+  width: 180px; /* Set a fixed width for the button */
+  margin-left: 0; /* Align button to the left of the container */
+}
+
+.review-box2 {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: 0; /* Align the box to the left */
+  margin-right: 0; /* Remove right margin */
+  text-align: left;
+}
+
+.review-header,
+.verified-box,
+.review-date,
+.review-title,
+.review-comment,
+.product-name {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.customer-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.verified {
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #777;
+}
+
+.review-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.review-comment {
+  font-size: 16px;
+  color: #555;
+}
+
+.review-divider {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}

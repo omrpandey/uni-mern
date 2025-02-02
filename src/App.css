@@ -302,74 +302,27 @@ sup {
   color: pink; /* Changes color of "New" label on hover */
 }
 
-/* Submenu */
-
+/* Hide submenu by default */
 .submenu {
-  background-color: white;
+  display: none;
   position: absolute;
   top: 50px;
   left: -600px;
   width: 1400px;
-  display: none;
   z-index: 999;
+  background-color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
 }
 
-.submenu ul {
-  padding: 0; /* No padding */
-  margin: 0; /* No margin */
-  list-style: none; /* Remove default list styling */
-  display: flex; /* Use flex to line items horizontally */
-}
-
-.submenu-section {
-  margin: 0; /* Remove margin between list items */
-}
-
-/* Show submenu when hovering over parent li */
+/* Show submenu on hover */
 .list-inline-item.has-submenu:hover .submenu {
-  display: block; /* Show submenu */
-}
-
-/* Flex layout for the submenu sections horizontally */
-.submenu-content {
-  display: flex;
-  justify-content: space-around; /* Distribute sections evenly */
-  padding: 0 20px;
-}
-
-.submenu-section {
-  flex: 1;
-  padding: 0 10px;
-}
-
-.submenu-section a {
   display: block;
-  padding: 0; /* Remove padding */
-  text-decoration: none;
-  color: black; /* Set text color to black */
-  font-size: 14px;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.submenu-section a:hover {
-  background-color: #f0f0f0;
-  color: #ff4081; /* Pink color on hover */
-}
-
-/* Styling the section titles (e.g., Traditional, Contemporary, Mens) */
-.submenu-section h4 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  text-align: center;
-  color: black; /* Set section title text color to black */
-}
-
-/* Ensure the sections have clear visual separation */
-.list-inline-item {
-  position: relative;
+/* Smooth transition for better UX */
+.submenu {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* Banner */
