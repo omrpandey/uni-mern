@@ -2,9 +2,6 @@
     align-items: center;
 }
 
-
-
-
 /* Global styles */
 body {
     font-family: Arial, sans-serif;
@@ -154,6 +151,7 @@ body {
   text-align: center;
 }
 
+
 .testimonials-slider__text{
  display:block;
   background-color: #ffdde4;
@@ -180,3 +178,88 @@ testimonial-stars {
   margin-top: 20px; /* Adds space above the image */
   align-items: center;
 }
+
+.testimonials-slide{
+  background: #ffdde4;
+  padding-bottom: 10%;
+  padding-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 40px;
+  width: 40px;
+}
+
+.testimonials-slider__text{
+  text-align: center;
+  font-size: large;
+}
+
+#sy-whatshelp {
+  right: 10px;
+  bottom: 80px;
+  position: fixed;
+  z-index: 9999;
+}
+
+#sy-whatshelp a.sywh-open-services {
+  background-color: #20c251;
+  color: #fff;
+  line-height: 55px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 45px;
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  box-shadow: 2px 2px 8px -3px #000;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  display: inline-block;
+}
+
+*, :after, :before, input {
+  box-sizing: border-box;
+}
+*, :after, :before, input {
+  box-sizing: border-box;
+}
+
+#sy-whatshelp a.sywh-open-services i {
+  line-height: 65px;
+}
+
+.fab, .far {
+  font-weight: 400;
+}
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+.fa, .fab, .fad, .fal, .far, .fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.fab {
+  font-weight: 400;
+}
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+

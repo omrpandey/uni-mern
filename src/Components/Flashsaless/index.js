@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for page navigation
-import valentine from '../../assets/images/valentine.jpg'; // Correct image path
+import lovestories from '../../assets/images/lovestories.jpg'; // Correct image path
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import silverkundan from '../../assets/images/silverkundan.jpg'; // Silver image
 import man1 from '../../assets/images/man1.jpg'; // New initial image for second product
@@ -220,7 +220,7 @@ useEffect(() => {
       {/* Conditional class based on 'animate' state */}
       <div>
         <div className={`banner-container7 ${animate ? 'pop-out7' : ''}`}>
-          <img src={valentine} alt="Wedding Banner" className="ws-banner-img7" />
+          <img src={lovestories} alt="Wedding Banner" className="ws-banner-img7" />
         </div>
 
         {/* Main Container (Navbar + Product Info Section) */}

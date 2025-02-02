@@ -1,52 +1,17 @@
-/* Currency Selector Styling */
 .currency-selector {
-    position: fixed;
-    bottom: 10px; /* Adjust this value to position it higher or lower */
-    left: 10px;   /* Adjust this value to position it further left or right */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional background color */
-    padding: 10px;
-    border-radius: 5px; /* Optional, for rounded corners */
-    z-index: 1000; /* Ensures it's above other content */
-  }
+  position: relative;
+  top: 1050px;
+  right: 250px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   
-  
-  /* Hover effect on the card */
-  .currency-selector:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Title inside the Currency Selector */
-  .currency-selector h2 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Select Dropdown Styling */
-  .currency-selector select {
-    padding: 10px;
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #333;
-    outline: none;
-  }
-  
-  /* Style for when the dropdown is focused */
-  .currency-selector select:focus {
-    border-color: #333;
-    background-color: #fff;
-  }
-  
-  /* Displaying selected currency and exchange rate */
-  .currency-selector p {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #666;
-    font-weight: bold;
-  }
-  
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 0px;
+}
+
+.currency-selector img {
+  width: 20px;
+  height: 20px;
+}

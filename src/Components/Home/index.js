@@ -15,6 +15,8 @@ import mensjewelrylink from '../../assets/images/mensjewelrylink.jpg';
 import Giftsforher from '../../assets/images/Giftsforher.jpg';
 import Giftsforhim from '../../assets/images/Giftsforhim.jpg';
 import inhousemanufacturing from '../../assets/images/inhousemanufacturing.jpg';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 const Home = () => {
   const [animate, setAnimate] = useState(false);
@@ -22,13 +24,13 @@ const Home = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1200,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: false,
-    style:{ marginBottom: '80px' }
+    style: { marginBottom: '80px' }
   };
 
   const testimonials = [
@@ -71,6 +73,19 @@ const Home = () => {
 
   return (
     <main>
+   <div id="sy-whatshelp">
+  <a
+    href="https://api.whatsapp.com/send?phone=918527218333&amp;text=Hi"
+    target="_blank"
+    className="sywh-open-services"
+    data-html="true"
+    data-placement="left"
+  >
+    <i className="fab fa-whatsapp" style={{ fontSize: '30px', color: '#25d366' }}></i> {/* WhatsApp Icon */}
+  </a>
+</div>
+
+
       {/* Valentine's Day Section */}
       <div className={`dvalentine-container ${animate ? 'pop-out' : ''}`}>
         <img
@@ -129,33 +144,33 @@ const Home = () => {
           </Box>
         </section>
       </div>
-         
-     
-<div className="gifts">
-<div style={{ display: 'flex', justifyContent: 'space-between',  }} >
-<div className="box1" style={{ display: 'flex', justifyContent: 'space-between', marginRight: "51px" }} >
-  <a href="/Weds" className="her-link">
-    <img
-      src={Giftsforher}
-      alt="Gifts for her"
-      className="her-image"
-      style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
-    />
-  </a>
-</div>
 
-<div className="box2">
-  <a href="/Weds" className="him-link">
-    <img
-      src={Giftsforhim}
-      alt="Gifts for him"
-      className="him-image"
-      style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
-    />
-  </a>
-</div>
-</div>
-</div>
+
+      <div className="gifts">
+        <div style={{ display: 'flex', justifyContent: 'space-between', }} >
+          <div className="box1" style={{ display: 'flex', justifyContent: 'space-between', marginRight: "51px" }} >
+            <a href="/Weds" className="her-link">
+              <img
+                src={Giftsforher}
+                alt="Gifts for her"
+                className="her-image"
+                style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
+              />
+            </a>
+          </div>
+
+          <div className="box2">
+            <a href="/Weds" className="him-link">
+              <img
+                src={Giftsforhim}
+                alt="Gifts for him"
+                className="him-image"
+                style={{ width: '580px', height: '580px', borderRadius: '8px', objectFit: 'cover' }}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -164,35 +179,39 @@ const Home = () => {
       <div className="showcase-slider" >
         <h2 align="center" className="section-header">1 Lakh+ Happy Customers</h2>
         <Slider {...sliderSettings}>
-  {testimonials.map((testimonial, index) => (
-    <div key={index} className="testimonials-slide">
-      <blockquote className="testimonials-slider__text">
-        {/* Display Stars, Text, and Cite */}
-        <span className="testimonial-stars">{testimonial.stars}</span>
-        <p><strong>{testimonial.strong}</strong></p>
-        <p>{testimonial.text}</p>
-        <img 
-          src={testimonial.image} 
-          alt="Testimonial"
-          className="testimonial-image"
-        />
-        <cite><strong>{testimonial.cite}</strong></cite>
-      </blockquote>
-    </div>
-  ))}
-</Slider>
 
-         {/* In-house Manufacturing Section */}
-      <div >
-        <a href="/Weds">
-          <img
-            src={inhousemanufacturing}
-            alt="In-house Manufacturing"
-            className="manufact-img"
-            style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-          />
-        </a>
-      </div>
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="testimonials-slide">
+              <blockquote className="testimonials-slider__text">
+                {/* Display Stars, Text, and Cite */}
+                <span className="testimonial-stars">{testimonial.stars}</span>
+                <p><strong>{testimonial.strong}</strong></p>
+                <p>{testimonial.text}</p>
+                <img
+                  src={testimonial.image}
+                  alt="Testimonial"
+                  className="testimonial-image"
+                />
+                <cite><strong>{testimonial.cite}</strong></cite>
+              </blockquote>
+            </div>
+          ))}
+        </Slider>
+
+
+
+
+        {/* In-house Manufacturing Section */}
+        <div >
+          <a href="/Weds">
+            <img
+              src={inhousemanufacturing}
+              alt="In-house Manufacturing"
+              className="manufact-img"
+              style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+            />
+          </a>
+        </div>
       </div>
     </main>
   );
