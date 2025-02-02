@@ -20,6 +20,7 @@ const Profile = () => {
         setUser(response.data); // Handle the successful login response
         alert("Login successful!");
         navigate("/"); // Navigate to the home page
+        sessionStorage.setItem("userId", response.data.id); // Store the userId in session storage
     })
     .catch((error) => {
         console.error("Error logging in:", error.response?.data?.message || error.message);

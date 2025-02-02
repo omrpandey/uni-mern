@@ -72,17 +72,37 @@ setCurrentImage(ProductId.images[0]); // Set the first image initially
     }
   };
 
-  const addToCart = async (productId) => {
+  const addToCart = async (productId, prevQuantity) => {
     try {
-      await axios.post('/api/cart/add', {
-        productId,
-        quantity: 1
+      const userId = sessionStorage.getItem("userId");
+  
+      const response = await fetch("http://localhost:5000/api/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId, userId, quantity: prevQuantity }),
       });
-      // Optionally show success message or update cart count
+  
+      if (!response.ok) {
+        throw new Error("Failed to add product to cart");
+      }
+  
+      const data = await response.json();
+      toast.success(data.message || "Product added to cart!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      console.error("Error adding product to cart:", error.message);
+      toast.error("Error adding product to cart. Please try again.", {
+        position: "top",
+        autoClose: 3000,
+      });
     }
   };
+  
+
 
   const handleOfferClick = (offer) => {
     navigator.clipboard.writeText(offer).then(() => {
@@ -201,7 +221,7 @@ setCurrentImage(ProductId.images[0]); // Set the first image initially
           </div>
         </div>
 
-        <button className="add-to-cart-btn" onClick={() => addToCart(product?.productId)}>
+        <button className="add-to-cart-btn" onClick={() => addToCart(product?.productId,quantity)}>
           Add to Cart
         </button>
 

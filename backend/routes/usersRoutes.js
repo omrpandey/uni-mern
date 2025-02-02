@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
 
         if (user) {
             res.status(200).json({
-                id: user.id,
+                id: user.userId,
                 userName: user.userName,
                 email: user.email
             });
@@ -62,4 +62,4 @@ router.post("/login", async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router
