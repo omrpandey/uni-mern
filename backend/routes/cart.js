@@ -3,9 +3,6 @@ const router = express.Router();
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 
-// Route to add a product to the cart (no userId)
-router.post('cart/add', async (req, res) => {
-// Enhanced Add to Cart Route
 router.post('/cart/add', async (req, res) => {
     try {
         const { productId, userId, quantity = 1 } = req.body;
@@ -79,6 +76,7 @@ router.post('/cart/add', async (req, res) => {
         res.status(500).json({ error: 'Server error', details: error.message });
     }
 });
+
 
 // Enhanced Update Cart Route
 router.put('/cart/update', async (req, res) => {
@@ -199,4 +197,85 @@ router.get('/cart', async (req, res) => {
     }
 });
 
-module.exports = router;
+router.post('/add', async (req, res) => {
+    try {
+        const { productId, quantity = 1, userId } = req.body;
+
+        // Validation
+        if (!productId || !userId) {
+            return res.status(400).json({ error: 'Product ID and User ID are required' });
+        }
+
+        // Find product by productId (since it's a number, not an ObjectId)
+        const product = await Product.findOne({ productId: productId });
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        // Stock validation
+        if (product.quantity < quantity) {
+            return res.status(400).json({ 
+                error: `Only ${product.countInStock} items available in stock`
+            });
+        }
+        else{
+            product.quantity -= quantity;
+            await product.save();
+        }
+
+        // Find user's cart or create new one
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            cart = new Cart({ userId, products: [] });
+        }
+
+        // Check if product already exists in cart
+        const existingProduct = cart.products.find(p => p.productId === productId);
+
+        if (existingProduct) {
+            // Update quantity and subtotal
+            const newQuantity = existingProduct.quantity + quantity;
+            if (newQuantity > product.countInStock) {
+                return res.status(400).json({
+                    error: `Cannot add more than ${product.countInStock} items`
+                });
+            }
+            existingProduct.quantity = newQuantity;
+            existingProduct.subTotal = (product.priceWithCoupon || product.price) * newQuantity;
+        } else {
+            // Add new item with all required fields
+            cart.products.push({
+                productId: product.productId,  // Using `productId` as a number
+                name: product.name,
+                price: product.priceWithCoupon || product.price,
+                discount: product.discount,
+                quantity,
+                imageUrl: product.images?.[0] || '',
+                subTotal: (product.priceWithCoupon || product.price) * quantity,
+                countInStock: product.quantity,  // Fix: Ensure countInStock is included
+                userId,
+                productTitle: product.name,
+                description: product.description,
+                rating: product.rating || 0  // Fix: Ensure rating is always included
+            });
+        }
+
+        await cart.save();
+        
+        // Calculate totals
+        const cartCount = cart.products.reduce((total, p) => total + p.quantity, 0);
+        const totalAmount = cart.products.reduce((total, p) => total + p.subTotal, 0);
+
+        res.status(200).json({ 
+            message: 'Product added to cart',
+            cart,
+            cartCount,
+            totalAmount
+        });
+
+    } catch (error) {
+        console.error('Cart Error:', error);
+        res.status(500).json({ error: 'Server error', details: error.message });
+    }
+});
+module.exports = router
