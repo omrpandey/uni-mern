@@ -3,9 +3,7 @@ const router = express.Router();
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 
-// Route to add a product to the cart (no userId)
-router.post('/add', async (req, res) => {
-// Enhanced Add to Cart Route
+
 router.post('/cart/add', async (req, res) => {
     try {
         const { productId, userId, quantity = 1 } = req.body;
