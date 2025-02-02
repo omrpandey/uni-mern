@@ -14,6 +14,7 @@ import ProductDetail from './Components/ProductDetail';
 import SuiDang from './Components/SuiDang';
 import ReShop from './Components/ReShop';
 import Reviews from './Components/Reviews';
+import CurrencySelector from './Components/CurrencySelector';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/ProductDetail/:productId" element={<ProductDetail />} />
             <Route path="/ReShop" element={<ReShop />} /> 
             <Route path="/Reviews" element={<Reviews />} /> 
+            <Route path="/CurrencySelector" element={<CurrencySelector />} /> 
           </Routes>
         </div>
         <Footer /> 

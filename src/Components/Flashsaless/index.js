@@ -9,6 +9,7 @@ import './flashsaless.css'; // Ensure you have this CSS file for styling
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+import '../CurrencySelector/index.js';
 
 
 const Flashsaless = () => {
