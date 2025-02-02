@@ -34,9 +34,9 @@ const CurrencySelector = () => {
       `http://localhost:5000/api/convert-currency?currency=${selectedOption.value}`
     );
     setExchangeRate(data.rate); // Set exchange rate from the response
-    alert(
-      `1 USD = ${data.convertedAmount} ${selectedOption.value}` // Display the conversion
-    );
+    // alert(
+    //   `1 USD = ${data.convertedAmount} ${selectedOption.value}` // Display the conversion
+    // );
   };
 
   return (
@@ -49,17 +49,18 @@ const CurrencySelector = () => {
         onChange={handleCountryChange} // Handle country change
         placeholder="Select a country" // Placeholder text
         menuPlacement="top" // Dropdown placement
+        isMulti={false} // Single select
       />
       
       
-      {/* Display selected currency and exchange rate */}
+      {/* Display selected currency and exchange rate
       {currency && (
         <p>
           Selected Currency: {currency} <br />
            (Exchange Rate: {exchangeRate}) <br />
            Converted Amount: {(1*exchangeRate).toFixed(2)} {currency} for $1 USD
         </p>
-      )}
+      )} */}
     </div>
   );
 };
