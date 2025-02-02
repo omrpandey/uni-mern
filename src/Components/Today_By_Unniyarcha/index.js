@@ -340,8 +340,6 @@ useEffect(() => {
                 <div>No products available</div>
               )}
             </div>
-
-
           </div>
         </div>
       </div>
