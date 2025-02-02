@@ -51,6 +51,27 @@ const ReviewPage = () => {
   </select>
 </div>
 
+<div className="review-box2">
+      <div className="review-header">
+        <span className="customer-name">Ruchi Batra</span>
+      </div>
+      <div className="verified-box">
+        <span className="verified">Verified</span>
+      </div>
+      <div className="review-date">
+        <span>01/18/2025</span>
+      </div>
+      <div className="review-title">
+        <span>Beautiful</span>
+      </div>
+      <div className="review-comment">
+        <span>Lovely design 👌</span>
+      </div>
+      <hr className="review-divider" />
+      <div className="product-name">
+        <span>Silver 92.5 Aam Ras Earring</span>
+      </div>
+    </div>
 
             {/* Transparent Button to Show Form */}
             <button className="review-btn" onClick={handleButtonClick}>
