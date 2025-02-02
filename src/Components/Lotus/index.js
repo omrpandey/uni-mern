@@ -1,3 +1,5 @@
+import Select from 'react-select';
+import Flag from 'react-world-flags';
 import React, { useState ,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for page navigation
 import silverkundan from '../../assets/images/silverkundan.jpg'; // Silver image
@@ -17,6 +19,12 @@ const Lotus = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
    const [filteredProducts, setFilteredProducts] = useState([]);
+   const [selectedCurrency, setSelectedCurrency] = useState(null);
+     const [conversionRate, setConversionRate] = useState(null);
+     const handleChange = async (selectedOption) => {
+       setSelectedCurrency(selectedOption); // Update the selected currency state
+       await fetchFilteredAndSortedProducts(); // Call the function without passing the currency, as it's handled internally
+     };
   const [currentImages2, setCurrentImages2] = useState({
     initial: "",
     hover: "",
@@ -29,6 +37,35 @@ const Lotus = () => {
   useEffect(() => {
     setAnimate(true); // Trigger animation when the component mounts
   }, []);
+
+  const countries = [
+    { code: "US", name: "United States", currency: "USD", flag: "US" },
+    { code: "IN", name: "India", currency: "INR", flag: "IN" },
+    { code: "GB", name: "United Kingdom", currency: "GBP", flag: "GB" },
+    { code: "JP", name: "Japan", currency: "JPY", flag: "JP" },
+    // Add more countries as needed
+  ];
+  const countryOptions = countries.map((country) => ({
+    value: country.currency,
+    label: (
+      <div className="currency-option">
+        <Flag code={country.flag} style={{ width: '20px', height: '15px', marginRight: '8px' }} />
+        {country.name} ({country.currency})
+      </div>
+    ),
+    country: country,
+  }));
+  
+  useEffect(() => {
+    // Call fetchFilteredAndSortedProducts directly when selectedCurrency changes
+    if (selectedCurrency) {
+      fetchFilteredAndSortedProducts();  // No need to call fetchConversionRate separately
+    }
+  }, [selectedCurrency]);
+  
+  
+  
+
   const handleFilterChange = (event) => {
     const value = event.target.value;
 
@@ -48,15 +85,21 @@ const Lotus = () => {
   const handleSortChange = (e) => {
     setSortOption(e.target.value);
   };
+ 
+ 
   const fetchFilteredAndSortedProducts = async () => {
     try {
       setLoading(true); // Show loading state
   
       // Construct the filter query string based on selected filters
-      const filterQuery = selectedFilters.length > 0 ? `filters=${selectedFilters.join(',')}` : '';
-      const sortQuery = sortOption ? `sort=${sortOption}` : '';
+      const filterQuery =
+        selectedFilters.length > 0
+          ? `filters=${selectedFilters.join(",")}`
+          : "";
+      const sortQuery = sortOption ? `sort=${sortOption}` : "";
+      const currencyQuery = selectedCurrency ? `currency=${selectedCurrency.value}` : "";
   
-      // Construct the API URL with filters and sort queries
+      // Construct the API URL with filters, sort, and currency queries
       let apiUrl = `http://localhost:5000/api/product/Lotus?`;
   
       if (filterQuery) {
@@ -68,6 +111,14 @@ const Lotus = () => {
           apiUrl += `&${sortQuery}`;
         } else {
           apiUrl += sortQuery;
+        }
+      }
+  
+      if (currencyQuery) {
+        if (filterQuery || sortQuery) {
+          apiUrl += `&${currencyQuery}`;
+        } else {
+          apiUrl += currencyQuery;
         }
       }
   
@@ -259,7 +310,28 @@ useEffect(() => {
               ))}
             </ul>
           </nav>
-          <CurrencySelector />
+          <div className="currency-selector-l">
+              <Select
+                options={countryOptions}
+                onChange={handleChange}
+                value={selectedCurrency}
+                getOptionLabel={(e) => e.label}
+                className="currency-dropdown"
+                placeholder="Select Currency"
+                menuPlacement="top" // Dropdown opens upwards
+                styles={{
+                  control: (provided) => ({
+                    ...provided,
+                    position: "relative",
+                    zIndex: 9999, // Ensure it stays on top of other elements
+                  }),
+                  menu: (provided) => ({
+                    ...provided,
+                    zIndex: 9999, // Ensure the menu stays on top
+                  }),
+                }}
+              />
+            </div>
           {/* Product Info Section (Right of Navbar) */}
           <div className="product-info-section7">
             <div className="product-info-header7">

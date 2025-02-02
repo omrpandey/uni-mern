@@ -107,7 +107,7 @@ const Navbar = () => {
             </span>
           </li>
           <li className="list-inline-item">
-            <Link to="/contact" className="sui-dang">Today By Unniyarcha</Link>
+            <Link to="/Today_by_unniyarcha" className="sui-dang">Today By Unniyarcha</Link>
             <span className="new-text">
               <sup>New</sup>
             </span>

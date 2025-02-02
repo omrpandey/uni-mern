@@ -15,6 +15,7 @@ import SuiDang from './Components/SuiDang';
 import ReShop from './Components/ReShop';
 import Reviews from './Components/Reviews';
 import CurrencySelector from './Components/CurrencySelector';
+import Today_by_unniyarcha from './Components/Today_By_Unniyarcha';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/ReShop" element={<ReShop />} /> 
             <Route path="/Reviews" element={<Reviews />} /> 
             <Route path="/CurrencySelector" element={<CurrencySelector />} /> 
+            <Route path="/Today_By_Unniyarcha" element={<Today_by_unniyarcha />} />
           </Routes>
         </div>
         <Footer /> 

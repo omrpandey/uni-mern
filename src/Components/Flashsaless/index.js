@@ -23,12 +23,12 @@ const Flashsaless = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({});
-  const [selectedCurrency, setSelectedCurrency] = useState(null);
-  const [conversionRate, setConversionRate] = useState(null);
-  const handleChange = async (selectedOption) => {
-    setSelectedCurrency(selectedOption); // Update the selected currency state
-    await fetchFilteredAndSortedProducts(); // Call the function without passing the currency, as it's handled internally
-  };
+    const [selectedCurrency, setSelectedCurrency] = useState(null);
+    const [conversionRate, setConversionRate] = useState(null);
+    const handleChange = async (selectedOption) => {
+      setSelectedCurrency(selectedOption); // Update the selected currency state
+      await fetchFilteredAndSortedProducts(); // Call the function without passing the currency, as it's handled internally
+    };
   
   const [currentImages2, setCurrentImages2] = useState({
     initial: "",
