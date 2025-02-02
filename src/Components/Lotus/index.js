@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'; // Correct import
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+import CurrencySelector from '../CurrencySelector';
 import './index.css';
 const Lotus = () => {
   const [selectedFilters, setSelectedFilters] = useState([]); // Initialize selectedFilters state
@@ -15,6 +16,7 @@ const Lotus = () => {
   const navigate = useNavigate(); // Initialize navigate for routing
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentImages2, setCurrentImages2] = useState({
     initial: "",
     hover: "",
@@ -28,28 +30,100 @@ const Lotus = () => {
     setAnimate(true); // Trigger animation when the component mounts
   }, []);
   const handleFilterChange = (event) => {
-    const { value, checked } = event.target;
-    setSelectedFilters((prevFilters) =>
-      checked ? [...prevFilters, value] : prevFilters.filter((item) => item !== value)
-    );
-  };
-  // Fetch filtered or all products based on selected filters
-  useEffect(() => {
-    const fetchFilteredProducts = async () => {
-      try {
-        setLoading(true); // Set loading state to true while fetching
-        const filterQuery = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
-        const response = await axios.get(`http://localhost:5000/api/product${filterQuery}`);
-        setProducts(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        setLoading(false);
-      }
-    };
+    const value = event.target.value;
 
-    fetchFilteredProducts();
-  }, [selectedFilters]); // Re-run when selectedFilters changes
+    setSelectedFilters((prevFilters) => {
+      if (prevFilters.includes(value)) {
+        // Remove filter if it's already selected
+        return prevFilters.filter((filter) => filter !== value);
+      } else {
+        // Add filter if it's not selected
+        return [...prevFilters, value];
+      }
+    });
+  };
+
+
+  // Handle sorting change
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+  const fetchFilteredAndSortedProducts = async () => {
+    try {
+      setLoading(true); // Show loading state
+  
+      // Construct the filter query string based on selected filters
+      const filterQuery = selectedFilters.length > 0 ? `filters=${selectedFilters.join(',')}` : '';
+      const sortQuery = sortOption ? `sort=${sortOption}` : '';
+  
+      // Construct the API URL with filters and sort queries
+      let apiUrl = `http://localhost:5000/api/product/Lotus?`;
+  
+      if (filterQuery) {
+        apiUrl += filterQuery;
+      }
+  
+      if (sortQuery) {
+        if (filterQuery) {
+          apiUrl += `&${sortQuery}`;
+        } else {
+          apiUrl += sortQuery;
+        }
+      }
+  
+      console.log("Fetching Data From:", apiUrl); // Debugging
+  
+      // Fetch products from the API
+      const response = await axios.get(apiUrl);
+      console.log("Response Data:", response.data); // Debugging
+  
+      // If no products are found, show a message or show all products
+      if (Array.isArray(response.data) && response.data.length === 0) {
+        setProducts([]); // Show no products message
+      } else {
+        setProducts(response.data); // Show filtered products
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+  
+      // Handle error responses
+      if (error.response && error.response.status === 404) {
+        setProducts([]); // Handle 404 error case
+      } else {
+        alert("An error occurred while fetching products."); // Generic error message
+      }
+    } finally {
+      setLoading(false); // Ensure loading stops in all cases
+    }
+  };
+  
+  
+// Call the function in useEffect
+useEffect(() => {
+  fetchFilteredAndSortedProducts();
+}, [selectedFilters, sortOption]);
+
+  
+
+  // Apply sorting and filtering logic
+  useEffect(() => {
+    let filtered = [...products]; // Start with all products
+
+    // Apply sorting
+    if (sortOption === 'alphabetically') {
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === 'price-low-high') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'price-high-low') {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sortOption === 'rating') {
+      filtered.sort((a, b) => b.rating - a.rating);
+    }
+
+    setFilteredProducts(filtered); // Set sorted and filtered products
+  }, [sortOption, products]);
+
+
 
   // Navigate to a new page when a product is clicked
   const handleProductClick = (productId) => {
@@ -58,9 +132,7 @@ const Lotus = () => {
   };
 
 
-  const handleSortChange = (event) => {
-    setSortOption(event.target.value);
-  };
+
 
   const handleMouseEnter2 = (color) => {
     if (color === 'silver') {
@@ -147,9 +219,6 @@ const Lotus = () => {
 
       {/* Conditional class based on 'animate' state */}
       <div>
-        <div className={`banner-container7 ${animate ? 'pop-out7' : ''}`}>
-          
-        </div>
 
         {/* Main Container (Navbar + Product Info Section) */}
         <div className="main-container71">
@@ -174,10 +243,12 @@ const Lotus = () => {
                           <label>
                             <input
                               type="checkbox"
+                              checked={selectedFilters.includes(option)}
                               name={`filter.${item.title.toLowerCase().replace(' ', '_')}`}
                               value={option}
-                              onChange={(e) => console.log(e.target.value)} // Handle the filter logic
+                              onChange={handleFilterChange}
                             />
+
                             {option}
                           </label>
                         </li>
@@ -188,7 +259,7 @@ const Lotus = () => {
               ))}
             </ul>
           </nav>
-
+          <CurrencySelector />
           {/* Product Info Section (Right of Navbar) */}
           <div className="product-info-section7">
             <div className="product-info-header7">
@@ -216,14 +287,21 @@ const Lotus = () => {
                   >
                     <div className="product-img-container">
                       <img
-                        src={product.Image || "default_initial_image.jpg"} // Fetch image from API
-                        alt={product.Name}
-                        className="product-img"
+                        src={product.images && product.images.length > 0 ? product.images[0] : "default_initial_image.jpg"} // Fetch first image from API
+                        alt={product.name || 'Product Image'} // Ensure the correct property is used
+                        className="product-img default-img"
                       />
+                      <img
+                        src={product.images && product.images.length > 1 ? product.images[1] : "default_hover_image.jpg"} // Fetch second image for hover effect
+                        alt={product.name || 'Product Image'}
+                        className="product-img hover-img"
+                      />
+
                       <div className="product-header">
                         {product.discount > 0 && <button className="best-seller">Best Seller</button>}
                       </div>
                     </div>
+
                     <div className="product-details">
                       <p className="product-description">
                         <span className="current-price">{`Rs. ${product.price}`}</span>
@@ -235,11 +313,10 @@ const Lotus = () => {
                         )}
                       </p>
                       <p className="product-category">Category: {product.category}</p>
-                      <p className="product-description">{product.discription}</p>
-                      <h3 className="product-name">{product.Name}</h3>
+                      <p className="product-description">{product.description}</p> {/* Correct field name */}
+                      <h3 className="product-name">{product.name}</h3> {/* Correct field name */}
                       <div className="color-selection">
                         <div className="color-circle">
-                          {/* Example: Displaying a color based on the category */}
                           <span
                             className={`circle ${product.category}`}
                             onMouseEnter={() => handleMouseEnter2(product.category)}
@@ -260,6 +337,8 @@ const Lotus = () => {
                 <div>No products available</div>
               )}
             </div>
+
+
           </div>
         </div>
       </div>
