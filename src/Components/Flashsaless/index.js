@@ -9,7 +9,7 @@ import './flashsaless.css'; // Ensure you have this CSS file for styling
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
-import '../CurrencySelector/index.js';
+import CurrencySelector from '../CurrencySelector';
 
 
 const Flashsaless = () => {
@@ -262,7 +262,7 @@ useEffect(() => {
               ))}
             </ul>
           </nav>
-
+          <CurrencySelector />
           {/* Product Info Section (Right of Navbar) */}
           <div className="product-info-section7">
             <div className="product-info-header7">
