@@ -48,6 +48,7 @@ const CurrencySelector = () => {
         options={countries} // Pass the country options
         onChange={handleCountryChange} // Handle country change
         placeholder="Select a country" // Placeholder text
+        menuPlacement="top" // Dropdown placement
       />
       
       
