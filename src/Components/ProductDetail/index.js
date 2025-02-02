@@ -72,36 +72,18 @@ setCurrentImage(ProductId.images[0]); // Set the first image initially
     }
   };
 
-  // const addToCart = () => {
-  // alert(`Added ${quantity} x ${product?.Name} to the cart at Rs. ${product?.priceWithCoupon * quantity}`);
-  //};
   const addToCart = async (productId) => {
     try {
-      const response = await fetch("http://localhost:5000/api/cart/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ productId }),
+      await axios.post('/api/cart/add', {
+        productId,
+        quantity: 1
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to add product to cart");
-      }
-
-      const data = await response.json();
-      toast.success(data.message || "Product added to cart!", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      // Optionally show success message or update cart count
     } catch (error) {
-      console.error("Error adding product to cart:", error.message);
-      toast.error("Error adding product to cart. Please try again.", {
-        position: "top",
-        autoClose: 3000,
-      });
+      console.error('Error adding to cart:', error);
     }
   };
+
   const handleOfferClick = (offer) => {
     navigator.clipboard.writeText(offer).then(() => {
       alert(`Offer "${offer}" has been copied to the clipboard!`);

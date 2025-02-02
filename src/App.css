@@ -282,7 +282,7 @@ sup {
   height: 2px; /* Line thickness */
   background-color: pink; /* Color of the line */
   transform: scaleX(0); /* Initially the line is not visible */
-  transform-origin: bottom right; /* Animation origin */
+  transform-origin: bottom left; /* Animation origin */
   transition: transform 0.3s ease-in-out; /* Smooth animation */
 }
 
