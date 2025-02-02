@@ -13,9 +13,21 @@ const countries = [
 
 const CurrencySelector = () => {
   const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [conversionRate, setConversionRate] = useState(null);
 
-  const handleChange = (selectedOption) => {
+  const handleChange = async(selectedOption) => {
     setSelectedCurrency(selectedOption);
+    await fetchConversionRate(selectedOption.value);
+  };
+
+  const fetchConversionRate = async (currencyCode) => {
+    try {
+      const response = await fetch(`/api/exchange-rate?currency=${currencyCode}`);
+      const data = await response.json();
+      setConversionRate(data.rate);
+    } catch (error) {
+      console.error("Error fetching exchange rate:", error);
+    }
   };
 
   const countryOptions = countries.map((country) => ({

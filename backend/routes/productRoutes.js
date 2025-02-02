@@ -1,7 +1,7 @@
 const express = require('express');
 const Product = require('../models/product');
 const router = express.Router();
-
+const axios = require('axios');
 // GET all products
 router.get('/', async (req, res) => {
     try {
@@ -11,10 +11,12 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 });
+
+
 router.get('/:page', async (req, res) => {
   try {
     const { page } = req.params;  // Get the 'page' parameter from the URL
-    const { filters } = req.query;  // Get the 'filters' from the query string
+    const { filters, currency } = req.query;  // Get the 'filters' from the query string, and 'currency' for the target currency
 
     // Parse the filters if they exist
     const filterArray = filters ? filters.split(',') : [];
@@ -32,15 +34,49 @@ router.get('/:page', async (req, res) => {
 
     // If no products are found, send an appropriate message or an empty array
     if (products.length === 0) {
-      return res.status(404).json({ message: 'No products found with the given filters' }); // Return empty response with 404 status
+      return res.status(404).json({ message: 'No products found with the given filters' });
     }
 
-    // Return the filtered products if found
+    // If the user has requested a different currency (other than INR)
+    if (currency && currency !== 'INR') {
+      // Fetch exchange rate for INR to the requested currency
+      const exchangeRate = await getExchangeRate('INR', currency);
+
+      // Convert prices
+      products.forEach(product => {
+        product.price = convertCurrency(product.price, exchangeRate);
+        product.priceWithCoupon = convertCurrency(product.priceWithCoupon, exchangeRate);
+      });
+    }
+
+    // Return the filtered and converted products if found
     res.json(products);
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });  // Handle any server errors
+    res.status(500).json({ error: 'Server error' });
   }
 });
+
+// Function to get exchange rate for INR to the target currency
+async function getExchangeRate(fromCurrency, toCurrency) {
+  try {
+    const apiKey = 'your-api-key'; // Use your API key
+    const response = await axios.get(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
+    const rates = response.data.rates;
+
+    if (rates[toCurrency]) {
+      return rates[toCurrency]; // Return exchange rate for the target currency
+    } else {
+      throw new Error('Currency not supported');
+    }
+  } catch (error) {
+    throw new Error('Error fetching exchange rate');
+  }
+}
+
+// Function to convert the price based on exchange rate
+function convertCurrency(amount, exchangeRate) {
+  return (amount * exchangeRate).toFixed(2); // Convert and format the amount to 2 decimal places
+}
 
 
 
