@@ -15,6 +15,7 @@ import mensjewelrylink from '../../assets/images/mensjewelrylink.jpg';
 import Giftsforher from '../../assets/images/Giftsforher.jpg';
 import Giftsforhim from '../../assets/images/Giftsforhim.jpg';
 import inhousemanufacturing from '../../assets/images/inhousemanufacturing.jpg';
+//import 'font-awesome/css/font-awesome.min.css';
 
 const Home = () => {
   const [animate, setAnimate] = useState(false);
@@ -22,11 +23,11 @@ const Home = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1200,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: false,
     style:{ marginBottom: '80px' }
   };
@@ -71,6 +72,12 @@ const Home = () => {
 
   return (
     <main>
+      <div id="sy-whatshelp">
+        <a href="https://api.whatsapp.com/send?phone=918527218333&amp;text=Hi" target="_blank" class="sywh-open-services " data-html="true" data-placement="left">
+          <i class="fab fa-whatsapp"></i>
+         </a>        
+      </div>
+
       {/* Valentine's Day Section */}
       <div className={`dvalentine-container ${animate ? 'pop-out' : ''}`}>
         <img
@@ -173,7 +180,7 @@ const Home = () => {
           {testimonials.map((testimonial, index) => (
             <div key={index}   className="testimonials-slide">
               <blockquote className="testimonials-slider__text">
-                <span className="testimonial-stars">{testimonial.stars}</span>
+                <span className="testimonial-stars"><strong>{testimonial.stars}</strong></span>
                 <p><strong>{testimonial.strong}</strong></p>
                 <p>{testimonial.text}</p>
                 <cite><strong>{testimonial.cite}</strong></cite>
