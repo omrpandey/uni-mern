@@ -463,14 +463,19 @@ li7 {
 }
 
 .currency-selector {
-  position: fixed; /* Fixes the element relative to the viewport */
-  bottom: 20px;    /* Position 20px from the bottom of the screen */
-  left: 0px;      /* Position 20px from the left of the screen */
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  z-index: 1000;    /* Ensures it's on top of other content */
-  padding: 10px;    /* Adds padding inside the dropdown */
+     font-size: 15px;
+    position: fixed;
+    background-color: var(--bacurrBackground);
+    margin: 0 auto;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 9px var(--bacurrShadow1), -4px -4px 9px var(--bacurrShadow1);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all .5s ease-in;
+    width: 100%;
+
 }
 
 .currency-selector img {

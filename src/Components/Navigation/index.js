@@ -123,7 +123,7 @@ const Navbar = () => {
                   <Link to="/toe-rings"><Button>Gift for Him</Button></Link>
                   <Link to="/necklace"><Button>Gift under 2999</Button></Link>
                   <Link to="/bangles"><Button>Gift under 2999l</Button></Link>
-                                 </div>
+                  </div>
                 </div>
               </div>
           </li>
