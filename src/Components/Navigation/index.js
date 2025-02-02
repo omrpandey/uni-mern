@@ -113,7 +113,7 @@ const Navbar = () => {
             <Link to="/contact">Gifting <IoIosArrowDown /></Link>
           </li>
           <li className="list-inline-item">
-            <Link to="/contact">Reviews</Link>
+            <Link to="/Reviews">Reviews</Link>
           </li>
         </ul>
       </div>

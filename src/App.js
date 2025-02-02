@@ -13,6 +13,7 @@ import Footer from './Components/Fotter';
 import ProductDetail from './Components/ProductDetail'; 
 import SuiDang from './Components/SuiDang';
 import ReShop from './Components/ReShop';
+import Reviews from './Components/Reviews';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/ProductDetail/:productId" element={<ProductDetail />} />
             <Route path="/ReShop" element={<ReShop />} /> 
+            <Route path="/Reviews" element={<Reviews />} /> 
           </Routes>
         </div>
         <Footer /> 

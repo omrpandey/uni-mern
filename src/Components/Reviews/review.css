@@ -1,0 +1,111 @@
+.review-page {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.review-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.left-side {
+  width: 60%;
+}
+
+.right-side {
+  width: 35%;
+}
+
+.star-icons {
+  font-size: 30px;
+}
+
+.rating-summary {
+  margin-top: 10px;
+}
+
+.rating-line {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.percentage-bar {
+  flex: 1;
+  height: 10px;
+  background-color: #e0e0e0;
+  margin: 0 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.write-review-button {
+  margin-bottom: 20px;
+}
+
+.review-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"], input[type="email"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.jdgm-histogram__bar {
+  width: 100%; /* Container takes full width */
+  height: 16px; /* Height of the progress bar */
+  background-color: #f0f0f0; /* Light background for the container */
+  border-radius: 8px; /* Rounded corners for the bar */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  margin-bottom: 10px; /* Spacing between bars */
+}
+
+
