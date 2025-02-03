@@ -23,9 +23,7 @@ const Navbar = () => {
           </li>
           <li className="list-inline-item has-submenu-1">
             <div className="submenu-trigger-1">
-              <Link to="/shopss" className="sui-dang-1">
-                Shop by category <IoIosArrowDown />
-              </Link>
+            <Link to="/Shopbycategory">Shop By Category <IoIosArrowDown /></Link>
             </div>
             <div className="submenu-1">
               <div className="submenu-content-1">

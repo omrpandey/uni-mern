@@ -17,8 +17,7 @@ import Reviews from './Components/Reviews';
 import CurrencySelector from './Components/CurrencySelector';
 import Today_by_unniyarcha from './Components/Today_By_Unniyarcha';
 import Gifting from './Components/Gifting';
-import shopss from './Components/shopss';
-
+import Shopbycategory from './Components/Shopbycategory';
 function App() {
   return (
     <>
@@ -40,7 +39,7 @@ function App() {
             <Route path="/CurrencySelector" element={<CurrencySelector />} /> 
             <Route path="/Today_By_Unniyarcha" element={<Today_by_unniyarcha />} />
             <Route path="/Gifting" element={<Gifting />} />
-            <Route path="/shopss" element={<shopss />} />
+            <Route path="/Shopbycategory" element={<Shopbycategory/>}/>
           </Routes>
         </div>
         <Footer /> 

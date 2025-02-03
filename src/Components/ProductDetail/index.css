@@ -5,9 +5,7 @@
   padding: 20px;
 }
 
-.product-image-container {
-  width: 45%;
-}
+
 
 .banner-img {
   width: 100%;
@@ -279,10 +277,7 @@
     align-items: center;
   }
 
-  .product-image-container {
-    width: 80%;
-  }
-
+  
   .product-info-container {
     width: 80%;
     padding-left: 0;
@@ -576,4 +571,48 @@
 /* When active, show the dropdown content */
 .dropdown-content.active {
   display: block;
+}
+
+.small-image-slider {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.small-image-container {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.small-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.small-image:hover {
+  transform: scale(1.1);
+}
+
+/* Product Image Container */
+.product-img-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensures it doesn't stretch beyond container */
+  max-width: 600px; /* Optional: Set a max-width if needed */
+  height: auto; /* Maintain natural height */
+  padding: 10px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Ensure padding is included within the container */
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Limit image size */
+  object-fit: contain; /* Or 'cover' depending on your needs */
+  border-radius: 8px;
 }

@@ -123,7 +123,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px; /* Adjust the space between the circles */
-    margin: 20px 0;
+    margin: 40px 0;
   }
   
   .circle-op {

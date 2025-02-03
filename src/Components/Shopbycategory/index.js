@@ -2,7 +2,7 @@ import React from 'react';
 import Lotus from '../Lotus'; 
 
 
-const shopss = () => {
+const Shopbycategory = () => {
   return (
     <Lotus>
       {/* You can add child components or elements here if needed */}
@@ -10,4 +10,4 @@ const shopss = () => {
   );
 };
 
-export default shopss;
+export default Shopbycategory;
