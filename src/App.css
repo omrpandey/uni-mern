@@ -685,3 +685,122 @@ sup {
   border-color: #007bff;
 }
 
+.headerWrapper {
+  position: relative;
+}
+
+.headerSearch {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 10px;
+}
+
+.suggestions-box {
+  position: absolute;
+  top: 50px;  /* Adjust this to match the input box's position */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trend-search, .product-suggestions {
+  margin-bottom: 10px;
+}
+
+.trend-search h3, .product-suggestions h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.suggestion-item img {
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.suggestion-item span {
+  font-size: 14px;
+}
+
+.headerIcons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.trend-search a{
+  margin-top: 10px;
+  display: block;
+  color: black; /* Black color for links */
+  text-decoration: none; /* Remove underline */
+  margin-bottom: 8px; /* Space between links */
+}
+
+.trend-links {
+  margin-top: 10px;
+}
+
+.trend-link a{
+  display: block;
+  color: black; /* Black color for links */
+  text-decoration: none; /* Remove underline */
+  margin-bottom: 8px; /* Space between links */
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.suggestion-item img {
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.suggestion-item span {
+  color: black; /* Text color for product names */
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0; /* Light hover effect */
+}
+
+.small-image-slider1 {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.small-image-container1 {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.small-image1 {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.small-image1:hover {
+  transform: scale(1.1);
+}

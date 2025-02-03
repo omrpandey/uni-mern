@@ -18,6 +18,8 @@ import CurrencySelector from './Components/CurrencySelector';
 import Today_by_unniyarcha from './Components/Today_By_Unniyarcha';
 import Gifting from './Components/Gifting';
 import Shopbycategory from './Components/Shopbycategory';
+import AddtoCart from './Components/Addtocart';
+import Payment from './Components/Payment';
 function App() {
   return (
     <>
@@ -40,6 +42,8 @@ function App() {
             <Route path="/Today_By_Unniyarcha" element={<Today_by_unniyarcha />} />
             <Route path="/Gifting" element={<Gifting />} />
             <Route path="/Shopbycategory" element={<Shopbycategory/>}/>
+            <Route path="/Addtocart" element={<AddtoCart/>}/>
+            <Route path="/Payment" element={<Payment/>}/>
           </Routes>
         </div>
         <Footer /> 

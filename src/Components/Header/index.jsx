@@ -1,22 +1,64 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import pp1 from '../../assets/images/pp1.png';
+import man1 from '../../assets/images/man1.jpg';
+import man2 from '../../assets/images/man2.jpg';
+import man6 from '../../assets/images/man6.jpg'; // Importing man4 image
+import man5 from '../../assets/images/man5.jpg'; // Importing man5 image
 import { IoSearchOutline } from 'react-icons/io5';
 import { Button } from '@mui/material';
 import { HiOutlineShoppingBag } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 import Navigation from '../Navigation';
 import axios from 'axios';
 
 const Header = () => {
     const navigate = useNavigate();
 
-    // Handle profile navigation
+    const [searchQuery, setSearchQuery] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [trendingProducts, setTrendingProducts] = useState([]);
+    const [isSuggestionsVisible, setIsSuggestionsVisible] = useState(false);
+
+    useEffect(() => {
+        if (searchQuery) {
+            // Fetch product suggestions based on the search query
+            axios.get(`/api/products/search?q=${searchQuery}`)
+                .then(response => setSuggestions(response.data))
+                .catch(error => console.error("Error fetching search suggestions", error));
+        } else {
+            setSuggestions([]);
+        }
+    }, [searchQuery]);
+
+    useEffect(() => {
+        // Simulate fetching trending products on load
+        axios.get('/api/products/trending')
+            .then(response => setTrendingProducts(response.data))
+            .catch(error => console.error("Error fetching trending products", error));
+    }, []);
+
+    const handleSearchInput = (e) => {
+        setSearchQuery(e.target.value);
+        setIsSuggestionsVisible(true);
+    };
+
+    const handleSearchSubmit = () => {
+        navigate(`/search-results?query=${searchQuery}`);
+        setIsSuggestionsVisible(false);
+    };
+
     const handleUserClick = () => {
-        navigate('/profile'); // Redirects to the profile page
+        navigate('/profile');
     };
 
     const handleCartClick = () => {
-        navigate('/CartDrawer'); // Navigate to cart page
+        navigate('/CartDrawer');
+    };
+
+    const handleImageClick = (image) => {
+        console.log('Image clicked:', image);
+        // You can add further logic for what happens when an image is clicked
     };
 
     return (
@@ -39,6 +81,8 @@ const Header = () => {
                 <input
                     type="text"
                     placeholder="Search our store"
+                    value={searchQuery}
+                    onChange={handleSearchInput}
                     aria-label="Search our store"
                     style={{
                         border: '2px solid #000',
@@ -46,13 +90,74 @@ const Header = () => {
                         borderRadius: '4px',
                     }}
                 />
-                <Button aria-label="Search">
+                <Button aria-label="Search" onClick={handleSearchSubmit}>
                     <IoSearchOutline />
                 </Button>
+
+                {/* Display Suggestions */}
+                {isSuggestionsVisible && searchQuery && (
+                    <div
+                        className="suggestions-box"
+                        style={{
+                            position: 'absolute',
+                            top: '50px', // Adjust this value to position the box correctly
+                            left: '0',
+                            right: '0',
+                            zIndex: 9999, // Ensure it's above the navbar
+                            border: '1px solid #ccc',
+                            padding: '10px',
+                            backgroundColor: '#fff',
+                        }}
+                    >
+                        <div className="trend-search">
+                            <h3>Trending Searches</h3>
+                            <Link to="/Shopbycategory">Chains</Link>
+                            <Link to="/Lotus">Earings</Link>
+                            <Link to="/Lotus">Anklets</Link>
+                            <Link to="/Lotus">Mangalsutra</Link>
+                            {trendingProducts.slice(0, 4).map((product, index) => (
+                                <div key={index} className="suggestion-item" onClick={() => navigate(`/product/${product.id}`)}>
+                                    <img src={product.image} alt={product.name} width={50} />
+                                    <span>{product.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="product-suggestions">
+                            <h3>Suggestions</h3>
+                            <div className="small-image-slider1">
+                                {/* Use imported images directly */}
+                                {[man1, man2, man6, man5].map((image, index) => (
+                                    <div
+                                        key={index}
+                                        className="small-image-container1"
+                                        onClick={() => handleImageClick(image)}
+                                    >
+                                        <img src={image} alt={`product-image-${index}`} className="small-image" />
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Display product suggestions */}
+                            {suggestions.slice(0, 4).map((suggestion, index) => (
+                                <div
+                                    key={index}
+                                    className="suggestion-item"
+                                    onClick={() => {
+                                        setSearchQuery(suggestion.name);
+                                        setIsSuggestionsVisible(false);
+                                        navigate(`/search-results?query=${suggestion.name}`);
+                                    }}
+                                >
+                                    <span>{suggestion.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
-            {/* User and Cart Icons Section */}
-            <div className="headerIcons">
+           {/* User and Cart Icons Section */}
+           <div className="headerIcons">
                 {/* Custom User Icon */}
                 <svg
                     width="30"
@@ -81,6 +186,7 @@ const Header = () => {
 
                 {/* Shopping Bag Icon */}
                 <div className="ml-auto shopBag">
+                    <Link to="/Addtocart">
                     <Button
                         className="circle ml-2"
                         aria-label="Shopping Bag"
@@ -88,12 +194,12 @@ const Header = () => {
                     >
                         <HiOutlineShoppingBag />
                     </Button>
+                    </Link>
                 </div>
             </div>
-
-            {/* Navigation Component */}
-            <Navigation />
-        </div>
+             {/* Navigation Component */}
+             <Navigation />
+</div>
     );
 };
 

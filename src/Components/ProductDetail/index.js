@@ -8,6 +8,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null); // State to store product details
@@ -93,7 +96,7 @@ const ProductDetail = () => {
   return (
     <div className="product-detail-container">
       {/* Main product image */}
-      <div className="product-image-container1">
+      <div className="product-image-container">
         <img src={currentImage} alt={product?.name} className="banner-img" />
       
 
@@ -187,7 +190,7 @@ const ProductDetail = () => {
         </div>
 
         <button className="add-to-cart-btn" onClick={() => addToCart(product?.productId, quantity)}>
-          Add to Cart
+          <Link to="/Addtocart">Add to Cart</Link>
         </button>
 
         <div className="special-offers">
