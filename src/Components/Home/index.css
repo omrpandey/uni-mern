@@ -103,77 +103,129 @@ body {
   }
 
 
-.gifts{
-  display {-ms-flex-align: baseline;}
-}
-.gifts {
-  display: flex; /* Arrange items in a horizontal row */
-  justify-content: center; /* Center items horizontally */
-  align-items: flex-start; /* Align items at the top */
-  gap: 20px; /* Space between the boxes */
-  flex-wrap: wrap; /* Allow wrapping if there's not enough space */
-  text-align: center; /* Center the text inside each box */
-  padding: 20px; /* Add padding for spacing around the container */
-}
- .box1 .box2 {
-  max-width: 400px; /* Optional: Limit the width of each box */
-  text-align: center; /* Center content inside each box */
-  gap: 20px
-}
-
-.slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  width: 300px; /* Adjust width to avoid full width */
-  background-color: #ffdde4;
-  border: 1px solid #2b2a2a;
-  text-align: center; /* Ensures text is centered */
-  margin: auto; /* Centers the box */
-  cursor: pointer; /* Changes cursor on hover */
-}
-
-.slide h2 {
-  font-size: 24px;
-  color: #333;
-}
-
-.reveiw, .testimonials-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-
-  cursor: pointer; /* Changes cursor on hover */
-  margin: auto; /* Centers the box */
-  text-align: center;
-}
-
-.testimonials-slider__text{
- display:block;
-  background-color: #ffdde4;
-  height: 500px;
-  width: 500px;
-  align-items: center;
+  .gifts{
+    display {-ms-flex-align: baseline;}
+  }
+  .gifts {
+    display: flex; /* Arrange items in a horizontal row */
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Space between the boxes */
+    flex-wrap: wrap; /* Allow wrapping if there's not enough space */
+    text-align: center; /* Center the text inside each box */
+    padding: 20px; /* Add padding for spacing around the container */
+  }
+   .box1 .box2 {
+    max-width: 500px; /* Optional: Limit the width of each box */
+    text-align: center; /* Center content inside each box */
+    gap: 18px
+  }
   
-}
-
-testimonial-stars {
-  display: block;
-  font-size: 16px;
-  letter-spacing: .2em;
-  margin-bottom: 10px;
-}
-
-.testimonial-image {
-  display: block;
-  width: 50px;  /* Small size */
-  height: 50px; /* Keep it square */
-  border-radius: 50%; /* Circular shape */
-  object-fit: cover; /* Ensures image fits properly inside the circle */
-  margin-bottom: 10px; /* Space below the image */
-  margin-top: 20px; /* Adds space above the image */
-  align-items: center;
-}
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    background-color: #ffdde4;
+    border: 1px solid #2b2a2a;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  .slide h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .review, .testimonials-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .testimonials-slider__text {
+    display: block;
+    background-color: #ffdde4;
+    height: auto;
+    width: 1265px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .testimonial-stars {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto 10px;
+  }
+  
+  .testimonials-slide {
+    background: #ffdde4;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
+  
+  #sy-whatshelp {
+    right: 10px;
+    bottom: 80px;
+    position: fixed;
+    z-index: 9999;
+  }
+  
+  #sy-whatshelp a.sywh-open-services {
+    background-color: #20c251;
+    color: #fff;
+    line-height: 65px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 45px;
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    box-shadow: 2px 2px 8px -3px #000;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  #sy-whatshelp a.sywh-open-services i {
+    line-height: 65px;
+  }
+  
+  *, *::after, *::before, input {
+    box-sizing: border-box;
+  }
+  
+  .fab, .far {
+    font-weight: 400;
+  }
+  
+  .fab {
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+    display: inline-block;
+    font-style: normal;
+    text-rendering: auto;
+    align-items: center;
+    margin-top: 7px;
+  }

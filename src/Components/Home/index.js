@@ -4,7 +4,7 @@ import './index.css'; // Import custom styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box } from '@mui/material';
-import dvalentine from '../../assets/images/dvalentine.jpg';
+import withlovestories from '../../assets/images/withlovestories.jpg';
 import aboutimg from '../../assets/images/aboutimg.jpg';
 import earringlink from '../../assets/images/earringslink.jpg';
 import necklaceslink from '../../assets/images/necklaceslink.jpg';
@@ -15,6 +15,7 @@ import mensjewelrylink from '../../assets/images/mensjewelrylink.jpg';
 import Giftsforher from '../../assets/images/Giftsforher.jpg';
 import Giftsforhim from '../../assets/images/Giftsforhim.jpg';
 import inhousemanufacturing from '../../assets/images/inhousemanufacturing.jpg';
+import { FaWhatsapp } from "react-icons/fa";
 //import 'font-awesome/css/font-awesome.min.css';
 
 const Home = () => {
@@ -74,17 +75,17 @@ const Home = () => {
     <main>
       <div id="sy-whatshelp">
         <a href="https://api.whatsapp.com/send?phone=918527218333&amp;text=Hi" target="_blank" class="sywh-open-services " data-html="true" data-placement="left">
-          <i class="fab fa-whatsapp"></i>
+          <i class="fab fa-whatsapp"><FaWhatsapp /></i>
          </a>        
       </div>
 
       {/* Valentine's Day Section */}
       <div className={`dvalentine-container ${animate ? 'pop-out' : ''}`}>
         <img
-          src={dvalentine}
+          src={withlovestories}
           alt="Valentine's Day decoration"
           className="dvalentine-img"
-          style={{ width: '100%', height: '581px' }}
+          style={{ width: '100%', height: '461px' }}
         />
       </div>
 
@@ -114,27 +115,35 @@ const Home = () => {
           <h1 className="section-header__title">Wedding Ready with Unniyarcha</h1>
         </div>
         <section className="shopify-section">
-          <Box
-            display="grid"
-            gridTemplateColumns="repeat(3, 1fr)"
-            gap={4}
-            justifyContent="center"
-          >
-            {[earringlink, necklaceslink, Ankletslink, divinelink, Bangleslink, mensjewelrylink].map((image, index) => (
-              <Box key={index} textAlign="center">
-                <a href="/Weds">
-                  <img
-                    src={image}
-                    alt={`Category ${index + 1}`}
-                    className="category-img"
-                    style={{ width: '405px', height: '405px' }}
-                  />
-                </a>
-                <p className="category-title">{["EARRINGS", "NECKLACES", "ANKLETS", "DIVINE", "BANGLES", "MEN'S JEWELLERY"][index]}</p>
-              </Box>
-            ))}
-          </Box>
-        </section>
+  <Box
+    display="grid"
+    gridTemplateColumns="repeat(3, 1fr)"
+    gap={4}
+    justifyContent="center"
+  >
+    {[
+      { image: earringlink, title: "EARRINGS", link: "/Weds" },
+      { image: necklaceslink, title: "NECKLACES", link: "/Weds" },
+      { image: Ankletslink, title: "ANKLETS", link: "/Weds" },
+      { image: divinelink, title: "DIVINE", link: "/Weds" },
+      { image: Bangleslink, title: "BANGLES", link: "/Weds" },
+      { image: mensjewelrylink, title: "MEN'S JEWELLERY", link: "/Weds" },
+    ].map((item, index) => (
+      <Box key={index} textAlign="center">
+        <a href={item.link}>
+          <img
+            src={item.image}
+            alt={item.title}
+            className="category-img"
+            style={{ width: '405px', height: '405px' }}
+          />
+        </a>
+        <p className="category-title">{item.title}</p>
+      </Box>
+    ))}
+  </Box>
+</section>
+
       </div>
          
      

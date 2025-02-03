@@ -1,0 +1,178 @@
+/* Product Box */
+.product-box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  /* Product Image Container */
+  .product-img-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .product-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+  }
+  
+  .hover-img {
+    opacity: 0;
+  }
+  
+  .product-img-container:hover .product-img {
+    opacity: 0;
+  }
+  
+  .product-img-container:hover .hover-img {
+    opacity: 1;
+  }
+  
+  /* Best Seller Button */
+  .best-seller {
+    background-color: yellow;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  /* Product Details */
+  .product-details {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  
+  /* Product Description */
+  .product-description {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .current-price {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .regular-price {
+    /* text-decoration: line-through; */
+    color: #aaa;
+    margin-left: 10px;
+  }
+  
+  .discount {
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  /* Best Price */
+  .best-price {
+    font-size: 16px;
+    margin-top: 10px;
+    color: rgb(255, 0, 0);
+  }
+  
+  .coupon-text {
+    opacity: 0.7;
+    font-size: 12px;
+    color: #555;
+  }
+  
+  /* Product Name */
+  .product-name {
+    color: #7d7d7d;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif !important;
+    font-weight: 500;
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  
+  /* Color Selection */
+  .color-selection {
+    margin-top: 10px;
+  }
+  
+  .color-circle {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .circle.yellow {
+    background-color: yellow;
+  }
+  
+  .circle.grey {
+    background-color: grey;
+  }
+  
+  /* Add to Cart Button */
+  .add-to-cart {
+    background-color: rgb(252, 220, 225);/* Dark initial color */
+    padding: 10px 20px;
+    color: rgb(0, 0, 0); /* Light text */
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  }
+  
+  .add-to-cart:hover {
+     /* Light hover color */
+    color: #d56f99; /* Dark text */
+  }
+  
+  
+  .currency-selector-l {
+    font-size: 15px;
+   position: fixed;
+   background-color: var(--bacurrBackground);
+   margin: 0 auto;
+   margin-top: 30%;
+   padding: 7px;
+   border-radius: 5px;
+   box-shadow: 4px 4px 9px var(--bacurrShadow1), -4px -4px 9px var(--bacurrShadow1);
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   transition: all .5s ease-in;
+   width: 100%;
+  
+  }
+  
+  .currency-selector-l img {
+  width: 20px;
+  height: 20px;
+  }
